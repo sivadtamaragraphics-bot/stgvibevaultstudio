@@ -231,6 +231,22 @@
       line-height: 1.6;
     }
 
+    .dir-text ul {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .dir-text li {
+      margin-bottom: 7px;
+    }
+
+    .dir-text li:last-child {
+      margin-bottom: 0;
+    }
+
     /* ── MAIN LAYOUT ── */
     .main-wrap {
       max-width: 1200px;
@@ -1262,7 +1278,14 @@
       <div class="dir-icon">✦</div>
       <div class="dir-text">
         <h3>How to Use</h3>
-        <p>Start by choosing Solo, Couple, or Group at the top of Part 1 — each character gets their own Identity and Beauty tab. Complete the Scene details in Part 2. Click Generate Prompt when ready, then Copy, Save, or create 3 Variations.</p>
+        <ul>
+          <li><strong>Build your character</strong> — Choose Solo, Couple, or Group at the top of <strong style="color:#ff2d87;">Part 1</strong>. Each character gets their own tab, plus a Quick Preset dropdown for instant one-click styling.</li>
+          <li><strong>Set the scene</strong> — Complete background, lighting, and pose details in <strong style="color:#ff2d87;">Part 2</strong>.</li>
+          <li><strong>Just want a patch?</strong> — The <strong style="color:#ff2d87;">Chenille Patch Builder</strong> generates a standalone patch design, no character needed.</li>
+          <li><strong>Want a product photo?</strong> — The <strong style="color:#ff2d87;">Product Mockup Generator</strong> still needs a character or a patch — pick "Patch Design" as the source to skip the character.</li>
+          <li><strong>Save your shop's look</strong> — Set colors, art style, and tagline once in the <strong style="color:#ff2d87;">Brand Board</strong> and apply them anytime to a character or patch. Or click "Generate Brand Board Graphic" for a standalone style-guide image (logo, colors, fonts, and mockups) — that one needs nothing but a Brand Name.</li>
+          <li><strong>Finish up</strong> — Click Generate Prompt, then Copy, Save, or create 3 Variations.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -2307,9 +2330,48 @@
           <div class="form-grid">
 
         <div class="field full">
+          <label for="patchDisplayMode">Patch Display</label>
+          <select id="patchDisplayMode">
+            <option>On Character's Clothing</option>
+            <option>With Character (Not on Clothing)</option>
+            <option>Standalone Patch Design (no character)</option>
+          </select>
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:4px;font-style:italic;">"With Character" keeps your character in the scene but places the patch as its own graphic — above, behind, or beside them — instead of attached to their outfit. "Standalone" generates just the patch by itself, like a flat product photo.</p>
+        </div>
+
+        <div class="field" id="patchPositionWrap" style="display:none;">
+          <label for="patchPosition">Patch Position</label>
+          <select id="patchPosition">
+            <option>None</option>
+            <option>Above Character</option>
+            <option>Behind Character</option>
+            <option>Beside Character — Left</option>
+            <option>Beside Character — Right</option>
+            <option>Floating Overhead</option>
+            <option>In Foreground</option>
+            <option>Custom Patch Position</option>
+          </select>
+          <input class="custom-input" id="customPatchPosition" placeholder="Type custom patch position" />
+        </div>
+
+        <div class="field full">
           <label for="patchText">Chenille Patch Text</label>
           <input type="text" id="patchText" placeholder="Type your patch text e.g. EAGLES, BOSS, #23, Too Glam..." />
           <p style="font-size:0.72rem;color:var(--muted);margin-top:4px;font-style:italic;">This text will be rendered as an authentic chenille embroidered patch</p>
+        </div>
+
+        <div class="field">
+          <label for="patchTextLayout">Patch Text Layout</label>
+          <select id="patchTextLayout">
+            <option>None</option>
+            <option>Stacked (Multiple Lines)</option>
+            <option>Side by Side (Single Line)</option>
+            <option>Curved Arch</option>
+            <option>Circular Text</option>
+            <option>Diagonal</option>
+            <option>Custom Patch Text Layout</option>
+          </select>
+          <input class="custom-input" id="customPatchTextLayout" placeholder="Type custom text layout" />
         </div>
 
         <div class="field">
@@ -2329,7 +2391,7 @@
           <input class="custom-input" id="customPatchShape" placeholder="Type custom patch shape" />
         </div>
 
-        <div class="field">
+        <div class="field" id="patchPlacementWrap">
           <label for="patchPlacement">Patch Placement</label>
           <select id="patchPlacement">
             <option>None</option>
@@ -2369,6 +2431,22 @@
         </div>
 
         <div class="field">
+          <label for="patchOutline">Patch Outline</label>
+          <select id="patchOutline">
+            <option>None</option>
+            <option>Thin Outline</option>
+            <option>Medium Outline</option>
+            <option>Thick Outline</option>
+            <option>Extra Thick Bold Outline</option>
+            <option>Double Outline</option>
+            <option>Dotted Outline</option>
+            <option>Embroidered Tonal Outline</option>
+            <option>Custom Patch Outline</option>
+          </select>
+          <input class="custom-input" id="customPatchOutline" placeholder="Type custom outline style" />
+        </div>
+
+        <div class="field">
           <label for="patchEdging">Patch Edging</label>
           <select id="patchEdging">
             <option>None</option>
@@ -2383,6 +2461,131 @@
             <option>Custom Patch Edging</option>
           </select>
           <input class="custom-input" id="customPatchEdging" placeholder="Type custom patch edging" />
+        </div>
+
+        <div class="field full">
+          <label>Patch Embellishments <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(select all that apply)</span></label>
+          <div class="checkbox-group" id="patchEmbellishmentsCheckboxes"></div>
+          <div class="checkbox-selected-display" id="patchEmbellishmentsSelected">None selected</div>
+          <input class="custom-input" id="customPatchEmbellishments" placeholder="Add a custom embellishment..." />
+        </div>
+
+          </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT MOCKUP SECTION -->
+        <div class="section-zone zone-green">
+          <div class="section-header accordion-toggle" data-section="mockup">
+            <div class="section-icon icon-green">🛍️</div>
+            <div class="section-header-text">
+              <span class="section-label label-pink">Bonus</span>
+              <span class="section-title">Product Mockup Generator</span>
+            </div>
+            <span class="accordion-chevron">▼</span>
+          </div>
+          <div class="section-zone-body">
+          <div class="form-grid">
+
+        <div class="field">
+          <label for="mockupProduct">Show On Product Mockup</label>
+          <select id="mockupProduct">
+            <option>None</option>
+            <option>T-Shirt</option>
+            <option>Hoodie / Sweatshirt</option>
+            <option>Coffee Mug</option>
+            <option>Tumbler / Water Bottle</option>
+            <option>Notebook / Journal</option>
+            <option>Poster / Wall Art</option>
+            <option>Tote Bag</option>
+            <option>Keychain</option>
+            <option>Phone Case</option>
+            <option>Sticker</option>
+            <option>Cap / Hat</option>
+            <option>Throw Blanket</option>
+            <option>Throw Pillow</option>
+            <option>Custom Mockup Product</option>
+          </select>
+          <input class="custom-input" id="customMockupProduct" placeholder="Type a custom product, e.g. laptop sleeve" />
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:4px;font-style:italic;">Generates a product photo with your design sized and placed correctly for that specific item — not just slapped on at a generic scale.</p>
+        </div>
+
+        <div class="field" id="mockupSourceWrap" style="display:none;">
+          <label for="mockupSource">What's Featured On the Product</label>
+          <select id="mockupSource">
+            <option>Character Design</option>
+            <option>Patch Design</option>
+          </select>
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:4px;font-style:italic;">Character Design uses everything you built in <strong style="color:#ff2d87;">Part 1</strong>. Patch Design uses your Chenille Patch Builder above.</p>
+        </div>
+
+          </div>
+          </div>
+        </div>
+
+        <!-- BRAND BOARD SECTION -->
+        <div class="section-zone zone-charcoal">
+          <div class="section-header accordion-toggle" data-section="brandboard">
+            <div class="section-icon icon-charcoal">🏷️</div>
+            <div class="section-header-text">
+              <span class="section-label label-pink">Bonus</span>
+              <span class="section-title">Brand Board</span>
+            </div>
+            <span class="accordion-chevron">▼</span>
+          </div>
+          <div class="section-zone-body">
+          <div class="form-grid">
+
+        <div class="field full">
+          <p style="font-size:0.78rem;color:var(--muted);margin:0 0 4px;font-style:italic;">Save your shop's signature look once, then apply it to any generation with one click — colors, art style, and default product all set instantly. This is the only section that remembers your settings between visits.</p>
+        </div>
+
+        <div class="field">
+          <label for="brandName">Brand Name</label>
+          <input type="text" id="brandName" placeholder="e.g. Sivad Tamara Graphics" />
+        </div>
+
+        <div class="field">
+          <label for="brandTagline">Tagline / Slogan</label>
+          <input type="text" id="brandTagline" placeholder="e.g. Design the Look. Define the Vibe." />
+        </div>
+
+        <div class="field">
+          <label for="brandArtStyle">Default Art Style</label>
+          <select id="brandArtStyle">
+            <option value="">— None —</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label>Default Mockup Products <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(check all your shop's go-to products)</span></label>
+          <div class="checkbox-group" id="brandMockupProductsCheckboxes" style="max-height:200px;"></div>
+          <div class="checkbox-selected-display" id="brandMockupProductsSelected">None selected</div>
+          <input class="custom-input" id="customBrandMockupProducts" placeholder="Type a custom product, e.g. laptop sleeve" />
+          <label class="checkbox-item" style="margin-top:8px;">
+            <input type="checkbox" id="brandMockupBundleMode">
+            Show all checked products together in one bundle flat-lay photo
+          </label>
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:4px;font-style:italic;">Unchecked (default): one of your checked products is picked at random each time you Apply, so repeated applies rotate through your lineup. Checked: all of them appear together in a single styled bundle photo instead.</p>
+          <input type="hidden" id="activeBundleProducts" value="">
+        </div>
+
+        <div class="field full">
+          <label>Signature Colors <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(pick 2-3)</span></label>
+          <div class="checkbox-group" id="brandColorsCheckboxes" style="max-height:200px;"></div>
+          <div class="checkbox-selected-display" id="brandColorsSelected">None selected</div>
+          <input class="custom-input" id="customBrandColors" placeholder="Type a custom color, e.g. dusty rose" />
+        </div>
+
+        <div class="field full" style="display:flex;gap:10px;margin-top:4px;">
+          <button type="button" class="btn-light" id="saveBrandBoardBtn" style="flex:1;">💾 Save Brand Board</button>
+          <button type="button" class="btn-green" id="applyBrandBoardBtn" style="flex:1;">✨ Apply to This Generation</button>
+        </div>
+        <div class="field full" id="brandBoardStatus" style="font-size:0.78rem;color:var(--muted);font-style:italic;margin-top:-6px;"></div>
+
+        <div class="field full" style="margin-top:6px;">
+          <button type="button" class="btn-primary" id="generateBrandBoardBtn" style="width:100%;">🎨 Generate Brand Board Graphic</button>
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:6px;font-style:italic;">Generates a single complete brand style guide image — logo treatment, color swatches with hex codes, typography, and your checked products shown as branded mockups, all in one cohesive board. If you've built a character in Part 1, it's automatically included as your signature mascot.</p>
         </div>
 
           </div>
@@ -2442,22 +2645,34 @@
       <div class="tutorial-steps">
         <div class="tutorial-step">
           <div class="tutorial-step-num">1</div>
-          <div class="tutorial-step-text"><strong>Choose Solo, Couple, or Group</strong>Pick how many characters appear in your scene at the top of Part 1.</div>
+          <div class="tutorial-step-text"><strong>Choose Solo, Couple, or Group</strong>Pick how many characters appear in your scene at the top of <strong style="color:#ff2d87;">Part 1</strong>.</div>
         </div>
         <div class="tutorial-step">
           <div class="tutorial-step-num">2</div>
-          <div class="tutorial-step-text"><strong>Build Each Character</strong>Use the character tabs to fill in Identity and Beauty details for each person, then continue through Parts 3 and 4.</div>
+          <div class="tutorial-step-text"><strong>Build Each Character</strong>Use the character tabs to fill in Identity and Beauty details for each person, then continue through <strong style="color:#ff2d87;">Parts 3 and 4</strong>.</div>
         </div>
         <div class="tutorial-step">
           <div class="tutorial-step-num">3</div>
-          <div class="tutorial-step-text"><strong>Use Randomize for Inspiration</strong>Click Randomize at the top to instantly fill all fields with a random character build.</div>
+          <div class="tutorial-step-text"><strong>Try a Quick Preset</strong>Each character tab has a "✨ Quick Preset" dropdown — one click instantly fills outfit, scene, lighting, and style. Your identity choices stay exactly as you set them.</div>
         </div>
         <div class="tutorial-step">
           <div class="tutorial-step-num">4</div>
-          <div class="tutorial-step-text"><strong>Generate Your Prompt</strong>Click Generate Prompt and your full detailed AI prompt will appear on the right.</div>
+          <div class="tutorial-step-text"><strong>Use Randomize for Inspiration</strong>Click Randomize at the top to instantly fill all fields with a random character build.</div>
         </div>
         <div class="tutorial-step">
           <div class="tutorial-step-num">5</div>
+          <div class="tutorial-step-text"><strong>Want Just a Patch or Product Mockup?</strong>The <strong style="color:#ff2d87;">Chenille Patch Builder</strong> can generate a standalone patch design with no character at all. The <strong style="color:#ff2d87;">Product Mockup Generator</strong> shows your design sized correctly on a t-shirt, mug, keychain, and more — pick "Patch Design" as the source to skip the character, or "Character Design" to feature the character you built.</div>
+        </div>
+        <div class="tutorial-step">
+          <div class="tutorial-step-num">6</div>
+          <div class="tutorial-step-text"><strong>Save Your Shop's Look in the Brand Board</strong>Set your signature colors, default art style, brand name, and tagline once — they're saved in your browser so they're still there next time you open the tool. Click "Apply to This Generation" to pull them into a character or patch you're building, or click "🎨 Generate Brand Board Graphic" for a standalone style-guide image — logo, color swatches with hex codes, typography, and your checked products as a mockup grid, all in one image. That one only needs a Brand Name, no character or patch required.</div>
+        </div>
+        <div class="tutorial-step">
+          <div class="tutorial-step-num">7</div>
+          <div class="tutorial-step-text"><strong>Generate Your Prompt</strong>Click Generate Prompt and your full detailed AI prompt will appear on the right.</div>
+        </div>
+        <div class="tutorial-step">
+          <div class="tutorial-step-num">8</div>
           <div class="tutorial-step-text"><strong>Copy Save or Create Variations</strong>Copy your prompt and paste it into any AI image tool. Save it or create 3 variations for more options.</div>
         </div>
       </div>
@@ -2594,7 +2809,13 @@
       collegeConf: 'customCollegeConf',
       textEffect: 'customTextEffect',
       patchShape: 'customPatchShape',
+      patchTextLayout: 'customPatchTextLayout',
+      patchOutline: 'customPatchOutline',
       patchPlacement: 'customPatchPlacement',
+      patchPosition: 'customPatchPosition',
+      mockupProduct: 'customMockupProduct',
+      brandColors: 'customBrandColors',
+      brandMockupProducts: 'customBrandMockupProducts',
       patchSize: 'customPatchSize',
       patchEdging: 'customPatchEdging',
       sassySaying: 'customSassySaying',
@@ -2724,6 +2945,31 @@
     const textColorList = [...colorPaletteList, 'Multicolor', 'Team Colors'];
 
     const patchColorsList = [...colorPaletteList, 'Neon Bright', 'Rainbow Gradient', 'Team Color Match'];
+    const patchEmbellishmentsList = ['Crystal Gems', 'Rhinestone Scatter', 'Sequins', 'Pearl Accents', 'Metallic Thread Accents', 'Glitter Vinyl Accents', '3D Puff Embroidery Effect', 'Beaded Trim', 'Mascot Graphic Icon', 'Varsity Star Accents', 'Felt Backing Layer', 'Sparkle Foil Accents'];
+
+    const mockupProductSpecs = {
+      'T-Shirt': 'printed on the front center chest of a plain crew-neck cotton t-shirt. The design is scaled to fit naturally within the chest area — not oversized, not too small, with balanced margins on all sides. The print has a slightly absorbed-into-fabric DTG/screen-print finish, not a glossy sticker-like surface — ink sitting naturally in the cotton weave with soft fabric texture still visible through it. Photographed as a clean flat lay or displayed on a hanger against a neutral background, with soft even studio lighting and no wrinkles obscuring the design.',
+      'Hoodie / Sweatshirt': 'printed on the front center chest of a plain pullover hoodie. The design is scaled to fit proportionally within the chest area, accounting for the hoodie\'s drawstrings and front pocket sitting below it. The print has the same absorbed-into-fabric DTG/screen-print finish as garment printing, not a glossy decal look. Photographed as a clean flat lay or displayed on a hanger against a neutral background.',
+      'Coffee Mug': 'printed on the front-facing surface of a ceramic coffee mug via dye sublimation. The design curves naturally to follow the mug\'s cylindrical shape and is scaled to fit within the mug\'s printable area without distortion. The sublimated finish is fully fused into the ceramic glaze — smooth, permanent, and flush with the surface, not raised or textured, with vibrant fully-saturated color typical of sublimation printing. Photographed on a clean surface with soft, even lighting and a visible handle.',
+      'Tumbler / Water Bottle': 'wrapped around a stainless steel tumbler via dye sublimation onto a powder-coated surface. The design curves naturally to match the cylindrical surface and is scaled to fit the tumbler\'s visible front-facing area, accounting for the curve at the edges. The finish is smooth and fully fused into the coating with a slight satin sheen, vibrant accurate color. Photographed standing upright on a clean surface with soft studio lighting.',
+      'Notebook / Journal': 'printed on the front cover of a hardcover notebook or journal. The design is scaled to fit the cover with a clean, balanced margin on all sides. The cover has a smooth matte or soft-touch laminate finish with the design UV-printed flush to the surface. Photographed lying flat on a surface or standing upright, slightly angled to show the cover clearly.',
+      'Poster / Wall Art': 'printed as a full-bleed poster on matte or semi-gloss photo paper, the design filling the entire frame edge-to-edge with no added border. Sharp, fine printed detail with accurate color reproduction typical of professional poster printing — no visible print banding or color shift. Photographed either matted and framed on a wall, or as a flat unframed print laid on a clean surface.',
+      'Tote Bag': 'printed on the front panel of a canvas tote bag via screen-print or DTG. The design is scaled to fit the bag\'s front panel proportionally with balanced margins, not stretching into the handles or side seams. The print has a slightly textured finish absorbed into the canvas weave, not a glossy sticker surface. The bag is shown hanging from a hook or laid flat on a clean surface.',
+      'Keychain': 'rendered as a small standalone keychain, either glossy UV-printed acrylic with a slight clear-coat shine, or embroidered felt with visible stitched thread texture and a raised tactile surface. The design is simplified and scaled down significantly to suit a small keychain shape — fine detail reduced, bold shapes emphasized. Shown attached to a small metal keyring, photographed close-up against a clean background.',
+      'Phone Case': 'printed on the back of a phone case via UV printing directly onto the polycarbonate or TPU surface. The design is scaled to fit the case\'s tall portrait dimensions, with camera cutout area kept clear at the top. Smooth, vibrant, slightly glossy printed finish flush with the case surface. Photographed on a clean surface or held in a hand at a slight angle.',
+      'Sticker': 'rendered as a die-cut vinyl sticker with a thin white border outline and a glossy or matte weatherproof laminate finish typical of vinyl stickers. The design is scaled to a small sticker size with simplified detail. Shown applied to a surface like a laptop, water bottle, or notebook cover.',
+      'Cap / Hat': 'either embroidered on the front panel of a structured baseball cap with visible stitched thread texture and slight raised dimension, or flat-printed via DTG/screen-print with a smooth absorbed-into-fabric finish. The design is scaled down significantly to fit the small curved front panel, with fine detail simplified. Photographed at a slight angle to show the cap\'s curved shape clearly.',
+      'Throw Blanket': 'printed across a soft fleece or minky throw blanket via dye sublimation, fully fused into the fabric with vibrant color and a soft matte finish — no plastic sheen, no raised texture. The design is scaled up to fill the blanket\'s large rectangular surface appropriately. The blanket is shown draped over a couch or neatly folded on a surface.',
+      'Throw Pillow': 'printed on the front of a square throw pillow cover via sublimation or DTG, flush with the fabric in a soft matte finish. The design is scaled to fit the pillow\'s square shape with balanced margins on all sides. Photographed resting on a couch or bed with soft natural lighting.',
+    };
+
+    function buildBundleMockupDescription(products) {
+      const itemDescs = products.map((p, i) => {
+        const spec = mockupProductSpecs[p] || `applied to a ${p}, sized and positioned appropriately for that item`;
+        return `(${i + 1}) ${p} — ${spec}`;
+      });
+      return `displayed together as a styled flat-lay product bundle featuring ${products.length} matching items, each with the exact same design consistently applied across every piece: ${itemDescs.join(' ')} All items are arranged together in one cohesive flat-lay or styled product spread, photographed from above or at a slight angle on a clean neutral surface, with consistent branding, color, and design placement across every item in the bundle.`;
+    }
 
     const textDecorativeList = ['Sparkles and Stars','Diamond Accents','Hearts','Lightning Bolts','Crown Accents','Floral Accents','Butterfly Accents','Pearl Accents','Confetti','Money Signs','Fire Effects'];
 
@@ -3411,6 +3657,7 @@
       });
 
       initGlobalCheckboxGroups();
+      initBrandBoard();
       setCharacterMode('solo');
     });
 
@@ -3637,6 +3884,79 @@
     }
 
     function buildPrompt(extraInstruction = '') {
+      // ── STANDALONE PATCH MODE: skip all character/art-style logic entirely ──
+      const patchDisplayMode = el('patchDisplayMode') ? el('patchDisplayMode').value : "On Character's Clothing";
+      const patchTextEarly = el('patchText') ? el('patchText').value.trim() : '';
+      if (patchDisplayMode === 'Standalone Patch Design (no character)') {
+        if (!patchTextEarly) {
+          const msg = 'Please enter patch text before generating a standalone patch design.';
+          alert(msg);
+          el('promptOutput').textContent = `⚠️ ${msg}`;
+          return null;
+        }
+        const patchShape = getVal('patchShape');
+        const patchTextLayout = getVal('patchTextLayout');
+        const patchOutline = getVal('patchOutline');
+        const patchColorVals = getMultiValues('patchColors', 'customPatchColors');
+        const patchEmbellishmentVals = getMultiValues('patchEmbellishments', 'customPatchEmbellishments');
+        const patchSize = getVal('patchSize');
+        const patchEdging = getVal('patchEdging');
+        const ratio = getVal('aspectRatio');
+
+        let standaloneDesc = `A clean, professional flat-lay product photo of a chenille embroidered patch. The text "${patchTextEarly}" is embroidered in authentic chenille yarn — fuzzy plush raised fabric with dimensional texture, soft pile, and visible yarn strands typical of varsity letterman jacket embroidery. `;
+        if (patchTextLayout && patchTextLayout !== 'None') standaloneDesc += `Text layout: ${patchTextLayout}. `;
+        if (patchShape && patchShape !== 'None') standaloneDesc += `Patch shape: ${patchShape}. `;
+        if (patchOutline && patchOutline !== 'None') standaloneDesc += `Outline: ${patchOutline}. `;
+        if (patchSize && patchSize !== 'None') standaloneDesc += `Patch size: ${patchSize}. `;
+        if (patchColorVals.length) standaloneDesc += `Patch colors: ${patchColorVals.join(', ')}. `;
+        if (patchEmbellishmentVals.length) standaloneDesc += `Embellishments: ${patchEmbellishmentVals.join(', ')}. `;
+        if (patchEdging && patchEdging !== 'None') standaloneDesc += `Patch edging style: ${patchEdging}. `;
+        standaloneDesc += `Photographed by itself on a clean plain neutral background — no clothing, no person, no model, no body part visible anywhere in frame. Just the isolated patch design shown flat and centered, with sharp focus on the texture of the chenille stitching. Render as actual chenille fabric texture — authentic yarn embroidery with visible pile, fuzziness, and dimensional raised surface. Not a graphic design or digital outline, not attached to any garment.`;
+        if (ratio && ratio !== 'None') standaloneDesc += ` Aspect ratio: ${ratio}.`;
+
+        return [standaloneDesc, 'No misspelled text, no grainy or blurry texture, no overly golden or yellow-tinted backgrounds, no distracting background objects.'].join('\n\n');
+      }
+
+      // ── PATCH DESIGN PRODUCT MOCKUP: skip character logic, wrap patch in product framing ──
+      const mockupProductEarly = el('mockupProduct') ? el('mockupProduct').value : 'None';
+      const mockupSourceEarly = el('mockupSource') ? el('mockupSource').value : 'Character Design';
+      if (mockupProductEarly !== 'None' && mockupSourceEarly === 'Patch Design') {
+        if (!patchTextEarly) {
+          const msg = 'Please enter patch text in the Chenille Patch Builder before generating a patch product mockup.';
+          alert(msg);
+          el('promptOutput').textContent = `⚠️ ${msg}`;
+          return null;
+        }
+        const patchShape = getVal('patchShape');
+        const patchTextLayout = getVal('patchTextLayout');
+        const patchOutline = getVal('patchOutline');
+        const patchColorVals = getMultiValues('patchColors', 'customPatchColors');
+        const patchEmbellishmentVals = getMultiValues('patchEmbellishments', 'customPatchEmbellishments');
+        const patchSize = getVal('patchSize');
+        const patchEdging = getVal('patchEdging');
+        const bundleRawPatch = el('activeBundleProducts') ? el('activeBundleProducts').value : '';
+        let productSpec;
+        if (bundleRawPatch) {
+          try { productSpec = buildBundleMockupDescription(JSON.parse(bundleRawPatch)); } catch (e) { productSpec = ''; }
+        }
+        if (!productSpec) {
+          const productName = mockupProductEarly === 'Custom Mockup Product' ? (el('customMockupProduct') ? el('customMockupProduct').value.trim() : '') || 'product' : mockupProductEarly;
+          productSpec = mockupProductSpecs[mockupProductEarly] || `applied to a ${productName}, sized and positioned appropriately for that item`;
+        }
+
+        let mockupDesc = `A product mockup photo. The design is a chenille-embroidered-style patch graphic with the text "${patchTextEarly}". `;
+        if (patchTextLayout && patchTextLayout !== 'None') mockupDesc += `Text layout: ${patchTextLayout}. `;
+        if (patchShape && patchShape !== 'None') mockupDesc += `Patch shape: ${patchShape}. `;
+        if (patchOutline && patchOutline !== 'None') mockupDesc += `Outline: ${patchOutline}. `;
+        if (patchSize && patchSize !== 'None') mockupDesc += `Relative design size: ${patchSize}. `;
+        if (patchColorVals.length) mockupDesc += `Colors: ${patchColorVals.join(', ')}. `;
+        if (patchEmbellishmentVals.length) mockupDesc += `Embellishments: ${patchEmbellishmentVals.join(', ')}. `;
+        if (patchEdging && patchEdging !== 'None') mockupDesc += `Edging style: ${patchEdging}. `;
+        mockupDesc += `This design is ${productSpec}`;
+
+        return [mockupDesc, 'Print resolution: 300 DPI, sharp crisp printed detail with no pixelation, no blur, accurate true-to-life color reproduction, professional print-ready commercial product photography quality.', 'No misspelled text, no grainy or blurry texture, no overly golden or yellow-tinted backgrounds, no distracting background objects, no extra products in frame.'].join('\n\n');
+      }
+
       const artStyle = getVal('artStyle');
       if (!artStyle) {
         const msg = 'Please select an Art Style before generating.';
@@ -3773,6 +4093,16 @@
       const custom = el('customDetails').value.trim();
       if (custom) parts.push(`Additional details: ${custom}.`);
 
+      // Brand Board name / tagline
+      const brandNameVal = el('brandName') ? el('brandName').value.trim() : '';
+      const brandTaglineVal = el('brandTagline') ? el('brandTagline').value.trim() : '';
+      if (brandNameVal || brandTaglineVal) {
+        let brandLine = 'Brand';
+        if (brandNameVal) brandLine += `: ${brandNameVal}`;
+        if (brandTaglineVal) brandLine += `. Tagline: "${brandTaglineVal}"`;
+        parts.push(brandLine + '.');
+      }
+
       // ── MULTI-CHARACTER DISTINCTNESS GUARDRAIL ──────────────────────────
       if (!isSolo) {
         parts.push('Adorable rendering, commercial quality, no cropped hair.');
@@ -3851,16 +4181,29 @@
       const patchText = el('patchText') ? el('patchText').value.trim() : '';
       if (patchText) {
         const patchShape = getVal('patchShape');
+        const patchTextLayout = getVal('patchTextLayout');
+        const patchOutline = getVal('patchOutline');
         const patchPlacement = getVal('patchPlacement');
+        const patchPosition = getVal('patchPosition');
         const patchColorVals = getMultiValues('patchColors', 'customPatchColors');
+        const patchEmbellishmentVals = getMultiValues('patchEmbellishments', 'customPatchEmbellishments');
         const patchSize = getVal('patchSize');
         const patchEdging = getVal('patchEdging');
+        const isOnClothing = patchDisplayMode === "On Character's Clothing";
 
         let patchDesc = `Custom chenille patch with the text "${patchText}" embroidered in authentic chenille yarn — fuzzy plush raised fabric with dimensional texture, soft pile, and visible yarn strands typical of varsity letterman jacket embroidery. `;
+        if (patchTextLayout && patchTextLayout !== 'None') patchDesc += `Text layout: ${patchTextLayout}. `;
         if (patchShape && patchShape !== 'None') patchDesc += `Patch shape: ${patchShape}. `;
+        if (patchOutline && patchOutline !== 'None') patchDesc += `Outline: ${patchOutline}. `;
         if (patchSize && patchSize !== 'None') patchDesc += `Patch size: ${patchSize}. `;
         if (patchColorVals.length) patchDesc += `Patch colors: ${patchColorVals.join(', ')}. `;
-        if (patchPlacement && patchPlacement !== 'None') patchDesc += `Patch positioned on: ${patchPlacement}. `;
+        if (patchEmbellishmentVals.length) patchDesc += `Embellishments: ${patchEmbellishmentVals.join(', ')}. `;
+        if (isOnClothing) {
+          if (patchPlacement && patchPlacement !== 'None') patchDesc += `Patch positioned on: ${patchPlacement}. `;
+        } else {
+          if (patchPosition && patchPosition !== 'None') patchDesc += `The patch is NOT attached to the character's clothing — it appears as its own separate graphic element, positioned: ${patchPosition}. `;
+          else patchDesc += `The patch is NOT attached to the character's clothing — it appears as its own separate graphic element in the scene. `;
+        }
         if (patchEdging && patchEdging !== 'None') patchDesc += `Patch edging style: ${patchEdging}. `;
         patchDesc += `Render as actual chenille fabric texture — authentic yarn embroidery with visible pile, fuzziness, and dimensional raised surface. Not a graphic design or digital outline.`;
         parts.push(patchDesc);
@@ -3886,6 +4229,20 @@
       }
 
       if (extraInstruction) parts.push(`Variation direction: ${extraInstruction}`);
+
+      if (mockupProductEarly !== 'None' && mockupSourceEarly === 'Character Design') {
+        const bundleRaw = el('activeBundleProducts') ? el('activeBundleProducts').value : '';
+        let productSpec;
+        if (bundleRaw) {
+          try { productSpec = buildBundleMockupDescription(JSON.parse(bundleRaw)); } catch (e) { productSpec = ''; }
+        }
+        if (!productSpec) {
+          const productName = mockupProductEarly === 'Custom Mockup Product' ? (el('customMockupProduct') ? el('customMockupProduct').value.trim() : '') || 'product' : mockupProductEarly;
+          productSpec = mockupProductSpecs[mockupProductEarly] || `applied to a ${productName}, sized and positioned appropriately for that item`;
+        }
+        parts.push(`PRODUCT MOCKUP: Do not render this as a standalone character portrait. Instead, render this entire character design as a printed graphic ${productSpec} The character art described above is the design being featured on the product — the product itself is the main subject of the photo, with the character design clearly visible and correctly scaled and positioned on it.`);
+        parts.push('Print resolution: 300 DPI, sharp crisp printed detail with no pixelation, no blur, accurate true-to-life color reproduction, professional print-ready commercial product photography quality.');
+      }
 
       return parts.join('\n\n');
     }
@@ -3926,6 +4283,11 @@
       }
     }
 
+    // Outfit items that read as specifically gendered — used only to keep Randomize sensible.
+    // Manual selection in the checkbox list is never restricted; anyone can pick anything themselves.
+    const feminineCodedOutfits = new Set(['Jeans and Crop Top','Leggings and Oversized Sweater','Leggings and Sports Bra','Romper','Jumpsuit','Mini Skirt and Top','Maxi Skirt and Top','Sundress','Satin Pajama Set','Cheerleader Outfit','Pencil Skirt and Blouse','Evening Glam Outfit','Cocktail Dress','Ball Gown','Sequin Mini Dress','Red Carpet Gown','Beach Cover Up','Sorority Outfit','African Print Dress','Bridesmaid Dress','Quinceanera Dress','Y2K Low Rise Jeans and Top','Baby Tee and Mini Skirt','Denim Mini Skirt and Crop Top','Butterfly Top and Flares','Fur Coat and Mini Dress','Couture Gown','Boss Lady Blazer Set','Fitted Blazer Dress','Wide Leg Trousers and Blouse','Skirt Suit','Structured Midi Dress','Boho Maxi Dress','Floral Wrap Dress','Flowy Midi Skirt and Top','Lace Dress','Satin Slip Dress','Puff Sleeve Dress','Corset Top and Skirt','Off Shoulder Dress']);
+    const masculineCodedOutfits = new Set(['Tuxedo','Fraternity Outfit']);
+
     function randomCheckSome(checkboxName, idx, count) {
       const fullName = idx !== undefined ? `${checkboxName}_${idx}` : checkboxName;
       const boxes = Array.from(document.querySelectorAll(`input[name="${fullName}"]`));
@@ -3933,6 +4295,18 @@
       boxes.forEach(b => b.checked = false);
       const shuffled = boxes.sort(() => Math.random() - 0.5);
       shuffled.slice(0, Math.min(count, boxes.length)).forEach(b => b.checked = true);
+    }
+
+    function randomCheckSomeForGender(checkboxName, idx, count, gender) {
+      const fullName = idx !== undefined ? `${checkboxName}_${idx}` : checkboxName;
+      const allBoxes = Array.from(document.querySelectorAll(`input[name="${fullName}"]`));
+      if (!allBoxes.length) return;
+      allBoxes.forEach(b => b.checked = false);
+      const excludeSet = gender === 'Male' ? feminineCodedOutfits : gender === 'Female' ? masculineCodedOutfits : new Set();
+      const eligible = allBoxes.filter(b => !excludeSet.has(b.value));
+      const pool = eligible.length ? eligible : allBoxes; // never end up with zero options
+      const shuffled = pool.sort(() => Math.random() - 0.5);
+      shuffled.slice(0, Math.min(count, pool.length)).forEach(b => b.checked = true);
     }
 
     function randomizeAll() {
@@ -3976,7 +4350,7 @@
         randomCheckSome('hairColor', idx, 1);
         randomCheckSome('skinDetails', idx, 1);
         randomCheckSome('skinFinish', idx, 1);
-        randomCheckSome('outfit', idx, 2);
+        randomCheckSomeForGender('outfit', idx, 2, genderSelect ? genderSelect.value : '');
         randomCheckSome('print', idx, 1);
         charMultiFields.forEach(([, , checkboxName, customIdBase, displayIdBase]) => {
           updateCharMultiDisplay(checkboxName, customIdBase, displayIdBase, idx);
@@ -4003,8 +4377,11 @@
       globalMultiFields.forEach(([checkboxName, customId, displayId]) => updateMultiDisplay(checkboxName, customId, displayId));
       setCharacterMode('solo');
       updateCustomVisibility();
+      updatePatchPlacementVisibility();
+      updateMockupSourceVisibility();
       updateChoiceSummary();
       resetAccordionToDefault();
+      loadBrandBoard();
       showToast('Reset complete.');
     }
 
@@ -4051,6 +4428,31 @@
     // ── EVENT LISTENERS ───────────────────────────────────────────────────────
 
     el('artStyle').addEventListener('change', updateCustomVisibility);
+
+    // ── PATCH DISPLAY MODE TOGGLE ────────────────────────────────────────────
+    function updatePatchPlacementVisibility() {
+      const mode = el('patchDisplayMode') ? el('patchDisplayMode').value : "On Character's Clothing";
+      const placementWrap = el('patchPlacementWrap');
+      const positionWrap = el('patchPositionWrap');
+      if (placementWrap) placementWrap.style.display = mode === "On Character's Clothing" ? '' : 'none';
+      if (positionWrap) positionWrap.style.display = mode === 'With Character (Not on Clothing)' ? '' : 'none';
+    }
+    const patchDisplayModeSelect = el('patchDisplayMode');
+    if (patchDisplayModeSelect) {
+      patchDisplayModeSelect.addEventListener('change', updatePatchPlacementVisibility);
+      updatePatchPlacementVisibility();
+    }
+
+    function updateMockupSourceVisibility() {
+      const mockupProduct = el('mockupProduct') ? el('mockupProduct').value : 'None';
+      const wrap = el('mockupSourceWrap');
+      if (wrap) wrap.style.display = mockupProduct === 'None' ? 'none' : '';
+    }
+    const mockupProductSelect = el('mockupProduct');
+    if (mockupProductSelect) {
+      mockupProductSelect.addEventListener('change', updateMockupSourceVisibility);
+      updateMockupSourceVisibility();
+    }
 
     // ── STYLE PREVIEW BUTTON ────────────────────────────────────────────────
     function refreshStylePreview() {
@@ -4141,6 +4543,7 @@
     const globalMultiFields = [
       ['colorPalette', 'customColorPalette', 'colorPaletteSelected', colorPaletteList, 'Color Palette', colorPaletteCategories],
       ['patchColors', 'customPatchColors', 'patchColorsSelected', patchColorsList, 'Patch Colors'],
+      ['patchEmbellishments', 'customPatchEmbellishments', 'patchEmbellishmentsSelected', patchEmbellishmentsList, 'Patch Embellishments'],
       ['textColor', 'customTextColor', 'textColorSelected', textColorList, 'Text Color'],
       ['textDecorative', 'customTextDecorative', 'textDecorativeSelected', textDecorativeList, 'Text Decorative']
     ];
@@ -4155,6 +4558,224 @@
         const customInput = el(customId);
         if (customInput) customInput.addEventListener('input', () => updateMultiDisplay(checkboxName, customId, displayId));
       });
+    }
+
+    // ── BRAND BOARD ──────────────────────────────────────────────────────────
+    const BRAND_BOARD_KEY = 'sivadTamaraBrandBoard_v1';
+
+    function initBrandBoard() {
+      // Clone Art Style options into the Brand Board's own dropdown
+      const mainArtStyle = el('artStyle');
+      const brandArtStyleSelect = el('brandArtStyle');
+      if (mainArtStyle && brandArtStyleSelect) {
+        brandArtStyleSelect.innerHTML = '<option value="">— None —</option>' + mainArtStyle.innerHTML.replace('<option value="">— Choose Art Style —</option>', '');
+      }
+
+      // Build the Brand Mockup Products checkbox group from the same products the main Mockup Generator uses
+      const brandMockupContainer = el('brandMockupProductsCheckboxes');
+      if (brandMockupContainer) {
+        brandMockupContainer.innerHTML = checkboxListHtml('brandMockupProducts', Object.keys(mockupProductSpecs));
+        document.querySelectorAll('input[name="brandMockupProducts"]').forEach(cb => {
+          cb.addEventListener('change', () => updateMultiDisplay('brandMockupProducts', 'customBrandMockupProducts', 'brandMockupProductsSelected'));
+        });
+        const customBrandMockupInput = el('customBrandMockupProducts');
+        if (customBrandMockupInput) customBrandMockupInput.addEventListener('input', () => updateMultiDisplay('brandMockupProducts', 'customBrandMockupProducts', 'brandMockupProductsSelected'));
+      }
+
+      // Build the Brand Colors checkbox group using the same palette as the main Color Palette field
+      const brandColorsContainer = el('brandColorsCheckboxes');
+      if (brandColorsContainer) {
+        brandColorsContainer.innerHTML = categorizedCheckboxListHtml('brandColors', colorPaletteCategories);
+        document.querySelectorAll('input[name="brandColors"]').forEach(cb => {
+          cb.addEventListener('change', () => updateMultiDisplay('brandColors', 'customBrandColors', 'brandColorsSelected'));
+        });
+        const customBrandColorsInput = el('customBrandColors');
+        if (customBrandColorsInput) customBrandColorsInput.addEventListener('input', () => updateMultiDisplay('brandColors', 'customBrandColors', 'brandColorsSelected'));
+      }
+
+      loadBrandBoard();
+
+      const saveBtn = el('saveBrandBoardBtn');
+      if (saveBtn) saveBtn.addEventListener('click', saveBrandBoard);
+      const applyBtn = el('applyBrandBoardBtn');
+      if (applyBtn) applyBtn.addEventListener('click', applyBrandBoard);
+      const generateBrandBoardBtn = el('generateBrandBoardBtn');
+      if (generateBrandBoardBtn) generateBrandBoardBtn.addEventListener('click', () => {
+        const result = buildBrandBoardPrompt();
+        if (result) {
+          el('promptOutput').textContent = result;
+          el('variationsOutput').innerHTML = '';
+          showToast('Brand Board graphic prompt generated!');
+        }
+      });
+    }
+
+    function loadBrandBoard() {
+      let saved;
+      try {
+        const raw = localStorage.getItem(BRAND_BOARD_KEY);
+        saved = raw ? JSON.parse(raw) : null;
+      } catch (e) { saved = null; }
+
+      if (!saved) {
+        const status = el('brandBoardStatus');
+        if (status) status.textContent = 'No brand board saved yet — fill this in once and click Save.';
+        return;
+      }
+
+      if (el('brandName')) el('brandName').value = saved.brandName || '';
+      if (el('brandTagline')) el('brandTagline').value = saved.brandTagline || '';
+      if (el('brandArtStyle')) el('brandArtStyle').value = saved.brandArtStyle || '';
+      if (Array.isArray(saved.brandMockupProducts)) {
+        document.querySelectorAll('input[name="brandMockupProducts"]').forEach(cb => {
+          cb.checked = saved.brandMockupProducts.includes(cb.value);
+        });
+      }
+      if (el('customBrandMockupProducts')) el('customBrandMockupProducts').value = saved.brandMockupProductsCustom || '';
+      if (el('brandMockupBundleMode')) el('brandMockupBundleMode').checked = !!saved.brandMockupBundleMode;
+      updateMultiDisplay('brandMockupProducts', 'customBrandMockupProducts', 'brandMockupProductsSelected');
+      if (Array.isArray(saved.brandColors)) {
+        document.querySelectorAll('input[name="brandColors"]').forEach(cb => {
+          cb.checked = saved.brandColors.includes(cb.value);
+        });
+      }
+      if (el('customBrandColors')) el('customBrandColors').value = saved.brandColorsCustom || '';
+      updateMultiDisplay('brandColors', 'customBrandColors', 'brandColorsSelected');
+      const status = el('brandBoardStatus');
+      if (status) status.textContent = saved.savedAt ? `Loaded brand board saved on ${saved.savedAt}.` : 'Loaded saved brand board.';
+    }
+
+    function saveBrandBoard() {
+      const brandColors = Array.from(document.querySelectorAll('input[name="brandColors"]:checked')).map(cb => cb.value);
+      const brandColorsCustom = el('customBrandColors') ? el('customBrandColors').value.trim() : '';
+      const brandMockupProducts = Array.from(document.querySelectorAll('input[name="brandMockupProducts"]:checked')).map(cb => cb.value);
+      const brandMockupProductsCustom = el('customBrandMockupProducts') ? el('customBrandMockupProducts').value.trim() : '';
+      const brandMockupBundleMode = el('brandMockupBundleMode') ? el('brandMockupBundleMode').checked : false;
+      const savedAt = new Date().toLocaleString();
+      const data = {
+        brandName: el('brandName') ? el('brandName').value.trim() : '',
+        brandTagline: el('brandTagline') ? el('brandTagline').value.trim() : '',
+        brandArtStyle: el('brandArtStyle') ? el('brandArtStyle').value : '',
+        brandMockupProducts,
+        brandMockupProductsCustom,
+        brandMockupBundleMode,
+        brandColors,
+        brandColorsCustom,
+        savedAt,
+      };
+      try {
+        localStorage.setItem(BRAND_BOARD_KEY, JSON.stringify(data));
+        const status = el('brandBoardStatus');
+        if (status) status.textContent = `Saved on ${savedAt}. This will be here next time you open the tool.`;
+        applyBrandBoard(true);
+      } catch (e) {
+        showToast('Could not save Brand Board — your browser may be blocking local storage.');
+      }
+    }
+
+    function buildBrandBoardPrompt() {
+      const brandName = el('brandName') ? el('brandName').value.trim() : '';
+      if (!brandName) {
+        const msg = 'Please enter a Brand Name before generating a Brand Board graphic.';
+        alert(msg);
+        el('promptOutput').textContent = `⚠️ ${msg}`;
+        return null;
+      }
+      const tagline = el('brandTagline') ? el('brandTagline').value.trim() : '';
+      const colors = Array.from(document.querySelectorAll('input[name="brandColors"]:checked')).map(cb => cb.value);
+      const colorsCustom = el('customBrandColors') ? el('customBrandColors').value.trim() : '';
+      if (colorsCustom) colors.push(colorsCustom);
+      const products = Array.from(document.querySelectorAll('input[name="brandMockupProducts"]:checked')).map(cb => cb.value);
+      const productsCustom = el('customBrandMockupProducts') ? el('customBrandMockupProducts').value.trim() : '';
+      if (productsCustom) products.push(productsCustom);
+
+      const parts = [];
+      parts.push(`A professional brand identity board / brand style guide graphic, laid out as a clean, organized grid collage — the kind a graphic designer creates as a complete brand presentation sheet for a client.`);
+
+      let logoSection = `Logo & Tagline section: the brand name "${brandName}" displayed in elegant, stylized lettering as a logo treatment`;
+      if (tagline) logoSection += `, with the tagline "${tagline}" shown beneath it in clean, smaller text`;
+      logoSection += '.';
+      parts.push(logoSection);
+
+      const genderSet = getCharVal('gender', 1);
+      const ageSet = getCharVal('ageGroup', 1);
+      const artStyleSet = getVal('artStyle');
+      if (genderSet && ageSet && artStyleSet) {
+        const mascotParts = buildOpeningDescriptor(1);
+        const mascotDesc = mascotParts.traits.length ? `${mascotParts.subject}, with ${mascotParts.traits.join(', ')}` : mascotParts.subject;
+        parts.push(`Signature mascot character: include the brand's mascot illustration prominently in the logo section, rendered as ${mascotDesc}. This character represents the brand and should visually match its color palette and overall vibe.`);
+      }
+
+      if (colors.length) {
+        parts.push(`Color Palette section: a row of labeled color swatches for ${colors.join(', ')} — each swatch shown as a clean rectangle with its color name and an appropriate hex code labeled beneath it.`);
+      }
+
+      parts.push(`Typography section: a sample showing a stylized heading font used for the brand name, and a clean simple body font for supporting text, both displayed as labeled text samples side by side.`);
+
+      if (products.length) {
+        parts.push(`Product Mockups section: a grid of realistic product photos showing this brand's logo, name, and color palette consistently applied across the following items, each clearly branded with the same logo treatment: ${products.join(', ')}.`);
+      }
+
+      parts.push(`The entire board should feel cohesive — every section uses the exact same color palette and the same logo treatment throughout, organized into clear, evenly spaced rectangular sections like a real brand style guide document. Clean, polished, professional graphic design layout on a simple neutral or brand-colored background. No distorted hands, no extra fingers, no warped faces, no misspelled text, no grainy or blurry texture.`);
+
+      return parts.join('\n\n');
+    }
+
+    function applyBrandBoard(fromSave) {
+      const artStyleVal = el('brandArtStyle') ? el('brandArtStyle').value : '';
+      const brandColors = Array.from(document.querySelectorAll('input[name="brandColors"]:checked')).map(cb => cb.value);
+      const brandColorsCustom = el('customBrandColors') ? el('customBrandColors').value.trim() : '';
+      const brandMockupProducts = Array.from(document.querySelectorAll('input[name="brandMockupProducts"]:checked')).map(cb => cb.value);
+      const brandMockupProductsCustom = el('customBrandMockupProducts') ? el('customBrandMockupProducts').value.trim() : '';
+      const mockupCandidates = [...brandMockupProducts];
+      if (brandMockupProductsCustom) mockupCandidates.push(brandMockupProductsCustom);
+
+      if (artStyleVal && el('artStyle')) {
+        el('artStyle').value = artStyleVal;
+        updateCustomVisibility();
+      }
+
+      let chosenProduct = '';
+      const bundleModeOn = el('brandMockupBundleMode') ? el('brandMockupBundleMode').checked : false;
+      if (bundleModeOn && mockupCandidates.length >= 2) {
+        if (el('mockupProduct')) {
+          el('mockupProduct').value = 'Custom Mockup Product';
+          if (el('customMockupProduct')) el('customMockupProduct').value = mockupCandidates.join(' + ');
+          updateMockupSourceVisibility();
+        }
+        if (el('activeBundleProducts')) el('activeBundleProducts').value = JSON.stringify(mockupCandidates);
+        chosenProduct = `a bundle of ${mockupCandidates.join(', ')}`;
+      } else if (mockupCandidates.length) {
+        if (el('activeBundleProducts')) el('activeBundleProducts').value = '';
+        chosenProduct = mockupCandidates[Math.floor(Math.random() * mockupCandidates.length)];
+        if (el('mockupProduct')) {
+          const isKnownOption = Array.from(el('mockupProduct').options).some(o => o.value === chosenProduct);
+          if (isKnownOption) {
+            el('mockupProduct').value = chosenProduct;
+          } else {
+            el('mockupProduct').value = 'Custom Mockup Product';
+            if (el('customMockupProduct')) el('customMockupProduct').value = chosenProduct;
+          }
+          updateMockupSourceVisibility();
+        }
+      } else {
+        if (el('activeBundleProducts')) el('activeBundleProducts').value = '';
+      }
+
+      if (brandColors.length) {
+        document.querySelectorAll('input[name="colorPalette"]').forEach(cb => {
+          cb.checked = brandColors.includes(cb.value);
+        });
+      }
+      if (brandColorsCustom && el('customColorPalette')) {
+        el('customColorPalette').value = brandColorsCustom;
+      }
+      if (brandColors.length || brandColorsCustom) {
+        updateMultiDisplay('colorPalette', 'customColorPalette', 'colorPaletteSelected');
+      }
+      updateChoiceSummary();
+      const verb = fromSave ? 'saved & applied' : 'applied';
+      showToast(chosenProduct ? `Brand Board ${verb}! Mockup product: ${chosenProduct}` : `Brand Board ${verb} to this generation!`);
     }
 
     // Wire up props checkboxes (global, Part 3)
