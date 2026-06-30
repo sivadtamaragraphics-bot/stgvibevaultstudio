@@ -1428,6 +1428,13 @@
           <div id="stylePreviewBox" style="display:none;margin-top:8px;background:var(--pink-light);border:1px solid rgba(246,182,200,0.4);border-radius:10px;padding:10px 14px;font-size:0.85rem;color:var(--charcoal);line-height:1.5;"></div>
         </div>
 
+        <div class="field full">
+          <label>Render Style &amp; Visual Aesthetic <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(select multiple to stack)</span></label>
+          <div class="checkbox-group" id="renderStyleCheckboxes" style="max-height:280px;"></div>
+          <div class="checkbox-selected-display" id="renderStyleSelected">None selected</div>
+          <input class="custom-input" id="customRenderStyle" placeholder="Type a custom render style or aesthetic..." />
+        </div>
+
         <div class="field">
           <label for="artFinish">Art Finish</label>
           <select id="artFinish">
@@ -2097,6 +2104,17 @@
               <option>ATE. Left No Crumbs.</option>
               <option>It's Giving Success</option>
             </optgroup>
+            <optgroup label="Stank Face Energy">
+              <option>And What!?</option>
+              <option>Ate Down</option>
+              <option>Boy Bye</option>
+              <option>Clock That Tea</option>
+              <option>I Said What I Said!</option>
+              <option>IKYFL</option>
+              <option>Not Today!</option>
+              <option>Periodt</option>
+              <option>WTF</option>
+            </optgroup>
             <optgroup label="Leadership and Ambition Brand Vibes">
               <option>Lead Loudly</option>
               <option>Built To Lead</option>
@@ -2696,7 +2714,7 @@
     const maleBodyTypes   = ['None','Slim Build','Lean Athletic','Muscular Build','Broad Shoulders','Stocky Build','Dad Bod','Tall Athletic','Bodybuilder Physique','Average Build','Thick Build','Slim Muscular','Plus Size Male','Runner Physique','Football Build','Basketball Build','Custom Body Type'];
     const groupBodyTypes  = ['None','Mixed Body Types','Female and Male Variety','Slim Builds','Athletic Builds','Curvy and Muscular Mix','Average Builds','Plus Size Variety','Custom Body Type'];
 
-    const femaleHairstyles = ['None','Sleek Ponytail','High Ponytail','Curly Ponytail','Braided Ponytail','Long Straight Hair','Long Body Waves','Long Curly Hair','Deep Wave Hair','Water Wave Curls','Silk Press','Layered Curls','Hollywood Curls','Half Up Half Down','Messy Bun','Sleek Bun','Braided Bun','Pixie Cut','Curly Pixie Cut','Blunt Bob','Layered Bob','Asymmetrical Bob','French Curl Braids','Knotless Braids','Boho Braids','Fulani Braids','Goddess Braids','Cornrows','Afro','Afro Puff','Space Buns','Locs','Faux Locs','Butterfly Locs','Passion Twists','Finger Waves','Side Part Waves','Crimped Hair','Colored Highlights','Bangs with Long Hair','Custom Hairstyle'];
+    const femaleHairstyles = ['None','Sleek Ponytail','High Ponytail','Curly Ponytail','Braided Ponytail','Long Straight Hair','Long Body Waves','Long Wavy','Long Curly Hair','Deep Wave Hair','Water Wave Curls','Silk Press','Layered Curls','Hollywood Curls','Half Up Half Down','Half-Up Ponytail','Hair Rollers','Messy Bun','Sleek Bun','Braided Bun','Pixie Cut','Curly Pixie Cut','Blunt Bob','Layered Bob','Asymmetrical Bob','French Curl Braids','Knotless Braids','Boho Braids','Fulani Braids','Goddess Braids','Cornrows','Afro','Afro Puff','Space Buns','Locs','Faux Locs','Butterfly Locs','Passion Twists','Finger Waves','Side Part Waves','Crimped Hair','Colored Highlights','Bangs with Long Hair','Custom Hairstyle'];
     const maleHairstyles   = ['None','Low Cut','Bald Head','Waves','Fade Haircut','Taper Fade','Curly Top Fade','Afro','Dreadlocks','Braids','Cornrows','Twists','Mohawk Fade','Long Curly Hair','Man Bun','Buzz Cut','Textured Crop','Starter Locs','Ponytail Braids','Dyed Hair Color','Slick Back Hair','Custom Hairstyle'];
     const groupHairstyles  = ['None','Mixed Hairstyles','Female and Male Hairstyle Variety','Braids and Fades','Long Hair and Short Cuts','Afros and Curls','Custom Hairstyle'];
 
@@ -2793,6 +2811,7 @@
 
     const customPairs = {
       artStyle: 'customArtStyle',
+      renderStyle: 'customRenderStyle',
       creatorType: 'customCreatorType',
       artFinish: 'customArtFinish',
       pose: 'customPose',
@@ -2947,6 +2966,31 @@
     const patchColorsList = [...colorPaletteList, 'Neon Bright', 'Rainbow Gradient', 'Team Color Match'];
     const patchEmbellishmentsList = ['Crystal Gems', 'Rhinestone Scatter', 'Sequins', 'Pearl Accents', 'Metallic Thread Accents', 'Glitter Vinyl Accents', '3D Puff Embroidery Effect', 'Beaded Trim', 'Mascot Graphic Icon', 'Varsity Star Accents', 'Felt Backing Layer', 'Sparkle Foil Accents'];
 
+    const stankFaceElems = ['Arms Folded','Furrowed Brow','Fingers Spread Out','Hand on Hip','Head Tilted','Mad Expression','One Eyebrow Raised','Peace Sign','Pointing','Pursed Lips','Rolling Eyes','Shocked Wide Eyes','Side-Eye Smirk','Smelling Something Stinky','Stop Hand'];
+
+    const renderStyleCategories = [
+      ['3D Render', ['2D Illustration','3D CGI Realistic','3D Stylized','3D Cartoon','3D Clay / Polymer','Hyperrealistic 3D','3D Product Render','Soft Render','Glossy 3D','Matte 3D','Hyper Glossy 3D','Anime 3D','Pixar 3D','Clay Render','Metallic Render']],
+      ['Realism & Cartoon Blend', ['Semi Realism 4K','Cartoon Realism','Hyper Cartoon Realism 3D','High Gloss Illustration','Cel Shading','Urban Cartoon','3D Hilarious Pixar Cartoon']],
+      ['Glam & Doll', ['Boss Level Glam','Luxury Glam','Bratz Baddie','Bratz Inspired','Exaggerated Bratz','Exaggerated Chibi','Chibi Cute','Signature Exaggerated Chibi','Chibi Caricature','Kawaii']],
+      ['Illustration & Painting', ['Digital Illustration','Oil Painting','Gouache Painting','Exaggerated Gouache Cartoon','Watercolor','Fashion Illustration','Paper Cut','Minimal Vector']],
+      ['Comic & Street', ['Comic Book','Exaggerated Comic Art','Exaggerated Pop Art','Pop Art','Graffiti Art','Street Art','Art Deco']],
+      ['Anime & Cartoon', ['Anime Style','Manga Style','Exaggerated Anime','Pixar Style','Exaggerated Cartoon Style']],
+      ['Decades & Retro', ['1950s Retro','1960s Retro','1970s Retro','1980s Retro','1990s Urban','Y2K (2000s)','Vintage Pin-Up','Vintage Glamour']],
+      ['Aesthetic & Mood', ['Candy Color','Dreamy Pastel','Holographic','Pastel Goth','Soft Girl Aesthetic','Cottage Core','Dark Academia','Synthwave','Vaporwave','Cyberpunk Neon','Dark Fantasy','Whimsical Fairytale','Steampunk','Futuristic']],
+      ['Editorial & Fashion', ['Luxury Editorial','Magazine Editorial','Sticker Design','Streetwear','Urban Hustle','Sporty']],
+      ['Inspired', ['Boondocks Inspired','Different World Inspired']],
+    ];
+
+    const stankFaceStyles = {
+      'Classic Side-Eye':          ['Side-Eye Smirk','One Eyebrow Raised','Arms Folded'],
+      'Smelling Something Stinky': ['Smelling Something Stinky','Mad Expression','Arms Folded'],
+      'Sassy Pointer':             ['Pointing','One Eyebrow Raised','Pursed Lips'],
+      'Peace Sign Sass':           ['Peace Sign','Side-Eye Smirk','Head Tilted'],
+      'Hand on Hip Attitude':      ['Hand on Hip','Rolling Eyes','Pursed Lips'],
+      'Talk to the Hand':          ['Stop Hand','Furrowed Brow','Pursed Lips'],
+      'WTF Shock':                 ['Shocked Wide Eyes','Fingers Spread Out','Furrowed Brow'],
+    };
+
     const mockupProductSpecs = {
       'T-Shirt': 'printed on the front center chest of a plain crew-neck cotton t-shirt. The design is scaled to fit naturally within the chest area — not oversized, not too small, with balanced margins on all sides. The print has a slightly absorbed-into-fabric DTG/screen-print finish, not a glossy sticker-like surface — ink sitting naturally in the cotton weave with soft fabric texture still visible through it. Photographed as a clean flat lay or displayed on a hanger against a neutral background, with soft even studio lighting and no wrinkles obscuring the design.',
       'Hoodie / Sweatshirt': 'printed on the front center chest of a plain pullover hoodie. The design is scaled to fit proportionally within the chest area, accounting for the hoodie\'s drawstrings and front pocket sitting below it. The print has the same absorbed-into-fabric DTG/screen-print finish as garment printing, not a glossy decal look. Photographed as a clean flat lay or displayed on a hanger against a neutral background.',
@@ -2974,7 +3018,7 @@
     const textDecorativeList = ['Sparkles and Stars','Diamond Accents','Hearts','Lightning Bolts','Crown Accents','Floral Accents','Butterfly Accents','Pearl Accents','Confetti','Money Signs','Fire Effects'];
 
     const outfitCategories = [
-      ['Everyday Casual', ['Jeans and T-Shirt','Jeans and Crop Top','Jeans and Blazer','Leggings and Oversized Sweater','Leggings and Sports Bra','Shorts and Tank Top','Overalls','Romper','Jumpsuit','Mini Skirt and Top','Maxi Skirt and Top','Sundress']],
+      ['Everyday Casual', ['Jeans and T-Shirt','Jeans and Crop Top','Jeans and Blazer','Leggings and Oversized Sweater','Leggings and Sports Bra','Shorts and Tank Top','Crop Top and Shorts Set','Hoodie and Crop Top Set','Overalls','Romper','Jumpsuit','Mini Skirt and Top','Maxi Skirt and Top','Sundress']],
       ['Cozy and Loungewear', ['Silk Pajamas','Satin Pajama Set','Onesie','Cozy Matching Sweatsuit','Hoodie and Sweatpants','Robe and Slippers','Oversized T-Shirt and Shorts']],
       ['Athletic and Sporty', ['Athletic Jersey','Bomber Jacket and Joggers','Varsity Jacket and Jeans','Track Suit','Athletic Set','Sports Uniform','Cheerleader Outfit']],
       ['Professional and Formal', ['Business Wear','Power Suit','Blazer and Dress Pants','Pencil Skirt and Blouse','Tuxedo','School Uniform','Graduation Gown']],
@@ -3176,6 +3220,22 @@
             <select id="${charField('expression', idx)}">${expressionOptions}</select>
             <input class="custom-input" id="${charCustomField('expression', idx)}" placeholder="Type custom expression" />
           </div>
+          <div class="field full">
+            <label for="stankFaceStyle_${idx}" style="color:var(--pink);">✦ Stank Face</label>
+            <select id="stankFaceStyle_${idx}" onchange="applyStankFaceStyle(${idx})">
+              <option>None</option>
+              <option>Classic Side-Eye</option>
+              <option>Smelling Something Stinky</option>
+              <option>Sassy Pointer</option>
+              <option>Peace Sign Sass</option>
+              <option>Hand on Hip Attitude</option>
+              <option>Talk to the Hand</option>
+              <option>WTF Shock</option>
+            </select>
+            <div class="checkbox-group" id="stankFaceGrid_${idx}" style="margin-top:8px;"></div>
+            <div class="checkbox-selected-display" id="stankFaceSelected_${idx}">None selected</div>
+            <input class="custom-input" id="customStankFace_${idx}" placeholder="Add a custom stank face trait..." />
+          </div>
           <div class="field male-only" id="facialHairWrap_${idx}">
             <label for="${charField('facialHair', idx)}">Facial Hair</label>
             <select id="${charField('facialHair', idx)}">${facialHairOptions}</select>
@@ -3315,6 +3375,7 @@
           updateCharMultiDisplay(checkboxName, customInputIdBase, displayIdBase, idx);
         });
         if (typeof updateAccessoryDisplay === 'function') updateAccessoryDisplay(idx);
+        if (typeof updateStankFaceDisplay === 'function') updateStankFaceDisplay(idx);
       });
     }
 
@@ -3433,9 +3494,46 @@
           }
         });
 
+        // Stank Face — build checkboxes and wire listeners for this character
+        const stankGrid = el('stankFaceGrid_' + idx);
+        if (stankGrid) {
+          stankGrid.innerHTML = stankFaceElems.map(v =>
+            `<label class="checkbox-item"><input type="checkbox" name="stankFace_${idx}" value="${v}"> ${v}</label>`
+          ).join('');
+          document.querySelectorAll(`input[name="stankFace_${idx}"]`).forEach(cb => {
+            cb.addEventListener('change', () => updateStankFaceDisplay(idx));
+          });
+          const customSF = el('customStankFace_' + idx);
+          if (customSF) customSF.addEventListener('input', () => updateStankFaceDisplay(idx));
+        }
+
         // initialize gender-dependent dropdowns for this character
         updateCharacterGenderOptions(idx);
       });
+    }
+
+    function updateStankFaceDisplay(idx) {
+      const checked = Array.from(document.querySelectorAll(`input[name="stankFace_${idx}"]:checked`)).map(cb => cb.value);
+      const custom = el('customStankFace_' + idx) ? el('customStankFace_' + idx).value.trim() : '';
+      const all = custom ? [...checked, custom] : checked;
+      const display = el('stankFaceSelected_' + idx);
+      if (display) {
+        display.textContent = all.length ? all.join(', ') : 'None selected';
+        display.style.color = all.length ? 'var(--green-dark)' : 'var(--muted)';
+        display.style.fontWeight = all.length ? '700' : '400';
+        display.style.fontStyle = all.length ? 'normal' : 'italic';
+      }
+      updateChoiceSummary();
+    }
+
+    function applyStankFaceStyle(idx) {
+      const styleSelect = el('stankFaceStyle_' + idx);
+      if (!styleSelect) return;
+      const traits = stankFaceStyles[styleSelect.value];
+      document.querySelectorAll(`input[name="stankFace_${idx}"]`).forEach(cb => {
+        cb.checked = traits ? traits.includes(cb.value) : false;
+      });
+      updateStankFaceDisplay(idx);
     }
 
     function updateAccessoryDisplay(idx) {
@@ -3501,7 +3599,7 @@
     // ── CHOICE SUMMARY ────────────────────────────────────────────────────────
 
     const summaryFields = [
-      ['artStyle','Art Style'],
+      ['artStyle','Art Style'],['renderStyle','Render Style'],
       ['creatorType','Creator Type'],
       ['artFinish','Art Finish'],
       ['pose','Pose'],['cameraAngle','Camera'],['lighting','Lighting'],
@@ -3726,7 +3824,13 @@
       if (makeup && makeup !== 'None') tailBits.push(makeup.toLowerCase());
       const tail = tailBits.length ? `The character is ${tailBits.join(', with ')}.` : '';
 
-      return { descriptors, tail };
+      // Stank Face traits
+      const stankTraits = Array.from(document.querySelectorAll(`input[name="stankFace_${idx}"]:checked`)).map(cb => cb.value);
+      const stankCustom = el('customStankFace_' + idx) ? el('customStankFace_' + idx).value.trim() : '';
+      if (stankCustom) stankTraits.push(stankCustom);
+      const stankLine = stankTraits.length ? `Stank face attitude: ${stankTraits.join(', ')}.` : '';
+
+      return { descriptors, tail, stankLine };
     }
 
     function buildCharacterStyling(idx) {
@@ -3999,8 +4103,11 @@
         parts.push(opener);
 
         const facial = buildCharacterFacialDetails(idx);
-        if (facial.descriptors.length || facial.tail) {
-          parts.push(`Facial details: ${facial.descriptors.join(', ')}.${facial.tail ? ' ' + facial.tail : ''}`);
+        if (facial.descriptors.length || facial.tail || facial.stankLine) {
+          let facialLine = `Facial details: ${facial.descriptors.join(', ')}.`;
+          if (facial.tail) facialLine += ' ' + facial.tail;
+          if (facial.stankLine) facialLine += ' ' + facial.stankLine;
+          parts.push(facialLine);
         }
 
         const styling = buildCharacterStyling(idx);
@@ -4116,6 +4223,8 @@
       if (ratio && ratio !== 'None') closingBits.push(`Aspect ratio: ${ratio}.`);
       if (decade && decade !== 'None') closingBits.push(`Decade: ${decade}.`);
       closingBits.push(`Art style: ${artStyle}, ${getStyleRenderingNotes(artStyle)}.`);
+      const renderStyleVals = getMultiValues('renderStyle', 'customRenderStyle');
+      if (renderStyleVals.length) closingBits.push(`Render style and visual aesthetic: ${renderStyleVals.join(', ')}.`);
       parts.push(closingBits.join(' '));
 
       const frame = getVal('frame');
@@ -4322,6 +4431,7 @@
 
       // Randomize the global Color Palette checkbox group
       randomCheckSome('colorPalette', undefined, 2);
+      randomCheckSome('renderStyle', undefined, 1);
       updateMultiDisplay('colorPalette', 'customColorPalette', 'colorPaletteSelected');
 
       characters.forEach(idx => {
@@ -4398,10 +4508,10 @@
     }
 
     function generateVariations() {
-      const directions = [
-        'Make this version more editorial, luxurious, and magazine-cover inspired with dramatic lighting and fashion-forward energy.',
-        'Make this version more playful, cute, and social-media friendly while keeping it polished and brand-ready.',
-        'Make this version more realistic, clean, and commercial with natural lighting and a professional photography finish.'
+      const variationTypes = [
+        { label: 'Regular', direction: '' },
+        { label: 'Exaggerated', direction: 'Make this version more exaggerated and over-the-top — push proportions, expressions, colors, and styling further than the standard look while staying true to the chosen art style.' },
+        { label: 'Alternative', direction: 'Make this version a creative alternative take — shift the mood, lighting, or styling energy in a different direction while keeping the same core character and scene details.' },
       ];
 
       const container = el('variationsOutput');
@@ -4413,16 +4523,35 @@
       heading.textContent = '3 Prompt Variations';
       container.appendChild(heading);
 
-      directions.forEach((dir, i) => {
-        const prompt = buildPrompt(dir);
+      variationTypes.forEach((variation, i) => {
+        const prompt = buildPrompt(variation.direction);
         if (!prompt) return;
+        const cardId = `variationPrompt_${i}`;
         const card = document.createElement('div');
         card.className = 'variation-card';
-        card.innerHTML = `<strong>Variation ${i + 1}</strong>${prompt}`;
+        card.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <strong style="font-size:1.05rem;color:#ff2d87;">${variation.label}</strong>
+            <button type="button" class="btn-pink" style="padding:6px 14px;font-size:0.78rem;" onclick="copyVariation(${i})">📋 Copy</button>
+          </div>
+          <div id="${cardId}" style="white-space:pre-wrap;">${prompt}</div>
+        `;
         container.appendChild(card);
       });
 
-      showToast('3 variations created!');
+      showToast('3 variations created: Regular, Exaggerated, Alternative!');
+    }
+
+    async function copyVariation(i) {
+      const el2 = document.getElementById(`variationPrompt_${i}`);
+      if (!el2) return;
+      const text = el2.textContent || el2.innerText || '';
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('Variation copied!');
+      } catch (e) {
+        showToast('Could not copy — please select and copy manually.');
+      }
     }
 
     // ── EVENT LISTENERS ───────────────────────────────────────────────────────
@@ -4542,6 +4671,7 @@
     // [checkboxName, customId, displayId, list, pillLabel, categories (optional)]
     const globalMultiFields = [
       ['colorPalette', 'customColorPalette', 'colorPaletteSelected', colorPaletteList, 'Color Palette', colorPaletteCategories],
+      ['renderStyle', 'customRenderStyle', 'renderStyleSelected', null, 'Render Style', renderStyleCategories],
       ['patchColors', 'customPatchColors', 'patchColorsSelected', patchColorsList, 'Patch Colors'],
       ['patchEmbellishments', 'customPatchEmbellishments', 'patchEmbellishmentsSelected', patchEmbellishmentsList, 'Patch Embellishments'],
       ['textColor', 'customTextColor', 'textColorSelected', textColorList, 'Text Color'],
