@@ -1488,7 +1488,7 @@
 
         <div class="field">
           <label for="background">Background / Setting</label>
-          <select id="background"><option>None</option><option>Basketball Court</option><option>Beauty Studio</option><option>Bookstore Reading Nook</option><option>Chic City Sidewalk</option><option>Clean White Studio</option><option>Cozy Creative Workspace</option><option>Elegant Boutique Interior</option><option>Football Field</option><option>Luxury Cafe</option><option>Luxury Office Studio</option><option>Luxury Penthouse</option><option>Minimal Black Background</option><option>Modern Classroom</option><option>Poolside Resort</option><option>Rooftop Lounge</option><option>Stadium Stands / Tailgate</option><option>Transparent / No Background</option><option>Upscale Event Backdrop</option><option>Custom Background</option></select>
+          <select id="background"><option>None</option><option>Basketball Court</option><option>Beauty Studio</option><option>Bookstore Reading Nook</option><option>Chic City Sidewalk</option><option>Clean White Studio</option><option>Cozy Creative Workspace</option><option>Elegant Boutique Interior</option><option>Football Field</option><option>Graffiti Wall / Paint Splatter</option><option>Luxury Cafe</option><option>Luxury Office Studio</option><option>Luxury Penthouse</option><option>Minimal Black Background</option><option>Modern Classroom</option><option>Poolside Resort</option><option>Rooftop Lounge</option><option>Stadium Stands / Tailgate</option><option>Transparent / No Background</option><option>Upscale Event Backdrop</option><option>Custom Background</option></select>
           <input class="custom-input" id="customBackground" placeholder="Type custom background" />
         </div>
 
@@ -1677,9 +1677,18 @@
           <input type="text" id="customTextPhrase" placeholder="Type the exact text you want displayed in the design e.g. Too Glam To Give a Damn" />
         </div>
 
-        <div class="field">
-          <label for="textFontStyle">Text / Font Style</label>
-          <select id="textFontStyle"><option>None</option><optgroup label="Patch and Texture Styles"><option>Chenille Patch Lettering</option><option>Chenille Script Varsity Patch</option><option>Chunky Varsity Letters</option><option>Embroidered Patch Letters</option><option>Fuzzy Varsity Patch Letters</option><option>Glitter Patch Letters</option><option>Metallic Varsity Letters</option><option>Pearl Beaded Lettering</option><option>Rhinestone Beaded Lettering</option><option>Varsity Athletic Bold Lettering</option></optgroup><optgroup label="Bubble and Cartoon Styles"><option>Bubble Lettering</option><option>Gel / Jelly Letters</option><option>Kawaii Cartoon Typography</option><option>Puffy Sticker Letters</option><option>Sticker Letters</option></optgroup><optgroup label="3D and Dimensional Styles"><option>3D Extruded Letters</option><option>Bold Block Lettering</option><option>Shadow 3D Letters</option></optgroup><optgroup label="Street and Urban Styles"><option>Airbrush 90s Typography</option><option>Burn Book Style</option><option>Graffiti Style Lettering</option><option>Grunge Lettering</option><option>Handwritten Marker Style</option><option>Ransom Note Style</option></optgroup><optgroup label="Y2K and Retro Styles"><option>Chrome Metallic Letters</option><option>Mixed Font Styles</option><option>Retro 70s Lettering</option><option>Retro Groovy Lettering</option><option>Retro Pixel Letters</option></optgroup><optgroup label="Liquid and Effects Styles"><option>Dripping Letters</option><option>Neon Glow Letters</option></optgroup><optgroup label="Alternative and Edgy Styles"><option>Cyberpunk Typography</option><option>Metal / Punk Lettering</option></optgroup><optgroup label="Elegant and Script Styles"><option>Calligraphy Lettering</option><option>Outline / Stroke Letters</option><option>Script Cursive Lettering</option></optgroup><optgroup label="Specialty Styles"><option>Coloring Book Lettering</option></optgroup><option>Custom Font Style</option></select>
+        <div class="field full">
+          <label for="textDisplayMode">Text Display Mode</label>
+          <select id="textDisplayMode">
+            <option value="withCharacter">Include With Character (uses whoever is built in Part 1)</option>
+            <option value="standalone">Standalone Text Design (no character — just the text/typography design on its own)</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label>Text Font Style <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(select multiple to blend/layer styles)</span></label>
+          <div class="checkbox-group" id="textFontStyleCheckboxes" style="max-height:260px;"></div>
+          <div class="checkbox-selected-display" id="textFontStyleSelected">None selected</div>
           <input type="text" id="customTextFontStyle" class="custom-input" placeholder="Type custom font style" />
         </div>
 
@@ -1694,6 +1703,19 @@
           <label for="textLayout">Text Layout</label>
           <select id="textLayout"><option>None</option><option>Arched Text Layout</option><option>Badge Style Layout</option><option>Centered Text Layout</option><option>Diagonal Text Layout</option><option>Poster Headline Layout</option><option>Scattered Layout</option><option>Side by Side Layout</option><option>Stacked Text Layout</option><option>Custom Layout</option></select>
           <input type="text" id="customTextLayout" class="custom-input" placeholder="Type custom layout" />
+        </div>
+
+        <div class="field">
+          <label for="letterSpacing">Letter Spacing</label>
+          <select id="letterSpacing">
+            <option>None</option>
+            <option>Ultra-Tight Spacing</option>
+            <option>Tight / Condensed Spacing</option>
+            <option>Normal Spacing</option>
+            <option>Wide / Spaced Out Letters</option>
+            <option>Custom Spacing</option>
+          </select>
+          <input type="text" id="customLetterSpacing" class="custom-input" placeholder="Type custom letter spacing" />
         </div>
 
         <div class="field">
@@ -1839,7 +1861,7 @@
 
         <div class="field">
           <label for="mockupProduct">Show On Product Mockup</label>
-          <select id="mockupProduct"><option>None</option><option>Cap / Hat</option><option>Coffee Mug</option><option>Hoodie / Sweatshirt</option><option>Keychain</option><option>Notebook / Journal</option><option>Phone Case</option><option>Poster / Wall Art</option><option>Sticker</option><option>T-Shirt</option><option>Throw Blanket</option><option>Throw Pillow</option><option>Tote Bag</option><option>Tumbler / Water Bottle</option><option>Custom Mockup Product</option></select>
+          <select id="mockupProduct"><option>None</option><option>Acrylic Standee</option><option>Bookmark</option><option>Button / Pin</option><option>Cap / Hat</option><option>Coffee Mug</option><option>Compact Mirror</option><option>Fanny Pack</option><option>Hoodie / Sweatshirt</option><option>Keychain</option><option>Lanyard</option><option>Magnet</option><option>Makeup Bag</option><option>Notebook / Journal</option><option>Phone Case</option><option>Poster / Wall Art</option><option>Shower Curtain</option><option>Sticker</option><option>T-Shirt</option><option>Throw Blanket</option><option>Throw Pillow</option><option>Tote Bag</option><option>Tumbler / Water Bottle</option><option>Custom Mockup Product</option></select>
           <input class="custom-input" id="customMockupProduct" placeholder="Type a custom product, e.g. laptop sleeve" />
           <p style="font-size:0.72rem;color:var(--muted);margin-top:4px;font-style:italic;">Generates a product photo with your design sized and placed correctly for that specific item — not just slapped on at a generic scale.</p>
         </div>
@@ -2361,6 +2383,15 @@
       'Cap / Hat': 'either embroidered on the front panel of a structured baseball cap with visible stitched thread texture and slight raised dimension, or flat-printed via DTG/screen-print with a smooth absorbed-into-fabric finish. The design is scaled down significantly to fit the small curved front panel, with fine detail simplified. Photographed at a slight angle to show the cap\'s curved shape clearly.',
       'Throw Blanket': 'printed across a soft fleece or minky throw blanket via dye sublimation, fully fused into the fabric with vibrant color and a soft matte finish — no plastic sheen, no raised texture. The design is scaled up to fill the blanket\'s large rectangular surface appropriately. The blanket is shown draped over a couch or neatly folded on a surface.',
       'Throw Pillow': 'printed on the front of a square throw pillow cover via sublimation or DTG, flush with the fabric in a soft matte finish. The design is scaled to fit the pillow\'s square shape with balanced margins on all sides. Photographed resting on a couch or bed with soft natural lighting.',
+      'Bookmark': 'printed on a slim rectangular cardstock bookmark with a glossy or matte laminate finish, and a small hole punched at the top threaded with a coordinating tassel or ribbon. The design is scaled to fit the tall narrow shape, with any text kept large enough to stay legible at this small size. Photographed lying flat on a clean surface, or tucked into the pages of an open book.',
+      'Button / Pin': 'rendered as a small round pin-back button (standard 1.25 to 3 inch size) with a glossy mylar or matte finish over printed metal, and a visible metal pin backing. The design is simplified and scaled down significantly to suit the small circular shape — fine detail reduced, bold shapes and short text emphasized, nothing cropped at the edge. Photographed close-up against a clean background, or pinned to a jacket, tote bag, or lanyard.',
+      'Makeup Bag': 'printed on the front panel of a zippered makeup/cosmetic pouch via sublimation or DTG, fully fused into the fabric with a smooth matte or slight satin finish. The design is scaled to fit the pouch\'s rectangular front panel proportionally, not overlapping the zipper. Shown standing upright or lying flat on a clean surface, zipper visible along the top.',
+      'Lanyard': 'printed lengthwise along a fabric neck lanyard via dye sublimation or woven directly into the strap, with the design repeating or centered along the strap\'s visible length. Includes a metal clip or badge-reel attachment at the bottom. The design is simplified into a slim, elongated layout suited to the narrow strap width. Photographed laid flat in a gentle curve, or worn around a neck with an ID badge attached.',
+      'Fanny Pack': 'printed on the front panel of a belt bag / fanny pack via sublimation or DTG, fully fused into the fabric with a smooth matte finish. The design is scaled to fit the curved front pocket proportionally, with the adjustable strap and zipper pull kept clear of the main design area. Photographed lying flat or worn around the waist at a slight angle to show the front panel clearly.',
+      'Shower Curtain': 'printed across a large rectangular fabric or PEVA shower curtain via sublimation, fully fused into the surface with vibrant color and a smooth matte-to-slight-sheen finish. The design is scaled up significantly to fill the curtain\'s large surface, accounting for a row of grommet holes along the top edge. Photographed hanging on a shower rod in a clean, well-lit bathroom setting.',
+      'Magnet': 'rendered as a small flat refrigerator magnet, either glossy UV-printed with a clear-coat shine or a matte laminate finish, with a visible thin magnetic backing. The design is simplified and scaled down significantly to suit the small shape (round or rectangular) — fine detail reduced, bold shapes and short text emphasized. Photographed close-up, shown attached to a refrigerator or other metal surface.',
+      'Compact Mirror': 'printed on the outer lid of a small round or square compact mirror case via UV printing, with a glossy or matte finish flush with the case surface. The design is scaled down significantly to fit the small circular or square lid, simplified with bold shapes and minimal fine detail. Photographed closed and standing at a slight angle, or opened to show the mirror alongside the printed lid.',
+      'Acrylic Standee': 'die-cut into a freestanding acrylic standee — the design printed on clear thick acrylic, cut precisely along the outer silhouette of the character or graphic (not a rectangular panel), with a small clear acrylic base/stand slotted in at the bottom so it stands upright on its own. The acrylic has a glossy, glass-like clarity with crisp sharp edges along the die-cut line. Photographed standing upright on a clean flat surface (like a desk or shelf), with soft studio lighting showing the acrylic\'s thickness and slight edge shine.',
     };
 
     function buildBundleMockupDescription(products) {
@@ -2374,6 +2405,17 @@
     const textDecorativeList = ['Sparkles and Stars','Diamond Accents','Hearts','Lightning Bolts','Crown Accents','Floral Accents','Butterfly Accents','Pearl Accents','Confetti','Money Signs','Fire Effects'];
 
     const textFinishList = ['High Gloss','Super Matte','Candy Coated','Vibrant Holographic','Luxury Marble','Rhinestone Effect','Glitter Texture','Diamond Lettering','Jelly Texture','Fur Texture','Crochet Texture','Metallic Foil','Satin Texture','Water Texture','Fire Effect','Ice Lettering','Velvet Texture','Gummy Candy Texture','Cloud Lettering','Pearl Finish'];
+    const textFontStyleCategories = [
+      ['Patch and Texture Styles', ['Chenille Patch Lettering','Chenille Script Varsity Patch','Chunky Varsity Letters','Embroidered Patch Letters','Fuzzy Varsity Patch Letters','Glitter Patch Letters','Metallic Varsity Letters','Pearl Beaded Lettering','Rhinestone Beaded Lettering','Varsity Athletic Bold Lettering']],
+      ['Bubble and Cartoon Styles', ['Balloon / Inflatable 3D Letters','Bubble Lettering','Gel / Jelly Letters','Kawaii Cartoon Typography','Puffy Sticker Letters','Sticker Letters']],
+      ['3D and Dimensional Styles', ['3D Extruded Letters','Bold Block Lettering','Shadow 3D Letters']],
+      ['Street and Urban Styles', ['Airbrush 90s Typography','Burn Book Style','Graffiti Style Lettering','Grunge Lettering','Handwritten Marker Style','Ransom Note Style']],
+      ['Y2K and Retro Styles', ['Chrome Metallic Letters','Mixed Font Styles','Retro 70s Lettering','Retro Groovy Lettering','Retro Pixel Letters']],
+      ['Liquid and Effects Styles', ['Dripping Letters','Neon Glow Letters']],
+      ['Alternative and Edgy Styles', ['Cyberpunk Typography','Metal / Punk Lettering']],
+      ['Elegant and Script Styles', ['Calligraphy Lettering','Outline / Stroke Letters','Script Cursive Lettering']],
+      ['Specialty Styles', ['Coloring Book Lettering']]
+    ];
 
     const outfitCategories = [
       ['Everyday Casual', ['Jeans and T-Shirt','Jeans and Crop Top','Jeans and Blazer','Leggings and Oversized Sweater','Leggings and Sports Bra','Shorts and Tank Top','Crop Top and Shorts Set','Hoodie and Crop Top Set','Graphic Tee and Jeans','Graphic Tee and Joggers','Bling Rhinestone Tee','Overalls','Denim Overalls','Romper','Jumpsuit','Denim Jumpsuit','Mini Skirt and Top','Maxi Skirt and Top','Sundress','Denim Dress']],
@@ -2459,7 +2501,7 @@
     // those stay entirely under the user's control no matter which preset is applied.
     const characterPresets = {
       bossBoardroom: { label: 'Boss Boardroom', outfit: ['Power Suit'], shoes: 'High Heels', accessories: ['Luxury Watch','Statement Ring'], background: 'Luxury Office Studio', lighting: 'High Clarity Professional Lighting', pose: 'Arms Crossed', colorPalette: ['Black','Gold'], attitude: 'Bold and Commanding', artStyle: 'Stylized Realism' },
-      gameDayGlam: { label: 'Game Day Glam', outfit: ['Athletic Jersey'], shoes: 'Sneakers', accessories: ['Gold Hoop Earrings'], background: 'Stadium Stands / Tailgate', lighting: 'Bright Studio Lighting', pose: 'Full Body Pose', colorPalette: ['Red','Black'], attitude: 'Energetic and Dynamic', artStyle: 'TikTok Glam Style' },
+      gameDayGlam: { label: 'Game Day Glam', outfit: ['Athletic Jersey'], shoes: 'Sneakers', accessories: ['Gold Hoop Earrings'], background: 'Stadium Stands / Tailgate', lighting: 'Bright Studio Lighting', pose: 'Full Body Pose', colorPalette: ['Red','Black'], attitude: 'Energetic and Dynamic', artStyle: 'TikTok Glam Style', occasion: 'Game Day' },
       sundayBest: { label: 'Sunday Best', outfit: ['Lace Dress'], shoes: 'Block Heels', accessories: ['Pearl Necklace','Pearl Earrings'], background: 'Upscale Event Backdrop', lighting: 'Natural Soft Daylight', pose: 'Sitting On Chair', colorPalette: ['Ivory','Gold'], attitude: 'Elegant and Graceful', artStyle: 'Stylized Realism' },
       rooftopGoldenHour: { label: 'Rooftop Golden Hour', outfit: ['Evening Glam Outfit'], shoes: 'Strappy Heels', accessories: ['Diamond Hoop Earrings','Layered Necklaces'], background: 'Rooftop Lounge', lighting: 'Golden Hour Outdoor Light', pose: 'Looking Over Shoulder', colorPalette: ['Champagne','Rose Gold'], attitude: 'Mysterious and Sultry', artStyle: 'Ultra Airbrushed Urban' },
       softLife: { label: 'Soft Life', outfit: ['Silk Pajamas'], shoes: 'Fluffy Slippers', accessories: ['Pearl Earrings'], background: 'Cozy Creative Workspace', lighting: 'Soft Window Light', pose: 'Sitting On Floor', colorPalette: ['Blush Pink','Cream'], attitude: 'Soft and Feminine', artStyle: 'Pinterest Girl Style' },
@@ -2468,7 +2510,7 @@
       graduationGlow: { label: 'Graduation Glow', outfit: ['Graduation Gown'], shoes: 'Block Heels', accessories: ['Gold Hoop Earrings'], background: 'Upscale Event Backdrop', lighting: 'Bright Studio Lighting', pose: 'Full Body Pose', colorPalette: ['Gold','Black'], attitude: 'Balanced and Confident', artStyle: 'Stylized Realism', occasion: 'Graduation' },
       campusQueen: { label: 'Campus Queen', outfit: ['Varsity Jacket and Jeans'], shoes: 'Sneakers', accessories: ['Stud Earrings'], background: 'Modern Classroom', lighting: 'Natural Soft Daylight', pose: 'Holding Laptop', colorPalette: ['Navy','White'], attitude: 'Energetic and Dynamic', artStyle: '3D CGI Glamour Cartoon' },
       dateNight: { label: 'Date Night', outfit: ['Cocktail Dress'], shoes: 'Stiletto Heels', accessories: ['Diamond Hoop Earrings'], background: 'Luxury Penthouse', lighting: 'Soft Glam Beauty Lighting', pose: 'Hand On Hip', colorPalette: ['Burgundy','Black'], attitude: 'Mysterious and Sultry', artStyle: 'Glam Doll Style' },
-      chibiGlam: { label: 'Chibi Glam', outfit: ['Graphic Tee and Jeans'], shoes: 'Strappy Heels', accessories: ['Gold Hoop Earrings','Chunky Gold Chains','Luxury Watch','Stacked Bracelets'], background: 'Clean White Studio', lighting: 'Bright Studio Lighting', pose: 'Full Body Pose', colorPalette: ['Black','Gold'], attitude: 'Bold and Commanding', artStyle: 'Exaggerated Chibi', artFinish: 'High Gloss Illustration' },
+      chibiGlam: { label: 'Chibi Glam', outfit: ['Graphic Tee and Jeans'], shoes: 'Strappy Heels', accessories: ['Gold Hoop Earrings','Chunky Gold Chains','Luxury Watch','Stacked Bracelets'], background: 'Clean White Studio', lighting: 'Bright Studio Lighting', pose: 'Full Body Pose', colorPalette: ['Black','Gold'], attitude: 'Bold and Commanding', artStyle: 'Exaggerated Chibi', artFinish: 'High Gloss Illustration Finish' },
       stankFaceEnergy: { label: 'Stank Face Energy', pose: 'Standing', attitude: 'Sassy and Unbothered', artStyle: 'Cartoon Realism', stankFace: ['Arms Folded','Pursed Lips','Mad Expression','Furrowed Brow'], hairReminder: 'Hair Rollers' },
     };
 
@@ -2494,7 +2536,11 @@
       }
 
       const shoeSelect = el(charField('shoeStyle', idx));
-      if (shoeSelect && preset.shoes) shoeSelect.value = preset.shoes;
+      let shoeApplyFailed = false;
+      if (shoeSelect && preset.shoes) {
+        shoeSelect.value = preset.shoes;
+        if (shoeSelect.value !== preset.shoes) shoeApplyFailed = true;
+      }
 
       if (preset.outfit) {
         document.querySelectorAll(`input[name="outfit_${idx}"]`).forEach(cb => { cb.checked = preset.outfit.includes(cb.value); });
@@ -2513,6 +2559,7 @@
       const genderSet = getCharVal('gender', idx);
       const reminders = [];
       if (!genderSet) reminders.push(`set Gender for Character ${idx}`);
+      if (shoeApplyFailed) reminders.push(`manually set Shoe Style for Character ${idx} (this preset's shoe pick isn't available for the currently selected Gender)`);
       if (preset.hairReminder) reminders.push(`set Hairstyle to "${preset.hairReminder}" for the full look`);
       if (reminders.length) {
         showToast(`"${preset.label}" applied! Don't forget to ${reminders.join(' and ')}.`);
@@ -3155,6 +3202,7 @@
       ['textEffect','Text Effect'],
       ['textFontStyle','Text Style'],['textFinish','Text Finish'],
       ['textLayout','Text Layout'],
+      ['letterSpacing','Letter Spacing'],
       ['textPlacement','Text Placement'],
       ['textOutline','Text Outline'],
       ['sportsMascot','Sports Graphic']
@@ -3633,6 +3681,45 @@
       // Only take the standalone-patch shortcut if there is NOT an active product mockup
       // selection — otherwise a leftover "Standalone" setting silently overrides your
       // actual Mockup Product choice and you'd never see the product mockup at all.
+      // ── STANDALONE TEXT MODE: skip all character/art-style logic entirely ──
+      const textDisplayMode = el('textDisplayMode') ? el('textDisplayMode').value : 'withCharacter';
+      if (textDisplayMode === 'standalone' && mockupProductEarly === 'None' && patchDisplayMode !== 'Standalone Patch Design (no character)') {
+        const standaloneTextPhrase = (el('customTextPhrase') ? el('customTextPhrase').value.trim() : '') ||
+          (el('sassySaying') && el('sassySaying').value !== 'None' ? el('sassySaying').value : '');
+        if (!standaloneTextPhrase) {
+          const msg = 'Please enter your text in the Text & Typography section (Your Custom Text / Phrase, or pick a Sassy Saying) before generating a standalone text design.';
+          alert(msg);
+          el('promptOutput').textContent = `⚠️ ${msg}`;
+          return null;
+        }
+        const stFontStyleVals = getMultiValues('textFontStyle', 'customTextFontStyle');
+        const stLayout = getVal('textLayout');
+        const stLetterSpacing = getVal('letterSpacing');
+        const stOutline = getVal('textOutline');
+        const stEffect = getVal('textEffect');
+        const stColorVals = getMultiValues('textColor', 'customTextColor');
+        const stFinishVals = getMultiValues('textFinish', 'customTextFinish');
+        const stDecorativeVals = getMultiValues('textDecorative', 'customTextDecorative');
+        const stPaletteColors = getMultiValues('colorPalette', 'customColorPalette');
+        const stRatio = getVal('aspectRatio');
+
+        let standaloneTextDesc = `Create a bold, eye-catching text art/typography design image featuring the words "${standaloneTextPhrase}" — no character, no illustration of a person, text and graphic elements only. `;
+        if (stFontStyleVals.length) standaloneTextDesc += `Font / lettering style: ${stFontStyleVals.join(' blended with ')}. `;
+        if (stLayout && stLayout !== 'None') standaloneTextDesc += `Text layout: ${stLayout}. `;
+        if (stLetterSpacing && stLetterSpacing !== 'None') standaloneTextDesc += `Letter spacing: ${stLetterSpacing}. `;
+        if (stOutline && stOutline !== 'None') standaloneTextDesc += `Outline style: ${stOutline}. `;
+        if (stEffect && stEffect !== 'None') standaloneTextDesc += `Text effect: ${stEffect}. `;
+        if (stColorVals.length) standaloneTextDesc += `Text color: ${stColorVals.join(', ')}. `;
+        if (stFinishVals.length) standaloneTextDesc += `Text finish and texture: ${stFinishVals.join(', ')}. `;
+        if (stDecorativeVals.length) standaloneTextDesc += `Decorative elements: ${stDecorativeVals.join(', ')}. `;
+        if (stPaletteColors.length) standaloneTextDesc += `Overall color palette: ${stPaletteColors.join(', ')}. `;
+        standaloneTextDesc += `Clean white background. Design shown flat and centered, isolated — no clothing, no person, no body part visible anywhere in frame. `;
+        standaloneTextDesc += `High quality digital illustration, immaculate composition, vibrant and polished finish, professional rendering, ultra-sharp detail, 8K quality.`;
+        if (stRatio && stRatio !== 'None') standaloneTextDesc += ` Aspect ratio: ${stRatio}.`;
+
+        return [standaloneTextDesc, 'No misspelled text, no grainy or blurry texture, no overly golden or yellow-tinted backgrounds, no distracting background objects, no character or person depicted.'].join('\n\n');
+      }
+
       if (patchDisplayMode === 'Standalone Patch Design (no character)' && mockupProductEarly === 'None') {
         if (!patchTextEarly) {
           const msg = 'Please enter patch text before generating a standalone patch design.';
@@ -3715,8 +3802,9 @@
           el('promptOutput').textContent = `⚠️ ${msg}`;
           return null;
         }
-        const textOnlyFontStyle = getVal('textFontStyle');
+        const textOnlyFontStyleVals = getMultiValues('textFontStyle', 'customTextFontStyle');
         const textOnlyLayout = getVal('textLayout');
+        const textOnlyLetterSpacing = getVal('letterSpacing');
         const textOnlyOutline = getVal('textOutline');
         const textOnlyEffect = getVal('textEffect');
         const textOnlyColorVals = getMultiValues('textColor', 'customTextColor');
@@ -3733,8 +3821,9 @@
         }
 
         let textOnlyDesc = `A product mockup photo. A bold, eye-catching text/logo design featuring the words "${textOnlyPhrase}" — no character, no illustration of a person, text and graphic elements only. `;
-        if (textOnlyFontStyle && textOnlyFontStyle !== 'None') textOnlyDesc += `Font / lettering style: ${textOnlyFontStyle}. `;
+        if (textOnlyFontStyleVals.length) textOnlyDesc += `Font / lettering style: ${textOnlyFontStyleVals.join(' blended with ')}. `;
         if (textOnlyLayout && textOnlyLayout !== 'None') textOnlyDesc += `Text layout: ${textOnlyLayout}. `;
+        if (textOnlyLetterSpacing && textOnlyLetterSpacing !== 'None') textOnlyDesc += `Letter spacing: ${textOnlyLetterSpacing}. `;
         if (textOnlyOutline && textOnlyOutline !== 'None') textOnlyDesc += `Outline style: ${textOnlyOutline}. `;
         if (textOnlyEffect && textOnlyEffect !== 'None') textOnlyDesc += `Text effect: ${textOnlyEffect}. `;
         if (textOnlyColorVals.length) textOnlyDesc += `Text color: ${textOnlyColorVals.join(', ')}. `;
@@ -3892,7 +3981,20 @@
         }
       }
       const propBits = [];
-      if (propValues.length) propBits.push(`with ${propValues.join(', ').toLowerCase()} nearby`);
+      if (propValues.length) {
+        // Most props read as ground/floor clutter when only described as "nearby" —
+        // this splits them into items that belong in-hand/on-a-surface vs. items
+        // that are genuinely fine on the ground (a ball, a skateboard, luggage, etc.)
+        const groundOkProps = ['football', 'basketball', 'skateboard', 'vlogging ring light', 'luggage', 'thought bubble', 'speech bubble'];
+        const handOrSurfaceProps = propValues.filter(p => !groundOkProps.includes(p.toLowerCase()));
+        const groundProps = propValues.filter(p => groundOkProps.includes(p.toLowerCase()));
+        if (handOrSurfaceProps.length) {
+          propBits.push(`holding or resting on a nearby surface (table, counter, etc.) — never lying on the ground or floor: ${handOrSurfaceProps.join(', ').toLowerCase()}`);
+        }
+        if (groundProps.length) {
+          propBits.push(`with ${groundProps.join(', ').toLowerCase()} nearby`);
+        }
+      }
       const sceneTailBits = [];
       if (camera && camera !== 'None') sceneTailBits.push(`captured from ${camera.toLowerCase()}`);
       if (lighting && lighting !== 'None') sceneTailBits.push(`with ${lighting.toLowerCase()}`);
@@ -4016,9 +4118,9 @@
       const textPhrase = customPhrase || (sayingVal && sayingVal !== 'None' ? sayingVal : '');
 
       const typography = [
-        ['textFontStyle','text font style'],
         ['textEffect','text effect'],
         ['textLayout','text layout'],
+        ['letterSpacing','letter spacing'],
         ['textPlacement','text placement'],
         ['textOutline','text outline style'],
         ['sportsMascot','sports or mascot graphic']
@@ -4027,6 +4129,8 @@
         return (v && v !== 'None') ? `${label}: ${v}` : null;
       }).filter(Boolean);
 
+      const textFontStyleVals = getMultiValues('textFontStyle', 'customTextFontStyle');
+      if (textFontStyleVals.length) typography.push(`text font style: ${textFontStyleVals.join(' blended with ')}`);
       const textColorVals = getMultiValues('textColor', 'customTextColor');
       if (textColorVals.length && !isColoringPage) typography.push(`text color: ${textColorVals.join(', ')}`);
       const textFinishVals = getMultiValues('textFinish', 'customTextFinish');
@@ -4436,6 +4540,7 @@
       ['renderStyle', 'customRenderStyle', 'renderStyleSelected', null, 'Render Style', renderStyleCategories],
       ['patchColors', 'customPatchColors', 'patchColorsSelected', patchColorsList, 'Patch Colors'],
       ['patchEmbellishments', 'customPatchEmbellishments', 'patchEmbellishmentsSelected', patchEmbellishmentsList, 'Patch Embellishments'],
+      ['textFontStyle', 'customTextFontStyle', 'textFontStyleSelected', null, 'Text Font Style', textFontStyleCategories],
       ['textColor', 'customTextColor', 'textColorSelected', textColorList, 'Text Color'],
       ['textFinish', 'customTextFinish', 'textFinishSelected', textFinishList, 'Text Finish'],
       ['textDecorative', 'customTextDecorative', 'textDecorativeSelected', textDecorativeList, 'Text Decorative']
