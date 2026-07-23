@@ -27,6 +27,31 @@
       --shadow-lg:   0 18px 54px rgba(30,40,34,0.14);
     }
 
+    [data-theme="dark"] {
+      --pink:        #f2a8c0;
+      --pink-light:  #3a2530;
+      --pink-mid:    #ea90b2;
+      --green:       #7fc4a2;
+      --green-light: #1f332b;
+      --green-dark:  #5cb98a;
+      --gold:        #d9bb63;
+      --gold-light:  #3a3320;
+      --charcoal:    #14181a;
+      --ink:         #ecf1ee;
+      --muted:       #9fb0a5;
+      --cream:       #14181a;
+      --white:       #1f2528;
+      --border:      rgba(127,196,162,0.25);
+      --border-soft: rgba(255,255,255,0.10);
+      --shadow-sm:   0 2px 12px rgba(0,0,0,0.35);
+      --shadow-md:   0 8px 32px rgba(0,0,0,0.45);
+      --shadow-lg:   0 18px 54px rgba(0,0,0,0.55);
+    }
+
+    body, .section-zone, .checkbox-group, select, input, textarea, .checkbox-item {
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -464,6 +489,10 @@
       background-position: right 13px center;
       background-color: var(--white);
       padding-right: 34px;
+    }
+
+    [data-theme="dark"] select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239fb0a5' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
     }
 
     .zone-pink select, .zone-pink input { border-color: rgba(246,182,200,0.45); }
@@ -1314,6 +1343,9 @@
       <span class="brand-name">by Sivad Tamara Graphics</span>
     </div>
     <div class="header-right">
+      <button id="darkModeToggle" onclick="toggleDarkMode()" title="Toggle dark mode" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:#fff;border-radius:999px;padding:7px 14px;font-size:0.85rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background 0.2s ease;">
+        <span id="darkModeIcon">🌙</span><span id="darkModeLabel">Dark Mode</span>
+      </button>
       <div class="header-dot"></div>
       <div class="header-badge">AI Prompt Builder</div>
     </div>
@@ -1338,7 +1370,8 @@
           <li><strong>Build your character</strong> — Choose Solo, Couple, or Group at the top of <strong style="color:#ff2d87;">Part 1</strong>. Each character gets their own tab, plus a Quick Preset dropdown for instant one-click styling.</li>
           <li><strong>Set the scene</strong> — Complete background, lighting, and pose details in <strong style="color:#ff2d87;">Part 2</strong>.</li>
           <li><strong>Just want a patch?</strong> — The <strong style="color:#ff2d87;">Chenille Patch Builder</strong> generates a standalone patch design, no character needed.</li>
-          <li><strong>Want a product photo?</strong> — The <strong style="color:#ff2d87;">Product Mockup Generator</strong> still needs a character or a patch — pick "Patch Design" as the source to skip the character.</li>
+          <li><strong>Just want text or a slogan?</strong> — In <strong style="color:#ff2d87;">Text &amp; Typography</strong>, type your phrase, pick one or more Font Styles (select multiple to blend them, like chenille + rhinestone), set Letter Spacing for tighter or wider text, then set <strong>Text Display Mode</strong> to "Standalone" for a text-only design with no character at all, or leave it on "Include With Character" to layer it onto whoever's built in Part 1.</li>
+          <li><strong>Want a product photo?</strong> — The <strong style="color:#ff2d87;">Product Mockup Generator</strong> can wrap a character or a patch onto a product, or pick "Text / Logo Only Design" as the source for a product mockup that needs neither.</li>
           <li><strong>Save your shop's look</strong> — Set colors, art style, and tagline once in the <strong style="color:#ff2d87;">Brand Board</strong> and apply them anytime to a character or patch. Or click "Generate Brand Board Graphic" for a standalone style-guide image (logo, colors, fonts, and mockups) — that one needs nothing but a Brand Name.</li>
           <li><strong>Finish up</strong> — Click Generate Prompt, then Copy, Save, or create 3 Variations.</li>
         </ul>
@@ -1488,7 +1521,7 @@
 
         <div class="field">
           <label for="background">Background / Setting</label>
-          <select id="background"><option>None</option><option>Basketball Court</option><option>Beauty Studio</option><option>Bookstore Reading Nook</option><option>Chic City Sidewalk</option><option>Clean White Studio</option><option>Cozy Creative Workspace</option><option>Elegant Boutique Interior</option><option>Football Field</option><option>Graffiti Wall / Paint Splatter</option><option>Luxury Cafe</option><option>Luxury Office Studio</option><option>Luxury Penthouse</option><option>Minimal Black Background</option><option>Modern Classroom</option><option>Poolside Resort</option><option>Rooftop Lounge</option><option>Stadium Stands / Tailgate</option><option>Transparent / No Background</option><option>Upscale Event Backdrop</option><option>Custom Background</option></select>
+          <select id="background"><option>None</option><option>Airport Terminal / Travel Lounge</option><option>Art Gallery</option><option>Backyard Cookout / BBQ</option><option>Basketball Court</option><option>Beach at Sunset</option><option>Beauty Studio</option><option>Bedroom Vanity / Glam Room</option><option>Bookstore Reading Nook</option><option>Chic City Sidewalk</option><option>City Skyline at Night</option><option>Clean White Studio</option><option>Concert / Music Festival</option><option>Cozy Creative Workspace</option><option>Cozy Living Room</option><option>Elegant Boutique Interior</option><option>Farmers Market</option><option>Football Field</option><option>Garden / Botanical Greenhouse</option><option>Graffiti Wall / Paint Splatter</option><option>Ice Skating Rink</option><option>Luxury Cafe</option><option>Luxury Office Studio</option><option>Luxury Penthouse</option><option>Luxury Yacht Deck</option><option>Minimal Black Background</option><option>Modern Classroom</option><option>Mountain Cabin</option><option>Nail Salon</option><option>Neon Nightclub</option><option>Poolside Resort</option><option>Private Jet Interior</option><option>Rainy City Street at Night</option><option>Rooftop Lounge</option><option>Skate Park</option><option>Snowy Winter Street</option><option>Spa / Wellness Retreat</option><option>Stadium Stands / Tailgate</option><option>Subway / Train Platform</option><option>Transparent / No Background</option><option>Tropical Jungle</option><option>Upscale Event Backdrop</option><option>Vineyard / Winery</option><option>Wedding Venue</option><option>Custom Background</option></select>
           <input class="custom-input" id="customBackground" placeholder="Type custom background" />
         </div>
 
@@ -1661,13 +1694,14 @@
             <span class="section-label label-pink">Part 4</span>
             <span class="section-title">Text &amp; Typography Design</span>
           </div>
+          <button type="button" class="btn-green" style="margin-left:auto;font-size:0.8rem;padding:6px 14px;" onclick="event.stopPropagation(); randomizeTextStyle();">🎲 Randomize Text Style</button>
         </div>
         <div class="section-zone-body">
         <div class="form-grid">
 
         <div class="field full">
           <label for="sassySaying">Sassy Sayings</label>
-          <select id="sassySaying"><option>None</option><optgroup label="Bold Boss Energy"><option>Big Goals. Bigger Grace.</option><option>Not Arrogant. Just Accurate.</option><option>Pretty With Purpose</option><option>Respectfully Unbothered</option><option>Silent Moves. Loud Results.</option></optgroup><optgroup label="Funny and Playfully Petty"><option>Delulu But Make It Luxury</option><option>Powered By Lip Gloss and Audacity</option><option>Stay Focused and Moisturized</option><option>Too Fine For Confusion</option><option>Your Opinion Needs Funding</option></optgroup><optgroup label="Urban Girl Luxury Vibes"><option>Gold Hoops and Goals</option><option>Luxury Is The Standard</option><option>Pretty Girls Build Empires</option><option>Rich Auntie Energy</option><option>Too Glam To Fold</option></optgroup><optgroup label="Motivational With Attitude"><option>Different Level. Different Mindset.</option><option>Discipline Is The Flex</option><option>Grace With Grit</option><option>Pressure Creates Queens</option><option>Progress Over Popularity</option></optgroup><optgroup label="Viral TikTok and IG Caption Style"><option>ATE. Left No Crumbs.</option><option>Face Card Never Declines</option><option>It's Giving Success</option><option>Standing On Business</option><option>Very Much That Girl</option></optgroup><optgroup label="Stank Face Energy"><option>And What!?</option><option>Ate Down</option><option>Boy Bye</option><option>Clock That Tea</option><option>I Said What I Said!</option><option>IKYFL</option><option>Not Today!</option><option>Periodt</option><option>WTF</option></optgroup><optgroup label="Leadership and Ambition Brand Vibes"><option>Built To Lead</option><option>Excellence Is The Expectation</option><option>Lead Loudly</option><option>Visionary Energy</option><option>Walk In Authority</option></optgroup><optgroup label="Soft Life and Feminine Energy"><option>Becoming Her Daily</option><option>Calm But Dangerous</option><option>Glossy and Unavailable</option><option>Heal. Glow. Repeat.</option><option>Soft Life. Strong Mind.</option></optgroup><optgroup label="HBCU and Greek Inspired Energy"><option>Educated and Expensive</option><option>Excellence With Style</option><option>Legacy Looks Good On Us</option><option>Pretty Girls Lead Different</option><option>Sisterhood and Standards</option></optgroup><optgroup label="Faith and Hustle Vibes"><option>Blessed and Booked</option><option>Covered and Confident</option><option>Faith Built This</option><option>God's Timing Stays Winning</option><option>Pray Hard. Hustle Harder.</option></optgroup><optgroup label="AI Creator and Digital Boss Vibes"><option>AI Ain't Ready For Me</option><option>Built With Vision</option><option>Creating While Elevating</option><option>Creativity Pays Me</option><option>Digital Hustle. Real Results.</option></optgroup><option>Custom Saying</option></select>
+          <select id="sassySaying"><option>None</option><optgroup label="Bold Boss Energy"><option>Big Goals. Bigger Grace.</option><option>Not Arrogant. Just Accurate.</option><option>Pretty With Purpose</option><option>Respectfully Unbothered</option><option>Silent Moves. Loud Results.</option></optgroup><optgroup label="Funny and Playfully Petty"><option>Delulu But Make It Luxury</option><option>Powered By Lip Gloss and Audacity</option><option>Stay Focused and Moisturized</option><option>Too Fine For Confusion</option><option>Your Opinion Needs Funding</option></optgroup><optgroup label="Urban Girl Luxury Vibes"><option>Gold Hoops and Goals</option><option>Luxury Is The Standard</option><option>Pretty Girls Build Empires</option><option>Rich Auntie Energy</option><option>Too Glam To Fold</option></optgroup><optgroup label="Motivational With Attitude"><option>Different Level. Different Mindset.</option><option>Discipline Is The Flex</option><option>Grace With Grit</option><option>Pressure Creates Queens</option><option>Progress Over Popularity</option></optgroup><optgroup label="Viral TikTok and IG Caption Style"><option>ATE. Left No Crumbs.</option><option>Face Card Never Declines</option><option>It's Giving Success</option><option>Standing On Business</option><option>Very Much That Girl</option></optgroup><optgroup label="Stank Face Energy"><option>And What!?</option><option>Ate Down</option><option>Boy Bye</option><option>Clock That Tea</option><option>I Said What I Said!</option><option>IKYFL</option><option>Not Today!</option><option>Periodt</option><option>WTF</option></optgroup><optgroup label="Leadership and Ambition Brand Vibes"><option>Built To Lead</option><option>Excellence Is The Expectation</option><option>Lead Loudly</option><option>Visionary Energy</option><option>Walk In Authority</option></optgroup><optgroup label="Soft Life and Feminine Energy"><option>Becoming Her Daily</option><option>Calm But Dangerous</option><option>Glossy and Unavailable</option><option>Heal. Glow. Repeat.</option><option>Soft Life. Strong Mind.</option></optgroup><optgroup label="HBCU and Greek Inspired Energy"><option>Educated and Expensive</option><option>Excellence With Style</option><option>Legacy Looks Good On Us</option><option>Pretty Girls Lead Different</option><option>Sisterhood and Standards</option></optgroup><optgroup label="Faith and Hustle Vibes"><option>Blessed and Booked</option><option>Covered and Confident</option><option>Faith Built This</option><option>God's Timing Stays Winning</option><option>Pray Hard. Hustle Harder.</option></optgroup><optgroup label="Spiritual and Faith-Centered"><option>Anchored In Faith</option><option>Divinely Guided</option><option>Grace Over Everything</option><option>Rooted In Purpose</option><option>Trust The Process, Trust God</option></optgroup><optgroup label="Motivational and Self-Growth"><option>Bet On Yourself</option><option>Growth Looks Good On Me</option><option>Keep Going, Keep Glowing</option><option>Small Steps, Big Vision</option><option>Your Only Competition Is Yesterday's You</option></optgroup><optgroup label="AI Creator and Digital Boss Vibes"><option>AI Ain't Ready For Me</option><option>Built With Vision</option><option>Creating While Elevating</option><option>Creativity Pays Me</option><option>Digital Hustle. Real Results.</option></optgroup><option>Custom Saying</option></select>
           <input type="text" id="customSassySaying" class="custom-input" placeholder="Type your own custom saying or phrase..." />
           <p style="font-size:0.72rem;color:var(--muted);margin-top:6px;font-style:italic;">Original sayings © 2026 Sivad Tamara Graphics®</p>
         </div>
@@ -1737,10 +1771,24 @@
           <input type="text" id="customTextColor" class="custom-input" placeholder="Add a custom color..." />
         </div>
 
-        <div class="field">
-          <label for="textEffect">Text Effect</label>
-          <select id="textEffect"><option>None</option><option>Blur Effect</option><option>Distressed Worn</option><option>Drop Shadow</option><option>Emboss 3D</option><option>Glow Effect</option><option>Inner Glow</option><option>Metallic Shine</option><option>Neon Flicker</option><option>No Effect</option><option>Stroke Outline</option><option>Custom Text Effect</option></select>
+        <div class="field full">
+          <label>Text Effects <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(select multiple to layer effects)</span></label>
+          <div class="checkbox-group" id="textEffectCheckboxes" style="max-height:220px;"></div>
+          <div class="checkbox-selected-display" id="textEffectSelected">None selected</div>
           <input class="custom-input" id="customTextEffect" placeholder="Type custom text effect" />
+        </div>
+
+        <div class="field full">
+          <label>Text Patterns <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(select multiple to blend patterns)</span></label>
+          <div class="checkbox-group" id="textPatternCheckboxes" style="max-height:220px;"></div>
+          <div class="checkbox-selected-display" id="textPatternSelected">None selected</div>
+          <input class="custom-input" id="customTextPattern" placeholder="Type custom pattern" />
+        </div>
+
+        <div class="field full">
+          <label class="checkbox-item" style="display:flex;align-items:center;gap:8px;font-weight:600;">
+            <input type="checkbox" id="premium3DToggle"> Premium 3D Bold Typography <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(reinforces a cohesive, high-end 3D logo-quality treatment across whatever materials/patterns/effects/finishes you pick)</span>
+          </label>
         </div>
 
         <div class="field full">
@@ -1770,6 +1818,7 @@
               <span class="section-label label-gold">Bonus</span>
               <span class="section-title">Chenille Patch Builder</span>
             </div>
+            <button type="button" class="btn-green" style="margin-left:auto;font-size:0.8rem;padding:6px 14px;" onclick="event.stopPropagation(); randomizePatch();">🎲 Randomize Patch</button>
           </div>
           <div class="section-zone-body">
           <div class="form-grid">
@@ -1840,6 +1889,13 @@
           <div class="checkbox-group" id="patchEmbellishmentsCheckboxes"></div>
           <div class="checkbox-selected-display" id="patchEmbellishmentsSelected">None selected</div>
           <input class="custom-input" id="customPatchEmbellishments" placeholder="Add a custom embellishment..." />
+        </div>
+
+        <div class="field full">
+          <label>Patch Print / Pattern <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(select all that apply — same print options as Typography)</span></label>
+          <div class="checkbox-group" id="patchPatternCheckboxes"></div>
+          <div class="checkbox-selected-display" id="patchPatternSelected">None selected</div>
+          <input class="custom-input" id="customPatchPattern" placeholder="Add a custom print/pattern..." />
         </div>
 
           </div>
@@ -2052,6 +2108,25 @@
   <script>
     'use strict';
 
+    // ── DARK MODE ─────────────────────────────────────────────────────────────
+    function applyDarkModePreference() {
+      const saved = localStorage.getItem('vibeVaultTheme');
+      const isDark = saved === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      const icon = document.getElementById('darkModeIcon');
+      const label = document.getElementById('darkModeLabel');
+      if (icon) icon.textContent = isDark ? '☀️' : '🌙';
+      if (label) label.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    }
+
+    function toggleDarkMode() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      localStorage.setItem('vibeVaultTheme', isDark ? 'light' : 'dark');
+      applyDarkModePreference();
+    }
+
+    applyDarkModePreference();
+
     // ── DATA ──────────────────────────────────────────────────────────────────
 
     const femaleBodyTypes = ['None','Apple Shaped','Athletic Fit','BBL Shape','Hourglass','Mid Size','Muscular Feminine','Pear Shaped','Plus Size','Slim Petite','Slim Thick','Soft Feminine','Tall Runway','Thick Thigh Slim Waist','Toned Curvy','Voluptuous','Custom Body Type'];
@@ -2089,8 +2164,8 @@
       'Dyed Hair Color','Long Curly Hair','Man Bun','Custom Hairstyle'];
     const groupHairstyles = ['None','Afros and Curls','Braids and Fades','Female and Male Hairstyle Variety','Long Hair and Short Cuts','Mixed Hairstyles','Custom Hairstyle'];
 
-    const femaleMakeup = ['None','Bold Editorial Makeup','Bronze Glam','Clean Girl Makeup','Full Glam','Glitter Makeup','Glossy Glam','Natural Makeup','Neutral Glam','Pink Glam','Smokey Eye','Soft Glam','Custom Makeup'];
-    const maleMakeup = ['None','Editorial Makeup','Light Groomed Makeup','Natural Skin Finish','Stage Makeup','Custom Makeup'];
+    const femaleMakeup = ['None','Bold Editorial Makeup','Bold Lip Glam','Bronze Glam','Chrome Eye Makeup','Clean Girl Makeup','Cut Crease','Fox Eye Makeup','Full Glam','Glazed Donut Skin','Glitter Makeup','Glossy Glam','Graphic Eyeliner','Halo Eye Makeup','Matte Full Face','Monochromatic Makeup','Natural Makeup','Neutral Glam','No Makeup Makeup Look','Pink Glam','Siren Eyes','Smokey Eye','Soft Glam','Sunkissed Bronze Glam','Vampy Glam','Winged Eyeliner Glam','Y2K Makeup','Custom Makeup'];
+    const maleMakeup = ['None','Bold Editorial Makeup','Editorial Makeup','Groomed Brows Only','Light Groomed Makeup','Matte Contour','Natural Skin Finish','Smokey Eye','Stage Makeup','Subtle Tinted Skin','Custom Makeup'];
 
     const femaleLips = ['None','Brown Lined Lips','Dark Chocolate Gloss','Glossy Nude Lips','Matte Red Lips','Ombre Lips','Pink Gloss Lips','Shimmer Gloss Lips','Soft Peach Lips','Custom Lip Style'];
     const maleLips = ['None','Glossed Lips','Moisturized Lips','Natural Lips','Custom Lip Style'];
@@ -2308,9 +2383,25 @@
     const hatOptions = '<option>None</option><option>Baseball Cap</option><option>Beanie</option><option>Beret</option><option>Bucket Hat</option><option>Cowboy Hat</option><option>Fedora Hat</option><option>Graduation Cap</option><option>Head Wrap</option><option>Luxury Designer Hat</option><option>Custom Hat</option>';
 
     // ── MULTI-SELECT LISTS (checkbox groups; "None" / "Custom X" entries dropped — a separate text input below each group covers custom values) ──
-    const accessoryList = ['Sunglasses','Cat Eye Sunglasses','Oversized Sunglasses','Designer Sunglasses','Designer Handbag','Mini Bag','Clutch Purse','Tote Bag','Backpack','Belt Bag','Louis Vuitton Inspired Bag','Gucci Inspired Bag','Chanel Inspired Bag','Birkin Inspired Bag','Designer Monogram Bag','Bling Rhinestone Bag','Headphones','Wireless Earbuds','Luxury Watch','Smart Watch','Designer Watch','Gold Hoop Earrings','Diamond Hoop Earrings','Bling Hoop Earrings','Pearl Earrings','Stud Earrings','Chandelier Earrings','Ear Cuff','Nose Ring','Layered Necklaces','Chunky Gold Chains','Diamond Chain','Bling Chain Necklace','Pearl Necklace','Pendant Necklace','Choker Necklace','Body Chain','Stacked Bracelets','Gold Bangles','Beaded Bracelets','Tennis Bracelet','Charm Bracelet','Diamond Bracelet','Rings','Statement Ring','Stacked Rings','Diamond Ring','Ankle Bracelet','Waist Beads','Silk Scarf','Head Scarf','Grillz','Diamond Grillz','Gold Grillz','Hair Bow','Hair Clip','Butterfly Hair Clips','Rhinestone Hair Pins','Headband','Embellished Headband','Gloves','Fingerless Gloves','Belt','Luxury Belt','Designer Belt','Bling Belt'];
+    const accessoryCategories = [
+      ['Eyewear', ['Cat Eye Sunglasses','Designer Sunglasses','Oversized Sunglasses','Sunglasses']],
+      ['Bags & Purses', ['Backpack','Belt Bag','Birkin Inspired Bag','Bling Rhinestone Bag','Chanel Inspired Bag','Clutch Purse','Designer Handbag','Designer Monogram Bag','Gucci Inspired Bag','Louis Vuitton Inspired Bag','Mini Bag','Tote Bag']],
+      ['Tech Accessories', ['Headphones','Wireless Earbuds']],
+      ['Watches', ['Designer Watch','Luxury Watch','Smart Watch']],
+      ['Earrings & Ear Accessories', ['Bling Hoop Earrings','Chandelier Earrings','Diamond Hoop Earrings','Ear Cuff','Gold Hoop Earrings','Nose Ring','Pearl Earrings','Stud Earrings']],
+      ['Necklaces & Chains', ['Bling Chain Necklace','Body Chain','Choker Necklace','Chunky Gold Chains','Diamond Chain','Layered Necklaces','Pearl Necklace','Pendant Necklace']],
+      ['Bracelets', ['Beaded Bracelets','Charm Bracelet','Diamond Bracelet','Gold Bangles','Stacked Bracelets','Tennis Bracelet']],
+      ['Rings', ['Diamond Ring','Rings','Stacked Rings','Statement Ring']],
+      ['Body Jewelry', ['Ankle Bracelet','Waist Beads']],
+      ['Scarves & Head Wraps', ['Head Scarf','Silk Scarf']],
+      ['Grillz', ['Diamond Grillz','Gold Grillz','Grillz']],
+      ['Hair Accessories', ['Butterfly Hair Clips','Embellished Headband','Hair Bow','Hair Clip','Headband','Rhinestone Hair Pins']],
+      ['Gloves', ['Fingerless Gloves','Gloves']],
+      ['Belts', ['Belt','Bling Belt','Designer Belt','Luxury Belt']]
+    ];
+    const accessoryList = accessoryCategories.flatMap(([, items]) => items);
 
-    const hairColorList = ['Black','Dark Brown','Medium Brown','Light Brown','Blonde','Dirty Blonde','Strawberry Blonde','Auburn','Red','Copper','Burgundy','Chestnut Brown','Silver','Gray','White','Platinum','Highlights','Ombre','Balayage','Pink','Blue','Purple','Colorful Rainbow'];
+    const hairColorList = ['Auburn', 'Balayage', 'Black', 'Blonde', 'Blue', 'Burgundy', 'Chestnut Brown', 'Colorful Rainbow', 'Copper', 'Dark Brown', 'Dirty Blonde', 'Gray', 'Highlights', 'Light Brown', 'Medium Brown', 'Ombre', 'Pink', 'Platinum', 'Purple', 'Red', 'Silver', 'Strawberry Blonde', 'White'];
 
     const skinDetailsList = ['Dimples','Freckles','Beauty Mark','High Cheekbones','Soft Cheeks','Chiseled Jawline','Defined Cheekbones','Rosy Cheeks','Smile Lines'];
 
@@ -2342,7 +2433,8 @@
     const textColorList = [...colorPaletteList, 'Multicolor', 'Team Colors'];
 
     const patchColorsList = [...colorPaletteList, 'Neon Bright', 'Rainbow Gradient', 'Team Color Match'];
-    const patchEmbellishmentsList = ['Crystal Gems', 'Rhinestone Scatter', 'Sequins', 'Pearl Accents', 'Metallic Thread Accents', 'Glitter Vinyl Accents', '3D Puff Embroidery Effect', 'Beaded Trim', 'Mascot Graphic Icon', 'Varsity Star Accents', 'Felt Backing Layer', 'Sparkle Foil Accents', 'Basketball Icon', 'Football Icon', 'Baseball Icon', 'Roller Skate Icon', 'Money Stack Icon', 'Dollar Sign Icon', 'Lips Icon', 'Crown Icon', 'Lightning Bolt Icon', 'Flame Icon', 'Heart Icon', 'Bow Icon', 'Sneaker Icon', 'Butterfly Icon', 'Lipstick Icon', 'Champagne Glass Icon', 'Christmas Tree Icon', 'Snowflake Icon', 'Santa Hat Icon', 'Pumpkin Icon', 'Turkey Icon', 'Firework Icon', 'Easter Egg Icon', 'Menorah Icon', 'Kinara Icon'];
+    const patchPatternList = ['Argyle Pattern','Camo Pattern','Checkerboard Pattern','Cheetah Print','Floral Pattern','Houndstooth Pattern','Leopard Print','Ostrich Feather Texture','Paisley Pattern','Plaid Pattern','Polka Dot Pattern','Snake Skin Texture','Stripes Pattern','Tartan Pattern','Tie-Dye Pattern','Tiger Print','Zebra Print'];
+    const patchEmbellishmentsList = ['3D Puff Embroidery Effect', 'Baseball Icon', 'Basketball Icon', 'Beaded Trim', 'Bow Icon', 'Butterfly Icon', 'Champagne Glass Icon', 'Christmas Tree Icon', 'Crown Icon', 'Crystal Gems', 'Dollar Sign Icon', 'Easter Egg Icon', 'Felt Backing Layer', 'Firework Icon', 'Flame Icon', 'Football Icon', 'Glitter Vinyl Accents', 'Heart Icon', 'Kinara Icon', 'Lightning Bolt Icon', 'Lips Icon', 'Lipstick Icon', 'Mascot Graphic Icon', 'Menorah Icon', 'Metallic Thread Accents', 'Money Stack Icon', 'Pearl Accents', 'Pumpkin Icon', 'Rhinestone Scatter', 'Roller Skate Icon', 'Santa Hat Icon', 'Sequins', 'Sneaker Icon', 'Snowflake Icon', 'Sparkle Foil Accents', 'Turkey Icon', 'Varsity Star Accents'];
 
     const stankFaceElems = ['Arms Folded','Furrowed Brow','Fingers Spread Out','Hand on Hip','Head Tilted','Mad Expression','One Eyebrow Raised','Peace Sign','Pointing','Pursed Lips','Rolling Eyes','Shocked Wide Eyes','Side-Eye Smirk','Smelling Something Stinky','Stop Hand'];
 
@@ -2402,18 +2494,34 @@
       return `displayed together as a styled flat-lay product bundle featuring ${products.length} matching items, each with the exact same design consistently applied across every piece: ${itemDescs.join(' ')} All items are arranged together in one cohesive flat-lay or styled product spread, photographed from above or at a slight angle on a clean neutral surface, with consistent branding, color, and design placement across every item in the bundle.`;
     }
 
-    const textDecorativeList = ['Sparkles and Stars','Diamond Accents','Hearts','Lightning Bolts','Crown Accents','Floral Accents','Butterfly Accents','Pearl Accents','Confetti','Money Signs','Fire Effects'];
+    const textDecorativeCategories = [
+      ['Glam and Sparkle', ['Butterfly Accents','Confetti','Crown Accents','Diamond Accents','Fire Effects','Floral Accents','Hearts','Lightning Bolts','Money Signs','Pearl Accents','Sparkles and Stars']],
+      ['3D Animals', ['3D Bear Icon','3D Lion Icon','3D Panther Icon','3D Tiger Icon','3D Wolf Icon']],
+      ['3D Birds', ['3D Dove Icon','3D Eagle Icon','3D Flamingo Icon','3D Owl Icon','3D Peacock Icon','3D Swan Icon']],
+      ['3D Office', ['3D Briefcase Icon','3D Calculator Icon','3D Clipboard Icon','3D Laptop Icon','3D Pen Icon']],
+      ['3D Fashion', ['3D Bow Tie Icon','3D Handbag Icon','3D High Heel Icon','3D Lipstick Icon','3D Perfume Bottle Icon','3D Sunglasses Icon']],
+      ['3D Tech', ['3D Circuit Board Icon','3D Desktop Computer Icon','3D Gear / Cog Icon','3D iPad Icon','3D Laptop Icon','3D Robot Icon','3D Rocket Icon','3D Wifi Symbol Icon']],
+      ['3D Sports', ['3D Baseball Icon','3D Basketball Icon','3D Football Icon','3D Soccer Ball Icon','3D Trophy Icon','3D Whistle Icon']],
+      ['3D Nature and Other', ['3D Cloud Icon','3D Music Note Icon','3D Palm Tree Icon','3D Skull Icon','3D Sun Icon']]
+    ];
+    const textDecorativeList = textDecorativeCategories.flatMap(([, items]) => items);
 
-    const textFinishList = ['High Gloss','Super Matte','Candy Coated','Vibrant Holographic','Luxury Marble','Rhinestone Effect','Glitter Texture','Diamond Lettering','Jelly Texture','Fur Texture','Crochet Texture','Metallic Foil','Satin Texture','Water Texture','Fire Effect','Ice Lettering','Velvet Texture','Gummy Candy Texture','Cloud Lettering','Pearl Finish'];
+    const textFinishList = ['High Gloss','Super Matte','Candy Coated','Vibrant Holographic','Luxury Marble','Rhinestone Effect','Glitter Texture','Diamond Lettering','Jelly Texture','Fur Texture','Crochet Texture','Metallic Foil','Satin Texture','Water Texture','Fire Effect','Ice Lettering','Velvet Texture','Gummy Candy Texture','Cloud Lettering','Pearl Finish','Brushed Metal Finish','Frosted Glass Finish','Iridescent Finish','Liquid Metal Finish','Powder Coat Finish'];
+    const textEffectList = ['Bevel and Emboss','Blur Effect','Chrome Reflection','Distressed Worn','Double Shadow','Drop Shadow','Emboss 3D','Extruded Depth','Glow Effect','Inner Glow','Lens Flare Highlight','Long Cast Shadow','Metallic Shine','Neon Flicker','Stroke Outline','Vintage Grain','Wet Look Shine'];
+    const textPatternList = ['Argyle Pattern','Camo Pattern','Checkerboard Pattern','Floral Pattern','Houndstooth Pattern','Paisley Pattern','Plaid Pattern','Polka Dot Pattern','Stripes Pattern','Tartan Pattern','Tie-Dye Pattern'];
     const textFontStyleCategories = [
-      ['Patch and Texture Styles', ['Chenille Patch Lettering','Chenille Script Varsity Patch','Chunky Varsity Letters','Embroidered Patch Letters','Fuzzy Varsity Patch Letters','Glitter Patch Letters','Metallic Varsity Letters','Pearl Beaded Lettering','Rhinestone Beaded Lettering','Varsity Athletic Bold Lettering']],
+      ['Patch and Texture Styles', ['Cheetah Print Lettering','Chenille Patch Lettering','Chenille Script Varsity Patch','Chunky Varsity Letters','Crochet Knit Lettering','Embroidered Patch Letters','Fuzzy Varsity Patch Letters','Glitter Patch Letters','Leopard Print Lettering','Metallic Varsity Letters','Pearl Beaded Lettering','Rhinestone Beaded Lettering','Snake Skin Texture Lettering','Varsity Athletic Bold Lettering','Zebra Print Lettering']],
       ['Bubble and Cartoon Styles', ['Balloon / Inflatable 3D Letters','Bubble Lettering','Gel / Jelly Letters','Kawaii Cartoon Typography','Puffy Sticker Letters','Sticker Letters']],
       ['3D and Dimensional Styles', ['3D Extruded Letters','Bold Block Lettering','Shadow 3D Letters']],
+      ['Logo and Brand Style', ['Corporate Logo Lettering','Emblem Crest Lettering','Minimalist Brand Wordmark','Monogram Logo Lettering','Startup Tech Logo Font']],
       ['Street and Urban Styles', ['Airbrush 90s Typography','Burn Book Style','Graffiti Style Lettering','Grunge Lettering','Handwritten Marker Style','Ransom Note Style']],
-      ['Y2K and Retro Styles', ['Chrome Metallic Letters','Mixed Font Styles','Retro 70s Lettering','Retro Groovy Lettering','Retro Pixel Letters']],
+      ['Sports and Team Lettering', ['Championship Ring Lettering','Stadium Scoreboard Font','Team Jersey Number Font']],
+      ['Gaming and Streamer Style', ['Esports Bold Lettering','Gaming Tag Typography','Neon Gamer Font','Streamer Logo Lettering','Twitch Emote Style Lettering']],
+      ['Y2K and Retro Styles', ['Chrome Metallic Letters','Liquid Chrome Letters','Mirror Chrome Letters','Mixed Font Styles','Retro 70s Lettering','Retro Groovy Lettering','Retro Pixel Letters']],
       ['Liquid and Effects Styles', ['Dripping Letters','Neon Glow Letters']],
       ['Alternative and Edgy Styles', ['Cyberpunk Typography','Metal / Punk Lettering']],
       ['Elegant and Script Styles', ['Calligraphy Lettering','Outline / Stroke Letters','Script Cursive Lettering']],
+      ['Classic Typography Styles', ['Bold Sans Serif Lettering','Comic Book Lettering','Condensed Athletic Font','Elegant Serif Lettering','Gothic Blackletter Lettering','Typewriter Font Lettering','Vintage Western Lettering']],
       ['Specialty Styles', ['Coloring Book Lettering']]
     ];
 
@@ -2427,7 +2535,7 @@
       ['Seasonal and Themed', ['Vacation Wear','Swimwear','Beach Cover Up','Winter Coat and Scarf','Holiday Outfit','Halloween Costume']],
       ['Cultural and Special', ['Sorority Outfit','Fraternity Outfit','Traditional Cultural Outfit','African Print Dress','Ankara Suit','Dashiki Top','Bridesmaid Dress','Wedding Guest Outfit','Quinceanera Dress','Kimono Style Outfit']],
       ['Y2K and Retro', ['Y2K Low Rise Jeans and Top','Baby Tee and Mini Skirt','Velour Tracksuit','Denim Mini Skirt and Crop Top','Butterfly Top and Flares','70s Bell Bottoms','80s Power Shoulder Blazer','90s Windbreaker Set']],
-      ['Luxury and Designer', ['All White Designer Outfit','All Black Designer Outfit','Monochromatic Luxury Set','Designer Co-Ord Set','Designer Monogram Set','Louis Vuitton Inspired Outfit','Gucci Inspired Outfit','Chanel Inspired Outfit','Fendi Inspired Outfit','Burberry Inspired Outfit','Fur Coat and Mini Dress','Luxury Trench Coat','Designer Pantsuit','High Fashion Editorial Look','Couture Gown']],
+      ['Luxury and Designer', ['All Black Designer Outfit','All White Designer Outfit','Balenciaga Inspired Outfit','Burberry Inspired Outfit','Chanel Inspired Outfit','Chanel Tweed Set with Matching Bag','Couture Gown','Designer Co-Ord Set','Designer Head-to-Toe Look with Handbag','Designer Monogram Set','Designer Pantsuit','Dior Inspired Outfit','Fendi Inspired Outfit','Fur Coat and Mini Dress','Gucci Inspired Outfit','Gucci Inspired Set with Matching Bag','High Fashion Editorial Look','Louis Vuitton Inspired Outfit','Louis Vuitton Inspired Set with Matching Bag','Luxury Trench Coat','Monochromatic Luxury Set','Off-White Inspired Outfit','Prada Inspired Outfit','Versace Inspired Outfit','YSL Inspired Outfit']],
       ['Business and Boss', ['Boss Lady Blazer Set','Fitted Blazer Dress','Wide Leg Trousers and Blouse','Tailored Pantsuit','Skirt Suit','Structured Midi Dress']],
       ['Boho and Feminine', ['Boho Maxi Dress','Floral Wrap Dress','Flowy Midi Skirt and Top','Lace Dress','Satin Slip Dress','Puff Sleeve Dress','Corset Top and Skirt','Off Shoulder Dress']]
     ];
@@ -2489,7 +2597,7 @@
     }
 
     function accessoryCheckboxHtml(idx) {
-      return checkboxListHtml('accessory', accessoryList, idx);
+      return categorizedCheckboxListHtml('accessory', accessoryCategories, idx);
     }
 
     // ── BUILD ONE CHARACTER PANEL ─────────────────────────────────────────────
@@ -3200,6 +3308,7 @@
       ['collegeConf','College Conference'],
       ['sassySaying','Saying'],
       ['textEffect','Text Effect'],
+      ['textPattern','Text Pattern'],
       ['textFontStyle','Text Style'],['textFinish','Text Finish'],
       ['textLayout','Text Layout'],
       ['letterSpacing','Letter Spacing'],
@@ -3418,6 +3527,11 @@
       });
       const skinFinishVals = getCharMultiValues('skinFinish', 'customSkinFinish', idx);
       if (skinFinishVals.length) descriptors.push(...skinFinishVals.map(v => v.toLowerCase()));
+      const flawlessFinishes = ['glass skin', 'porcelain finish', 'radiant glow', 'dewy skin'];
+      const hasFlawlessFinish = skinFinishVals.some(v => flawlessFinishes.includes(v.toLowerCase()));
+      const flawlessSkinNote = (hasFlawlessFinish && skinDetailVals.length === 0)
+        ? 'Skin must be flawless, smooth, and poreless — no visible blemishes, texture, or imperfections; even, luminous, professionally retouched skin quality throughout, with soft glowing highlights on the cheekbones and nose bridge.'
+        : '';
       if (gender === 'Male') {
         const facial = getCharVal('facialHair', idx);
         if (facial && facial !== 'None') descriptors.push(facial.toLowerCase());
@@ -3469,7 +3583,7 @@
         }
       }
 
-      return { descriptors, tail, stankLine, emphasizedSkinDetails, stankTraits };
+      return { descriptors, tail, stankLine, emphasizedSkinDetails, stankTraits, flawlessSkinNote };
     }
 
     function buildCharacterStyling(idx) {
@@ -3544,6 +3658,7 @@
         }
         line += skinLine;
       }
+      if (facial.flawlessSkinNote) line += ` Character ${position}'s ${facial.flawlessSkinNote.charAt(0).toLowerCase() + facial.flawlessSkinNote.slice(1)}`;
       if (facial.stankLine) {
         line += ' ' + facial.stankLine.replace('Facial expression and body language', `Character ${position}'s facial expression and body language`);
       }
@@ -3696,19 +3811,23 @@
         const stLayout = getVal('textLayout');
         const stLetterSpacing = getVal('letterSpacing');
         const stOutline = getVal('textOutline');
-        const stEffect = getVal('textEffect');
+        const stEffectVals = getMultiValues('textEffect', 'customTextEffect');
+        const stPatternVals = getMultiValues('textPattern', 'customTextPattern');
         const stColorVals = getMultiValues('textColor', 'customTextColor');
         const stFinishVals = getMultiValues('textFinish', 'customTextFinish');
         const stDecorativeVals = getMultiValues('textDecorative', 'customTextDecorative');
         const stPaletteColors = getMultiValues('colorPalette', 'customColorPalette');
+        const stPremium3D = el('premium3DToggle') && el('premium3DToggle').checked;
         const stRatio = getVal('aspectRatio');
 
         let standaloneTextDesc = `Create a bold, eye-catching text art/typography design image featuring the words "${standaloneTextPhrase}" — no character, no illustration of a person, text and graphic elements only. `;
-        if (stFontStyleVals.length) standaloneTextDesc += `Font / lettering style: ${stFontStyleVals.join(' blended with ')}. `;
+        if (stPremium3D) standaloneTextDesc += `This must read as premium 3D bold typography — a polished, high-end logo-quality treatment with real dimensional depth, not a flat 2D graphic. Every material, pattern, effect, finish, and color below must work together as one cohesive, professionally rendered 3D object, not a disjointed list of separate attributes. `;
+        if (stFontStyleVals.length) standaloneTextDesc += `Font / lettering style (material): ${stFontStyleVals.join(' blended with ')}. `;
+        if (stPatternVals.length) standaloneTextDesc += `Surface pattern filling the letters: ${stPatternVals.join(' combined with ')}. `;
         if (stLayout && stLayout !== 'None') standaloneTextDesc += `Text layout: ${stLayout}. `;
         if (stLetterSpacing && stLetterSpacing !== 'None') standaloneTextDesc += `Letter spacing: ${stLetterSpacing}. `;
         if (stOutline && stOutline !== 'None') standaloneTextDesc += `Outline style: ${stOutline}. `;
-        if (stEffect && stEffect !== 'None') standaloneTextDesc += `Text effect: ${stEffect}. `;
+        if (stEffectVals.length) standaloneTextDesc += `Text effects (layered): ${stEffectVals.join(', ')}. `;
         if (stColorVals.length) standaloneTextDesc += `Text color: ${stColorVals.join(', ')}. `;
         if (stFinishVals.length) standaloneTextDesc += `Text finish and texture: ${stFinishVals.join(', ')}. `;
         if (stDecorativeVals.length) standaloneTextDesc += `Decorative elements: ${stDecorativeVals.join(', ')}. `;
@@ -3731,6 +3850,7 @@
         const patchTextLayout = getVal('patchTextLayout');
         const patchOutline = getVal('patchOutline');
         const patchColorVals = getMultiValues('patchColors', 'customPatchColors');
+        const patchPatternVals = getMultiValues('patchPattern', 'customPatchPattern');
         const patchEmbellishmentVals = getMultiValues('patchEmbellishments', 'customPatchEmbellishments');
         const patchSize = getVal('patchSize');
         const patchEdging = getVal('patchEdging');
@@ -3743,6 +3863,7 @@
         if (patchOutline && patchOutline !== 'None') standaloneDesc += `Outline style: ${patchOutline}. `;
         if (patchSize && patchSize !== 'None') standaloneDesc += `Patch size: ${patchSize}. `;
         if (patchColorVals.length) standaloneDesc += `Color scheme: ${patchColorVals.join(', ')}. `;
+        if (patchPatternVals.length) standaloneDesc += `Print / pattern woven into the chenille lettering: ${patchPatternVals.join(' combined with ')} — the pattern must still read as fuzzy chenille yarn texture, not a flat printed graphic. `;
         if (patchEmbellishmentVals.length) standaloneDesc += `Embellishments integrated into and around the letterforms: ${patchEmbellishmentVals.join(', ')}. `;
         if (patchEdging && patchEdging !== 'None') standaloneDesc += `Patch edging: ${patchEdging}. `;
         standaloneDesc += `Textured chenille finish with embroidered appearance, fuzzy thread detail, and authentic varsity patch aesthetic. The letters should have a high gloss finish. Ultra-tight letter spacing between letters. `;
@@ -3765,6 +3886,7 @@
         const patchTextLayout = getVal('patchTextLayout');
         const patchOutline = getVal('patchOutline');
         const patchColorVals = getMultiValues('patchColors', 'customPatchColors');
+        const patchPatternVals = getMultiValues('patchPattern', 'customPatchPattern');
         const patchEmbellishmentVals = getMultiValues('patchEmbellishments', 'customPatchEmbellishments');
         const patchSize = getVal('patchSize');
         const patchEdging = getVal('patchEdging');
@@ -3784,6 +3906,7 @@
         if (patchOutline && patchOutline !== 'None') mockupDesc += `Outline: ${patchOutline}. `;
         if (patchSize && patchSize !== 'None') mockupDesc += `Relative design size: ${patchSize}. `;
         if (patchColorVals.length) mockupDesc += `Colors: ${patchColorVals.join(', ')}. `;
+        if (patchPatternVals.length) mockupDesc += `Print / pattern woven into the chenille lettering: ${patchPatternVals.join(' combined with ')} — must still read as fuzzy chenille yarn texture, not a flat printed graphic. `;
         if (patchEmbellishmentVals.length) mockupDesc += `Embellishments: ${patchEmbellishmentVals.join(', ')}. `;
         if (patchEdging && patchEdging !== 'None') mockupDesc += `Edging style: ${patchEdging}. `;
         mockupDesc += `Textured chenille finish with embroidered appearance, fuzzy thread detail, and authentic varsity patch aesthetic. The letters should have a high gloss finish. Ultra-tight letter spacing between letters. `;
@@ -3806,10 +3929,12 @@
         const textOnlyLayout = getVal('textLayout');
         const textOnlyLetterSpacing = getVal('letterSpacing');
         const textOnlyOutline = getVal('textOutline');
-        const textOnlyEffect = getVal('textEffect');
+        const textOnlyEffectVals = getMultiValues('textEffect', 'customTextEffect');
+        const textOnlyPatternVals = getMultiValues('textPattern', 'customTextPattern');
         const textOnlyColorVals = getMultiValues('textColor', 'customTextColor');
         const textOnlyFinishVals = getMultiValues('textFinish', 'customTextFinish');
         const textOnlyDecorativeVals = getMultiValues('textDecorative', 'customTextDecorative');
+        const textOnlyPremium3D = el('premium3DToggle') && el('premium3DToggle').checked;
         const bundleRawText = el('activeBundleProducts') ? el('activeBundleProducts').value : '';
         let productSpec;
         if (bundleRawText) {
@@ -3821,11 +3946,13 @@
         }
 
         let textOnlyDesc = `A product mockup photo. A bold, eye-catching text/logo design featuring the words "${textOnlyPhrase}" — no character, no illustration of a person, text and graphic elements only. `;
-        if (textOnlyFontStyleVals.length) textOnlyDesc += `Font / lettering style: ${textOnlyFontStyleVals.join(' blended with ')}. `;
+        if (textOnlyPremium3D) textOnlyDesc += `This must read as premium 3D bold typography — a polished, high-end logo-quality treatment with real dimensional depth, not a flat 2D graphic. Every material, pattern, effect, finish, and color below must work together as one cohesive, professionally rendered 3D object. `;
+        if (textOnlyFontStyleVals.length) textOnlyDesc += `Font / lettering style (material): ${textOnlyFontStyleVals.join(' blended with ')}. `;
+        if (textOnlyPatternVals.length) textOnlyDesc += `Surface pattern filling the letters: ${textOnlyPatternVals.join(' combined with ')}. `;
         if (textOnlyLayout && textOnlyLayout !== 'None') textOnlyDesc += `Text layout: ${textOnlyLayout}. `;
         if (textOnlyLetterSpacing && textOnlyLetterSpacing !== 'None') textOnlyDesc += `Letter spacing: ${textOnlyLetterSpacing}. `;
         if (textOnlyOutline && textOnlyOutline !== 'None') textOnlyDesc += `Outline style: ${textOnlyOutline}. `;
-        if (textOnlyEffect && textOnlyEffect !== 'None') textOnlyDesc += `Text effect: ${textOnlyEffect}. `;
+        if (textOnlyEffectVals.length) textOnlyDesc += `Text effects (layered): ${textOnlyEffectVals.join(', ')}. `;
         if (textOnlyColorVals.length) textOnlyDesc += `Text color: ${textOnlyColorVals.join(', ')}. `;
         if (textOnlyFinishVals.length) textOnlyDesc += `Text finish and texture: ${textOnlyFinishVals.join(', ')}. `;
         if (textOnlyDecorativeVals.length) textOnlyDesc += `Decorative elements: ${textOnlyDecorativeVals.join(', ')}. `;
@@ -3895,6 +4022,7 @@
           }
           parts.push(skinDetailLine);
         }
+        if (facial.flawlessSkinNote) parts.push(facial.flawlessSkinNote);
 
         const styling = buildCharacterStyling(idx);
         if (styling.length) parts.push(`Styling: ${styling.join(', ')}.`);
@@ -4118,7 +4246,6 @@
       const textPhrase = customPhrase || (sayingVal && sayingVal !== 'None' ? sayingVal : '');
 
       const typography = [
-        ['textEffect','text effect'],
         ['textLayout','text layout'],
         ['letterSpacing','letter spacing'],
         ['textPlacement','text placement'],
@@ -4130,13 +4257,18 @@
       }).filter(Boolean);
 
       const textFontStyleVals = getMultiValues('textFontStyle', 'customTextFontStyle');
-      if (textFontStyleVals.length) typography.push(`text font style: ${textFontStyleVals.join(' blended with ')}`);
+      if (textFontStyleVals.length) typography.push(`text font style (material): ${textFontStyleVals.join(' blended with ')}`);
+      const textPatternVals = getMultiValues('textPattern', 'customTextPattern');
+      if (textPatternVals.length) typography.push(`text surface pattern: ${textPatternVals.join(' combined with ')}`);
       const textColorVals = getMultiValues('textColor', 'customTextColor');
       if (textColorVals.length && !isColoringPage) typography.push(`text color: ${textColorVals.join(', ')}`);
       const textFinishVals = getMultiValues('textFinish', 'customTextFinish');
       if (textFinishVals.length && !isColoringPage) typography.push(`text finish and texture: ${textFinishVals.join(', ')}`);
+      const textEffectVals = getMultiValues('textEffect', 'customTextEffect');
+      if (textEffectVals.length) typography.push(`text effects (layered): ${textEffectVals.join(', ')}`);
       const textDecorativeVals = getMultiValues('textDecorative', 'customTextDecorative');
       if (textDecorativeVals.length) typography.push(`text decorative elements: ${textDecorativeVals.join(', ')}`);
+      const premium3DActive = el('premium3DToggle') && el('premium3DToggle').checked;
 
       const teamName = el('teamName') ? el('teamName').value.trim() : '';
 
@@ -4148,6 +4280,7 @@
         const patchPlacement = getVal('patchPlacement');
         const patchPosition = getVal('patchPosition');
         const patchColorVals = getMultiValues('patchColors', 'customPatchColors');
+        const patchPatternVals = getMultiValues('patchPattern', 'customPatchPattern');
         const patchEmbellishmentVals = getMultiValues('patchEmbellishments', 'customPatchEmbellishments');
         const patchSize = getVal('patchSize');
         const patchEdging = getVal('patchEdging');
@@ -4159,6 +4292,7 @@
         if (patchOutline && patchOutline !== 'None') patchDesc += `Outline: ${patchOutline}. `;
         if (patchSize && patchSize !== 'None') patchDesc += `Patch size: ${patchSize}. `;
         if (patchColorVals.length) patchDesc += `Patch colors: ${patchColorVals.join(', ')}. `;
+        if (patchPatternVals.length) patchDesc += `Print / pattern woven into the chenille lettering: ${patchPatternVals.join(' combined with ')} — must still read as fuzzy chenille yarn texture, not a flat printed graphic. `;
         if (patchEmbellishmentVals.length) patchDesc += `Embellishments: ${patchEmbellishmentVals.join(', ')}. `;
         if (isOnClothing) {
           if (patchPlacement && patchPlacement !== 'None') patchDesc += `Patch positioned on: ${patchPlacement}. `;
@@ -4173,6 +4307,7 @@
 
       if (textPhrase) parts.push(`Include the following text displayed prominently in the design: "${textPhrase}".`);
       if (teamName) parts.push(`Team: ${teamName}. Include accurate team colors, team logo styling, and team mascot graphic that matches this specific team.`);
+      if (premium3DActive && (textPhrase || typography.length)) parts.push(`This text/logo treatment must read as premium 3D bold typography — a polished, high-end logo-quality treatment with real dimensional depth, not a flat 2D graphic. Every material, pattern, effect, finish, and color in the typography details below must work together as one cohesive, professionally rendered 3D object.`);
       if (typography.length) parts.push(`Text and typography details: ${typography.join(', ')}.`);
 
       // ── CORE QUALITY CONTROL ─────────────────────────────────────────────
@@ -4269,6 +4404,52 @@
       const pool = eligible.length ? eligible : allBoxes; // never end up with zero options
       const shuffled = pool.sort(() => Math.random() - 0.5);
       shuffled.slice(0, Math.min(count, pool.length)).forEach(b => b.checked = true);
+    }
+
+    function randomizeTextStyle() {
+      const textSelects = ['letterSpacing', 'textLayout', 'textOutline', 'textPlacement'];
+      textSelects.forEach(id => {
+        const select = el(id);
+        if (!select) return;
+        const opts = [...select.options].filter(o => o.value && o.value !== 'None' && !o.value.toLowerCase().includes('custom'));
+        if (opts.length) select.value = opts[Math.floor(Math.random() * opts.length)].value;
+      });
+      randomCheckSome('textFontStyle', undefined, 2);
+      randomCheckSome('textColor', undefined, 2);
+      randomCheckSome('textFinish', undefined, 1);
+      randomCheckSome('textEffect', undefined, 2);
+      randomCheckSome('textPattern', undefined, 1);
+      randomCheckSome('textDecorative', undefined, 1);
+      updateMultiDisplay('textFontStyle', 'customTextFontStyle', 'textFontStyleSelected');
+      updateMultiDisplay('textColor', 'customTextColor', 'textColorSelected');
+      updateMultiDisplay('textFinish', 'customTextFinish', 'textFinishSelected');
+      updateMultiDisplay('textEffect', 'customTextEffect', 'textEffectSelected');
+      updateMultiDisplay('textPattern', 'customTextPattern', 'textPatternSelected');
+      updateMultiDisplay('textDecorative', 'customTextDecorative', 'textDecorativeSelected');
+      updateCustomVisibility();
+      updateChoiceSummary();
+      generatePrompt();
+      showToast('Text style randomized!');
+    }
+
+    function randomizePatch() {
+      const patchSelects = ['patchTextLayout', 'patchShape', 'patchSize', 'patchOutline', 'patchEdging'];
+      patchSelects.forEach(id => {
+        const select = el(id);
+        if (!select) return;
+        const opts = [...select.options].filter(o => o.value && o.value !== 'None' && !o.value.toLowerCase().includes('custom'));
+        if (opts.length) select.value = opts[Math.floor(Math.random() * opts.length)].value;
+      });
+      randomCheckSome('patchColors', undefined, 2);
+      randomCheckSome('patchPattern', undefined, 1);
+      randomCheckSome('patchEmbellishments', undefined, 2);
+      updateMultiDisplay('patchColors', 'customPatchColors', 'patchColorsSelected');
+      updateMultiDisplay('patchPattern', 'customPatchPattern', 'patchPatternSelected');
+      updateMultiDisplay('patchEmbellishments', 'customPatchEmbellishments', 'patchEmbellishmentsSelected');
+      updateCustomVisibility();
+      updateChoiceSummary();
+      generatePrompt();
+      showToast('Patch randomized!');
     }
 
     function randomizeAll() {
@@ -4539,11 +4720,14 @@
       ['colorPalette', 'customColorPalette', 'colorPaletteSelected', colorPaletteList, 'Color Palette', colorPaletteCategories],
       ['renderStyle', 'customRenderStyle', 'renderStyleSelected', null, 'Render Style', renderStyleCategories],
       ['patchColors', 'customPatchColors', 'patchColorsSelected', patchColorsList, 'Patch Colors'],
+      ['patchPattern', 'customPatchPattern', 'patchPatternSelected', patchPatternList, 'Patch Pattern'],
       ['patchEmbellishments', 'customPatchEmbellishments', 'patchEmbellishmentsSelected', patchEmbellishmentsList, 'Patch Embellishments'],
       ['textFontStyle', 'customTextFontStyle', 'textFontStyleSelected', null, 'Text Font Style', textFontStyleCategories],
       ['textColor', 'customTextColor', 'textColorSelected', textColorList, 'Text Color'],
       ['textFinish', 'customTextFinish', 'textFinishSelected', textFinishList, 'Text Finish'],
-      ['textDecorative', 'customTextDecorative', 'textDecorativeSelected', textDecorativeList, 'Text Decorative']
+      ['textEffect', 'customTextEffect', 'textEffectSelected', textEffectList, 'Text Effect'],
+      ['textPattern', 'customTextPattern', 'textPatternSelected', textPatternList, 'Text Pattern'],
+      ['textDecorative', 'customTextDecorative', 'textDecorativeSelected', textDecorativeList, 'Text Decorative', textDecorativeCategories]
     ];
 
     function initGlobalCheckboxGroups() {
