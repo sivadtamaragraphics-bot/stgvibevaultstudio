@@ -1511,11 +1511,12 @@
         <div class="field">
           <label for="cameraAngle">Camera Angle</label>
           <select id="cameraAngle"><option>None</option><optgroup label="Standard Angles"><option>Back View</option><option>Eye-Level Camera Angle</option><option>Full Body Front-Facing View</option><option>Over the Shoulder View</option><option>Side Profile View</option><option>Three-Quarter View</option></optgroup><optgroup label="High and Low Angles"><option>Bird Eye View</option><option>Dramatic Low Angle</option><option>Overhead Top Down View</option><option>Slight High Angle Portrait</option><option>Slight Low Angle for Power</option><option>Worm Eye View</option></optgroup><optgroup label="Portrait and Close Up"><option>Bust Shot</option><option>Close-Up Portrait Framing</option><option>Extreme Close Up Face</option><option>Head and Shoulders Portrait</option><option>Knee Up View</option><option>Waist Up Portrait</option></optgroup><optgroup label="Editorial and Creative"><option>Cinematic Wide Angle</option><option>Dutch Tilt Angle</option><option>Editorial Side Angle</option><option>Fashion Runway Angle</option><option>Magazine Cover Framing</option><option>Mirror Reflection Angle</option><option>Mirror Selfie Angle</option><option>Selfie Angle</option><option>Wide Scene Composition</option></optgroup><option>Custom</option></select>
+          <input class="custom-input" id="customCameraAngle" placeholder="Type custom camera angle" />
         </div>
 
         <div class="field">
           <label for="lighting">Lighting</label>
-          <select id="lighting"><option>None</option><option>Balanced Neutral Lighting</option><option>Bright Studio Lighting</option><option>Clean Luxury Commercial Lighting</option><option>Even Polished Product Lighting</option><option>Golden Hour Outdoor Light</option><option>High Clarity Professional Lighting</option><option>Natural Soft Daylight</option><option>Soft Glam Beauty Lighting</option><option>Soft Window Light</option><option>Custom Lighting</option></select>
+          <select id="lighting"><option>None</option><option>Balanced Neutral Lighting</option><option>Bright Studio Lighting</option><option>Clean Luxury Commercial Lighting</option><option>Cool Blue Fill Studio Lighting</option><option>Even Polished Product Lighting</option><option>Golden Hour Outdoor Light</option><option>High Clarity Professional Lighting</option><option>Natural Soft Daylight</option><option>Soft Glam Beauty Lighting</option><option>Soft Window Light</option><option>Custom Lighting</option></select>
           <input class="custom-input" id="customLighting" placeholder="Type custom lighting" />
         </div>
 
@@ -1570,19 +1571,50 @@
           <input type="text" id="customProps" placeholder="Add custom prop..." style="margin-top:8px;" />
         </div>
 
-        <div class="field">
-          <label for="animal">Animal or Pet</label>
-          <select id="animal"><option>None</option><option>Black Cat</option><option>Colorful Parrot</option><option>Cute Kitten</option><option>Elegant Poodle</option><option>Fluffy White Cat</option><option>Golden Retriever Puppy</option><option>No Animal</option><option>Playful Bunny</option><option>Small Brown Dog</option><option>Tiny Puppy</option><option>Custom</option></select>
+        <div class="field full">
+          <label for="animalDisplayMode">Animal / Pet Display Mode</label>
+          <select id="animalDisplayMode">
+            <option value="withCharacter">Include With Character (animals appear alongside whoever is built in Part 1)</option>
+            <option value="standalone">Standalone Animal Squad (animals only — no character at all)</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label>Animals / Pets <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(select multiple for a squad)</span></label>
+          <div class="checkbox-group" id="animalsCheckboxes"></div>
+          <div class="checkbox-selected-display" id="animalsSelected">None selected</div>
+          <input class="custom-input" id="customAnimals" placeholder="Type a custom animal or pet" />
+        </div>
+
+        <div class="field full">
+          <label>Animal Styling / Accessories <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(applies to the animals as a matching set)</span></label>
+          <div class="checkbox-group" id="animalStylingCheckboxes"></div>
+          <div class="checkbox-selected-display" id="animalStylingSelected">None selected</div>
+          <input class="custom-input" id="customAnimalStyling" placeholder="Type a custom animal accessory or styling detail" />
+        </div>
+
+        <div class="field full">
+          <label for="animalArtStyle">Animal Art Style <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(optional — leave on "Same as Character" unless you want the animals rendered in a different style)</span></label>
+          <select id="animalArtStyle"><option value="">Same as Character</option><optgroup label="Realism"><option>Cartoon Realism</option><option>Hyper Realistic</option><option>Semi Realistic</option><option>Soft Realism</option><option>Stylized Realism</option></optgroup><optgroup label="Doll & Fashion"><option>3D CGI Glamour Cartoon</option><option>Barbie Style</option><option>Bratz Meets Barbie Realism</option><option>Bratz Style</option><option>Chibi Mixed With Bratz</option><option>Chibi Style</option><option>Exaggerated Chibi</option><option>Fashion Doll Style</option><option>Glam Doll Style</option><option>Glossy 3D Chibi</option><option>Hyper Realistic Bratz Doll</option><option>Luxury Hyper-Gloss Chibi Glam</option><option>Traditional Big Head Chibi</option></optgroup><optgroup label="Animation"><option>3D Cartoon Style</option><option>Anime Style</option><option>Cartoon Style</option><option>Classic Vintage Cartoon</option><option>Disney Inspired</option><option>Kawaii Style</option><option>Pixar Inspired</option></optgroup><optgroup label="Illustration"><option>Acrylic Illustration</option><option>Airbrushed Illustration</option><option>Coloring Page Style</option><option>Comic Book Style</option><option>Digital Painting</option><option>Ink Illustration</option><option>Pencil Sketch Style</option><option>Watercolor Illustration</option></optgroup><optgroup label="Trend & Digital"><option>AI Influencer Style</option><option>Magazine Cover Style</option><option>Pinterest Girl Style</option><option>Sticker Style</option><option>Streetwear Illustration Style</option><option>TikTok Glam Style</option><option>Ultra Airbrushed Urban</option></optgroup><option>Custom Art Style</option></select>
+          <input class="custom-input" id="customAnimalArtStyle" placeholder="Type custom animal art style" />
+        </div>
+
+        <div class="field full">
+          <label for="animalExpression">Animal Facial Expression</label>
+          <select id="animalExpression"><option>None</option><option>Alert with Perked Ears</option><option>Content and Calm</option><option>Curious Head Tilt</option><option>Happy and Panting</option><option>Playful and Excited</option><option>Regal and Proud</option><option>Sassy Side-Eye</option><option>Silly and Derpy</option><option>Sleepy and Relaxed</option><option>Stank Face / Unbothered</option><option>Surprised Wide Eyes</option><option>Custom Expression</option></select>
+          <input class="custom-input" id="customAnimalExpression" placeholder="Type custom animal expression" />
         </div>
 
         <div class="field">
           <label for="fantasy">Fantasy Element</label>
           <select id="fantasy"><option>None</option><option>Angel Wings</option><option>Butterfly Accents</option><option>Fairy Dust</option><option>Floating Glitter Accents</option><option>Floral Bloom Effect</option><option>Ivy Vines and Pearls</option><option>No Fantasy Element</option><option>Soft Sparkle Aura</option><option>Subtle Magical Glow</option><option>Custom</option></select>
+          <input class="custom-input" id="customFantasy" placeholder="Type custom fantasy element" />
         </div>
 
         <div class="field">
           <label for="sceneEffect">Scene Effect</label>
           <select id="sceneEffect"><option>None</option><option>Clean Crisp Detail</option><option>Editorial Depth of Field</option><option>Glossy Polished Finish</option><option>High Contrast Editorial</option><option>Luxury Poster Finish</option><option>Soft Bokeh Background</option><option>Soft Shadows</option><option>Custom</option></select>
+          <input class="custom-input" id="customSceneEffect" placeholder="Type custom scene effect" />
         </div>
 
         <div class="field full">
@@ -1595,6 +1627,7 @@
         <div class="field">
           <label for="aspectRatio">Aspect Ratio</label>
           <select id="aspectRatio"><option>None</option><option>11x8.5 Landscape</option><option>16:9 Landscape</option><option>1:1 Square</option><option>4:5 Portrait</option><option>5:4 Portrait</option><option>9:16 Vertical</option><option>Custom</option></select>
+          <input class="custom-input" id="customAspectRatio" placeholder="Type custom aspect ratio" />
         </div>
 
         <div class="field">
@@ -1735,7 +1768,7 @@
 
         <div class="field">
           <label for="textLayout">Text Layout</label>
-          <select id="textLayout"><option>None</option><option>Arched Text Layout</option><option>Badge Style Layout</option><option>Centered Text Layout</option><option>Diagonal Text Layout</option><option>Poster Headline Layout</option><option>Scattered Layout</option><option>Side by Side Layout</option><option>Stacked Text Layout</option><option>Custom Layout</option></select>
+          <select id="textLayout"><option>None</option><option>Arched Text Layout</option><option>Badge Style Layout</option><option>Banner / Ribbon Layout</option><option>Centered Text Layout</option><option>Diagonal Text Layout</option><option>Poster Headline Layout</option><option>Scattered Layout</option><option>Side by Side Layout</option><option>Stacked Text Layout</option><option>Custom Layout</option></select>
           <input type="text" id="customTextLayout" class="custom-input" placeholder="Type custom layout" />
         </div>
 
@@ -1932,6 +1965,80 @@
           </div>
         </div>
 
+        <!-- T-SHIRT / DTF PRINT DESIGN SECTION -->
+        <div class="section-zone zone-green">
+          <div class="section-header accordion-toggle" data-section="dtf">
+            <div class="section-icon icon-green">👕</div>
+            <div class="section-header-text">
+              <span class="section-label label-pink">Bonus</span>
+              <span class="section-title">T-Shirt Print Design</span>
+            </div>
+            <span class="accordion-chevron">▼</span>
+          </div>
+          <div class="section-zone-body">
+          <div class="form-grid">
+
+        <div class="field full">
+          <p style="font-size:0.78rem;color:var(--muted);font-style:italic;margin-bottom:4px;">Generates a flat, print-ready design on a transparent background for t-shirt printing — not a photo of a shirt. Choose your Print Method below since DTF, Screen Print, HTV, Sublimation, and Puff Print each have real technical differences that change what the design can look like. Use the Product Mockup section above instead if you want a photo of the design being worn/displayed on a product.</p>
+        </div>
+
+        <div class="field">
+          <label for="dtfSource">What's Featured In the Design</label>
+          <select id="dtfSource" onchange="updateDTFSourceReminder()"><option>Character Design</option><option>Patch Design</option><option>Text / Logo Only Design</option><option>Graphic / Illustration Only</option></select>
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:4px;font-style:italic;">Character Design uses everything you built in <strong style="color:#ff2d87;">Part 1</strong>. Patch Design uses your Chenille Patch Builder above. Text / Logo Only Design uses just the <strong style="color:#ff2d87;">Text &amp; Typography</strong> fields. Graphic / Illustration Only is for standalone art with no text and no character — a rose, a car, an animal, an abstract design, etc.</p>
+          <div id="dtfSourceReminder" style="margin-top:10px;padding:10px 14px;border-radius:10px;background:var(--pink-light);border:1.5px solid var(--pink-mid);font-size:0.8rem;font-weight:600;color:var(--ink);"></div>
+        </div>
+
+        <div class="field full" id="dtfGraphicDescWrap">
+          <label for="dtfGraphicDesc">Graphic Description <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(only used when Source is "Graphic / Illustration Only")</span></label>
+          <input type="text" id="dtfGraphicDesc" class="custom-input" placeholder="e.g. a fierce lion roaring, a bouquet of red roses, a vintage motorcycle" />
+        </div>
+
+        <div class="field full">
+          <label for="dtfArtStyle">Art Style <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(synced with the Art Style field in Part 1 — changing it here changes it everywhere)</span></label>
+          <select id="dtfArtStyle"><option value="">— Choose Art Style —</option><optgroup label="Realism"><option>Cartoon Realism</option><option>Hyper Realistic</option><option>Semi Realistic</option><option>Soft Realism</option><option>Stylized Realism</option></optgroup><optgroup label="Doll & Fashion"><option>3D CGI Glamour Cartoon</option><option>Barbie Style</option><option>Bratz Meets Barbie Realism</option><option>Bratz Style</option><option>Chibi Mixed With Bratz</option><option>Chibi Style</option><option>Exaggerated Chibi</option><option>Fashion Doll Style</option><option>Glam Doll Style</option><option>Glossy 3D Chibi</option><option>Hyper Realistic Bratz Doll</option><option>Luxury Hyper-Gloss Chibi Glam</option><option>Traditional Big Head Chibi</option></optgroup><optgroup label="Animation"><option>3D Cartoon Style</option><option>Anime Style</option><option>Cartoon Style</option><option>Classic Vintage Cartoon</option><option>Disney Inspired</option><option>Kawaii Style</option><option>Pixar Inspired</option></optgroup><optgroup label="Illustration"><option>Acrylic Illustration</option><option>Airbrushed Illustration</option><option>Coloring Page Style</option><option>Comic Book Style</option><option>Digital Painting</option><option>Ink Illustration</option><option>Pencil Sketch Style</option><option>Watercolor Illustration</option></optgroup><optgroup label="Trend & Digital"><option>AI Influencer Style</option><option>Magazine Cover Style</option><option>Pinterest Girl Style</option><option>Sticker Style</option><option>Streetwear Illustration Style</option><option>TikTok Glam Style</option><option>Ultra Airbrushed Urban</option></optgroup><option>Custom Art Style</option></select>
+        </div>
+
+        <div class="field full">
+          <label>Quality Enhancers <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(select all that apply — optional boosts on top of the print-quality standards already built in)</span></label>
+          <div class="checkbox-group" id="dtfQualityCheckboxes"></div>
+          <div class="checkbox-selected-display" id="dtfQualitySelected">None selected</div>
+        </div>
+
+        <div class="field">
+          <label for="dtfPrintMethod">Print Method</label>
+          <select id="dtfPrintMethod"><option>DTF (Direct-to-Film)</option><option>Screen Print</option><option>Heat Transfer Vinyl (HTV)</option><option>Sublimation</option><option>Puff Print</option></select>
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:4px;font-style:italic;">Each method has different real technical limits — this changes the actual output wording, not just the label.</p>
+        </div>
+
+        <div class="field">
+          <label for="dtfPrintFinish">Print Finish</label>
+          <select id="dtfPrintFinish"><option>None</option><option>Glossy Finish</option><option>Matte Finish</option><option>Distressed Texture</option></select>
+        </div>
+
+        <div class="field">
+          <label for="dtfPlacement">Print Placement Area</label>
+          <select id="dtfPlacement"><option>Full Front</option><option>Left Chest</option><option>Back Print</option><option>Sleeve</option><option>Pocket Print</option></select>
+        </div>
+
+        <div class="field">
+          <label for="dtfGarmentColor">Garment Color</label>
+          <select id="dtfGarmentColor"><option>Light / White Garment</option><option>Dark / Black Garment</option><option>Colored Garment</option></select>
+        </div>
+
+        <div class="field full">
+          <label for="dtfCustomDetails">Custom Details <span style="font-size:0.72rem;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;">(anything not covered above — a specific brand name, a size note, a special instruction, etc.)</span></label>
+          <textarea id="dtfCustomDetails" placeholder="Add anything specific to this print — brand name, extra styling notes, size constraints, or any other detail you want included..."></textarea>
+        </div>
+
+        <div class="field full">
+          <button type="button" class="btn-primary" style="width:100%;" onclick="generateDTFPrompt();">Generate T-Shirt Print Prompt</button>
+        </div>
+
+          </div>
+          </div>
+        </div>
+
         <!-- BRAND BOARD SECTION -->
         <div class="section-zone zone-charcoal">
           <div class="section-header accordion-toggle" data-section="brandboard">
@@ -1947,6 +2054,11 @@
 
         <div class="field full">
           <p style="font-size:0.78rem;color:var(--muted);margin:0 0 4px;font-style:italic;">Save your shop's signature look once, then apply it to any generation with one click — colors, art style, and default product all set instantly. This is the only section that remembers your settings between visits.</p>
+        </div>
+
+        <div class="field full" id="brandBoardWarningBox" style="display:none;background:rgba(201,168,76,0.08);border:1.5px solid rgba(201,168,76,0.3);border-radius:12px;padding:12px 16px;">
+          <p style="font-size:0.78rem;color:var(--ink);margin:0 0 8px;"><strong>Heads up:</strong> it looks like Product Mockup, the Chenille Patch Builder, or T-Shirt Print Design still have settings entered from earlier — these share the same Art Style field as Part 1, so they can carry into your Brand Board mascot unexpectedly. Clear them out first if you don't want that carryover.</p>
+          <button type="button" class="btn-green" style="width:100%;" onclick="resetMockupPatchTshirt();">Clear Mockup, Patch &amp; T-Shirt Settings</button>
         </div>
 
         <div class="field">
@@ -2108,9 +2220,25 @@
   <script>
     'use strict';
 
+    // Safe localStorage helpers — some browsers/contexts (private browsing, strict
+    // privacy settings, or opening this file directly via file://) can throw a
+    // SecurityError on any localStorage access. An uncaught error here, at the very
+    // top of the script, would silently prevent everything below it from running
+    // at all — including all the checkbox/dropdown rendering — with no visible
+    // error to the user. These helpers make every call fail safe instead.
+    function safeGetStorage(key) {
+      try { return localStorage.getItem(key); } catch (e) { return null; }
+    }
+    function safeSetStorage(key, value) {
+      try { localStorage.setItem(key, value); } catch (e) { /* ignore */ }
+    }
+    function safeRemoveStorage(key) {
+      try { localStorage.removeItem(key); } catch (e) { /* ignore */ }
+    }
+
     // ── DARK MODE ─────────────────────────────────────────────────────────────
     function applyDarkModePreference() {
-      const saved = localStorage.getItem('vibeVaultTheme');
+      const saved = safeGetStorage('vibeVaultTheme');
       const isDark = saved === 'dark';
       document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
       const icon = document.getElementById('darkModeIcon');
@@ -2121,7 +2249,7 @@
 
     function toggleDarkMode() {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      localStorage.setItem('vibeVaultTheme', isDark ? 'light' : 'dark');
+      safeSetStorage('vibeVaultTheme', isDark ? 'light' : 'dark');
       applyDarkModePreference();
     }
 
@@ -2167,10 +2295,10 @@
     const femaleMakeup = ['None','Bold Editorial Makeup','Bold Lip Glam','Bronze Glam','Chrome Eye Makeup','Clean Girl Makeup','Cut Crease','Fox Eye Makeup','Full Glam','Glazed Donut Skin','Glitter Makeup','Glossy Glam','Graphic Eyeliner','Halo Eye Makeup','Matte Full Face','Monochromatic Makeup','Natural Makeup','Neutral Glam','No Makeup Makeup Look','Pink Glam','Siren Eyes','Smokey Eye','Soft Glam','Sunkissed Bronze Glam','Vampy Glam','Winged Eyeliner Glam','Y2K Makeup','Custom Makeup'];
     const maleMakeup = ['None','Bold Editorial Makeup','Editorial Makeup','Groomed Brows Only','Light Groomed Makeup','Matte Contour','Natural Skin Finish','Smokey Eye','Stage Makeup','Subtle Tinted Skin','Custom Makeup'];
 
-    const femaleLips = ['None','Brown Lined Lips','Dark Chocolate Gloss','Glossy Nude Lips','Matte Red Lips','Ombre Lips','Pink Gloss Lips','Shimmer Gloss Lips','Soft Peach Lips','Custom Lip Style'];
+    const femaleLips = ['None','Brown Lined Lips','Dark Chocolate Gloss','Glossy Nude Lips','Matte Red Lips','Ombre Lips','Pink Gloss Lips','Plump Glossy Lips','Shimmer Gloss Lips','Soft Peach Lips','Custom Lip Style'];
     const maleLips = ['None','Glossed Lips','Moisturized Lips','Natural Lips','Custom Lip Style'];
 
-    const femaleNails = ['None','Almond Nails','Chrome Nails','Coffin Nails','French Tip Nails','Glitter Nails','Long Acrylic Nails','Pink Nails','Red Nails','Short Natural Nails','Square Nails','Custom Nail Style'];
+    const femaleNails = ['None','Almond Nails','Arrowhead Nails','Chrome Nails','Coffin Nails','French Tip Nails','Glitter Nails','Long Acrylic Nails','Pink Nails','Red Nails','Short Natural Nails','Square Nails','Stiletto Nails','Custom Nail Style'];
     const maleNails = ['None','Black Nail Polish','Clean Natural Nails','Short Groomed Nails','Custom Nail Style'];
 
     // ── HELPERS ───────────────────────────────────────────────────────────────
@@ -2434,6 +2562,28 @@
 
     const patchColorsList = [...colorPaletteList, 'Neon Bright', 'Rainbow Gradient', 'Team Color Match'];
     const patchPatternList = ['Argyle Pattern','Camo Pattern','Checkerboard Pattern','Cheetah Print','Floral Pattern','Houndstooth Pattern','Leopard Print','Ostrich Feather Texture','Paisley Pattern','Plaid Pattern','Polka Dot Pattern','Snake Skin Texture','Stripes Pattern','Tartan Pattern','Tie-Dye Pattern','Tiger Print','Zebra Print'];
+    const animalsCategories = [
+      ['Cats', ['Black Cat', 'Cute Kitten', 'Fluffy White Cat', 'Siamese Cat', 'Sphynx Cat']],
+      ['Dogs', ['Bulldog', 'Chihuahua', 'Corgi', 'Elegant Poodle', 'French Bulldog', 'Golden Retriever Puppy', 'Husky', 'Pomeranian', 'Small Brown Dog', 'Tiny Puppy']],
+      ['Farm & Barnyard', ['Baby Cow', 'Goat', 'Horse', 'Pig', 'Piglet', 'Pony', 'Sheep']],
+      ['Exotic & Wild', ['Bear', 'Cheetah', 'Elephant Calf', 'Fox', 'Giraffe', 'Gorilla', 'Hippo', 'Kangaroo', 'Koala', 'Lion', 'Lion Cub', 'Llama', 'Monkey', 'Panda', 'Rhino', 'Tiger', 'Tiger Cub', 'Zebra']],
+      ['Birds', ['Colorful Parrot', 'Dove', 'Flamingo', 'Ostrich', 'Owl', 'Peacock', 'Penguin', 'Swan', 'Toucan']],
+      ['Small & Pocket Pets', ['Chinchilla', 'Ferret', 'Guinea Pig', 'Hamster', 'Hedgehog', 'Playful Bunny', 'Raccoon', 'Squirrel', 'Turtle']],
+      ['Sea Creatures', ['Dolphin', 'Otter', 'Seal', 'Shark']],
+    ];
+    const animalsList = animalsCategories.flatMap(([, items]) => items);
+    const animalStylingCategories = [
+      ['Eyewear & Headwear', ['Bandana', 'Baseball Cap', 'Bow Headband', 'Flower Crown', 'Party Hat', 'Pearl Headband', 'Tiny Beanie', 'Tiny Crown', 'Tiny Sunglasses', 'Top Hat']],
+      ['Jewelry & Collars', ['Bling Rhinestone Collar', 'Bow Tie Collar', 'Charm Collar Tag', 'Diamond Collar', 'Gold Chain Necklace', 'Layered Pearl Necklaces', 'Pearl Collar', 'Studded Leather Collar']],
+      ['Outfits', ['Baby Onesie', 'Bling Harness', 'Bomber Jacket', 'Cardigan', 'Cozy Sweater', 'Denim Jacket', 'Graphic Tee', 'Hoodie', 'Matching Designer Jacket', 'Puffer Vest', 'Raincoat', 'Sequin Vest', 'Superhero Cape', 'Tank Top', 'Tutu Skirt', 'Tuxedo', 'Varsity Jacket']],
+      ['Small Accessories', ['Bow Tie', 'Doggy Backpack', 'Miniature Boots', 'Pearl Anklets', 'Ribbon Bow', 'Wristwatch']],
+      ['Squad Branding', ['Coordinated Squad Color Scheme', 'Matching Squad Logo Tag', 'Matching Team Jersey', 'Numbered Squad Patch']],
+    ];
+    const animalStylingList = animalStylingCategories.flatMap(([, items]) => items);
+    // Note: Transparent Background, Print Ready, High Resolution, Vector Clean Edges,
+    // and Sharp Focus are already always enforced in every T-Shirt/DTF output, so they're
+    // deliberately left out here to avoid pointless repetition.
+    const dtfQualityList = ['8K Render','Balanced Layout','Centered Composition','Clean Anatomy','Commercial Quality','Crisp Shadows','Luxury Finish','No Distortion','Perfect Alignment','Polished Composition','Premium Texture Detail','Professional Lighting','Professional Mockup Quality','Readable Typography','Smooth Shading','Symmetrical Design','Ultra Detailed'];
     const patchEmbellishmentsList = ['3D Puff Embroidery Effect', 'Baseball Icon', 'Basketball Icon', 'Beaded Trim', 'Bow Icon', 'Butterfly Icon', 'Champagne Glass Icon', 'Christmas Tree Icon', 'Crown Icon', 'Crystal Gems', 'Dollar Sign Icon', 'Easter Egg Icon', 'Felt Backing Layer', 'Firework Icon', 'Flame Icon', 'Football Icon', 'Glitter Vinyl Accents', 'Heart Icon', 'Kinara Icon', 'Lightning Bolt Icon', 'Lips Icon', 'Lipstick Icon', 'Mascot Graphic Icon', 'Menorah Icon', 'Metallic Thread Accents', 'Money Stack Icon', 'Pearl Accents', 'Pumpkin Icon', 'Rhinestone Scatter', 'Roller Skate Icon', 'Santa Hat Icon', 'Sequins', 'Sneaker Icon', 'Snowflake Icon', 'Sparkle Foil Accents', 'Turkey Icon', 'Varsity Star Accents'];
 
     const stankFaceElems = ['Arms Folded','Furrowed Brow','Fingers Spread Out','Hand on Hip','Head Tilted','Mad Expression','One Eyebrow Raised','Peace Sign','Pointing','Pursed Lips','Rolling Eyes','Shocked Wide Eyes','Side-Eye Smirk','Smelling Something Stinky','Stop Hand'];
@@ -2530,7 +2680,7 @@
       ['Cozy and Loungewear', ['Silk Pajamas','Satin Pajama Set','Onesie','Cozy Matching Sweatsuit','Hoodie and Sweatpants','Robe and Slippers','Oversized T-Shirt and Shorts']],
       ['Athletic and Sporty', ['Athletic Jersey','Bomber Jacket and Joggers','Varsity Jacket and Jeans','Track Suit','Athletic Set','Sports Uniform','Cheerleader Outfit']],
       ['Professional and Formal', ['Business Wear','Power Suit','Blazer and Dress Pants','Pencil Skirt and Blouse','Tuxedo','School Uniform','Graduation Gown']],
-      ['Glam and Evening', ['Evening Glam Outfit','Cocktail Dress','Ball Gown','Sequin Mini Dress','Luxury Designer Outfit','Red Carpet Gown']],
+      ['Glam and Evening', ['Ball Gown','Bodycon Dress','Cocktail Dress','Evening Glam Outfit','Luxury Designer Outfit','Red Carpet Gown','Sequin Mini Dress']],
       ['Streetwear and Urban', ['Streetwear Outfit','Graphic Tee and Cargo Pants','Graphic Tee and Cargo Shorts','Cargo Pants and Crop Top','Cargo Shorts and Tank Top','Denim on Denim','Leather Jacket and Jeans','Hoodie and Sneakers']],
       ['Seasonal and Themed', ['Vacation Wear','Swimwear','Beach Cover Up','Winter Coat and Scarf','Holiday Outfit','Halloween Costume']],
       ['Cultural and Special', ['Sorority Outfit','Fraternity Outfit','Traditional Cultural Outfit','African Print Dress','Ankara Suit','Dashiki Top','Bridesmaid Dress','Wedding Guest Outfit','Quinceanera Dress','Kimono Style Outfit']],
@@ -2587,6 +2737,39 @@
       return list.map(v => `<label class="checkbox-item"><input type="checkbox" name="${fullName}" value="${v}"> ${v}</label>`).join('');
     }
 
+    function getAnimalArtStyleOverride() {
+      return getVal('animalArtStyle');
+    }
+
+    const naturallySmallAnimals = new Set(['cute kitten', 'chihuahua', 'tiny puppy', 'small brown dog', 'pomeranian',
+      'guinea pig', 'hamster', 'hedgehog', 'playful bunny', 'chinchilla', 'ferret', 'turtle', 'piglet', 'dove']);
+
+    function getAnimalPhraseWithSize(animalName) {
+      const base = `${aOrAn(animalName)} ${animalName.toLowerCase()}`;
+      if (naturallySmallAnimals.has(animalName.toLowerCase())) return base;
+      return `${base} (rendered at its realistic medium-to-large natural size — NOT shrunk down to a miniature, toy-sized, or pocket-pet scale)`;
+    }
+
+    function getStyleReinforcementForNonHuman(artStyle) {
+      const full = getStyleReinforcement(artStyle);
+      if (!full) return '';
+      // Many style descriptions are written assuming a human subject ("true-to-life
+      // human proportions", "reads as real person") — nonsensical applied to an animal
+      // or object illustration. Strip clauses that specifically reference a person/human,
+      // keep the rest (rendering quality, finish, technique still apply fine).
+      const clauses = full.split(/(?<=[.])\s+/);
+      const filtered = clauses.filter(c => !/\bhuman\b|\breal person\b|\bperson\b/i.test(c));
+      return filtered.join(' ').trim();
+    }
+
+    function getTextLayoutPhrase(layout) {
+      if (!layout || layout === 'None') return '';
+      if (layout.toLowerCase() === 'banner / ribbon layout') {
+        return 'Banner / Ribbon Layout — the text sits on a distinct banner or ribbon graphic (a curved or straight ribbon shape with folded, pointed, or scalloped ends), not just floating text; the ribbon itself should be clearly visible as part of the design, not merely implied';
+      }
+      return layout;
+    }
+
     function categorizedCheckboxListHtml(name, categories, idx) {
       const fullName = idx !== undefined ? `${name}_${idx}` : name;
       return categories.map(([cat, items]) => {
@@ -2620,6 +2803,7 @@
       dateNight: { label: 'Date Night', outfit: ['Cocktail Dress'], shoes: 'Stiletto Heels', accessories: ['Diamond Hoop Earrings'], background: 'Luxury Penthouse', lighting: 'Soft Glam Beauty Lighting', pose: 'Hand On Hip', colorPalette: ['Burgundy','Black'], attitude: 'Mysterious and Sultry', artStyle: 'Glam Doll Style' },
       chibiGlam: { label: 'Chibi Glam', outfit: ['Graphic Tee and Jeans'], shoes: 'Strappy Heels', accessories: ['Gold Hoop Earrings','Chunky Gold Chains','Luxury Watch','Stacked Bracelets'], background: 'Clean White Studio', lighting: 'Bright Studio Lighting', pose: 'Full Body Pose', colorPalette: ['Black','Gold'], attitude: 'Bold and Commanding', artStyle: 'Exaggerated Chibi', artFinish: 'High Gloss Illustration Finish' },
       stankFaceEnergy: { label: 'Stank Face Energy', pose: 'Standing', attitude: 'Sassy and Unbothered', artStyle: 'Cartoon Realism', stankFace: ['Arms Folded','Pursed Lips','Mad Expression','Furrowed Brow'], hairReminder: 'Hair Rollers' },
+      glossyChibiEditorial: { label: 'Glossy 3D Chibi Editorial', artStyle: 'Exaggerated Chibi', artFinish: 'High Gloss Illustration Finish', background: 'Clean White Studio', lighting: 'Cool Blue Fill Studio Lighting', cameraAngle: 'Three-Quarter View', pose: 'Model Pose', aspectRatio: '9:16 Vertical', outfit: ['Bodycon Dress'], shoes: 'Stiletto Heels', nailStyle: 'Arrowhead Nails', lipStyle: 'Plump Glossy Lips', skinFinish: ['Glass Skin'], skinDetails: ['Beauty Mark'] },
     };
 
     function applyCharacterPreset(presetKey, idx) {
@@ -2636,6 +2820,8 @@
       setGlobalSelect('cosplay', preset.cosplay);
       setGlobalSelect('fantasy', preset.fantasy);
       setGlobalSelect('occasion', preset.occasion);
+      setGlobalSelect('cameraAngle', preset.cameraAngle);
+      setGlobalSelect('aspectRatio', preset.aspectRatio);
       updateCustomVisibility();
 
       if (preset.colorPalette) {
@@ -2650,6 +2836,20 @@
         if (shoeSelect.value !== preset.shoes) shoeApplyFailed = true;
       }
 
+      const nailSelect = el(charField('nailStyle', idx));
+      let nailApplyFailed = false;
+      if (nailSelect && preset.nailStyle) {
+        nailSelect.value = preset.nailStyle;
+        if (nailSelect.value !== preset.nailStyle) nailApplyFailed = true;
+      }
+
+      const lipSelect = el(charField('lipStyle', idx));
+      let lipApplyFailed = false;
+      if (lipSelect && preset.lipStyle) {
+        lipSelect.value = preset.lipStyle;
+        if (lipSelect.value !== preset.lipStyle) lipApplyFailed = true;
+      }
+
       if (preset.outfit) {
         document.querySelectorAll(`input[name="outfit_${idx}"]`).forEach(cb => { cb.checked = preset.outfit.includes(cb.value); });
         updateCharMultiDisplay('outfit', 'customOutfit', 'outfitSelected', idx);
@@ -2662,12 +2862,22 @@
         document.querySelectorAll(`input[name="stankFace_${idx}"]`).forEach(cb => { cb.checked = preset.stankFace.includes(cb.value); });
         updateStankFaceDisplay(idx);
       }
+      if (preset.skinFinish) {
+        document.querySelectorAll(`input[name="skinFinish_${idx}"]`).forEach(cb => { cb.checked = preset.skinFinish.includes(cb.value); });
+        updateCharMultiDisplay('skinFinish', 'customSkinFinish', 'skinFinishSelected', idx);
+      }
+      if (preset.skinDetails) {
+        document.querySelectorAll(`input[name="skinDetails_${idx}"]`).forEach(cb => { cb.checked = preset.skinDetails.includes(cb.value); });
+        updateCharMultiDisplay('skinDetails', 'customSkinDetails', 'skinDetailsSelected', idx);
+      }
 
       updateChoiceSummary();
       const genderSet = getCharVal('gender', idx);
       const reminders = [];
       if (!genderSet) reminders.push(`set Gender for Character ${idx}`);
       if (shoeApplyFailed) reminders.push(`manually set Shoe Style for Character ${idx} (this preset's shoe pick isn't available for the currently selected Gender)`);
+      if (nailApplyFailed) reminders.push(`manually set Nail Style for Character ${idx} (this preset's nail pick isn't available for the currently selected Gender)`);
+      if (lipApplyFailed) reminders.push(`manually set Lip Style for Character ${idx} (this preset's lip pick isn't available for the currently selected Gender)`);
       if (preset.hairReminder) reminders.push(`set Hairstyle to "${preset.hairReminder}" for the full look`);
       if (reminders.length) {
         showToast(`"${preset.label}" applied! Don't forget to ${reminders.join(' and ')}.`);
@@ -2695,6 +2905,7 @@
           <div class="field">
             <label for="${charField('gender', idx)}">Gender</label>
             <select id="${charField('gender', idx)}"><option value="">— Choose Gender —</option><option>Female</option><option>Male</option><option>Custom</option></select>
+            <input class="custom-input" id="${charCustomField('gender', idx)}" placeholder="Type custom gender" />
           </div>
           <div class="field">
             <label for="${charField('ageGroup', idx)}">Age Group</label>
@@ -3295,7 +3506,7 @@
       ['creatorType','Creator Type'],
       ['artFinish','Art Finish'],
       ['pose','Pose'],['cameraAngle','Camera'],['lighting','Lighting'],
-      ['background','Background'],['animal','Animal'],
+      ['background','Background'],['animals','Animals'],
       ['fantasy','Fantasy'],['sceneEffect','Scene Effect'],
       ['aspectRatio','Aspect Ratio'],['frame','Frame'],
       ['decade','Decade'],
@@ -3433,7 +3644,100 @@
     }
 
     // Wire up selections toggle
+    function updateDTFSourceReminder() {
+      const source = el('dtfSource') ? el('dtfSource').value : 'Character Design';
+      const box = el('dtfSourceReminder');
+      if (!box) return;
+
+      const warn = (msg) => {
+        box.innerHTML = `⚠️ ${msg}`;
+        box.style.background = '#fdf0d5';
+        box.style.borderColor = '#e0b84d';
+      };
+      const ready = (msg) => {
+        box.innerHTML = `✓ ${msg}`;
+        box.style.background = 'var(--pink-light)';
+        box.style.borderColor = 'var(--pink-mid)';
+      };
+
+      if (source === 'Character Design') {
+        const gender = getCharVal('gender', 1);
+        const age = getCharVal('ageGroup', 1);
+        if (!gender || !age) {
+          warn('No character built yet in <strong>Part 1</strong> — set at least Gender and Age Group up there before generating, or this will fail.');
+        } else {
+          ready(`Will use the character currently built in <strong>Part 1</strong> (${gender}, ${age}) — including hair, styling, expression, and everything else set up there right now.`);
+        }
+      } else if (source === 'Patch Design') {
+        const patchText = el('patchText') ? el('patchText').value.trim() : '';
+        if (!patchText) {
+          warn('No Patch Text typed yet — go to the <strong>Chenille Patch Builder</strong> above and enter your patch text before generating.');
+        } else {
+          ready(`Will use your Chenille Patch Builder text: <strong>"${patchText}"</strong> — along with whatever shape, colors, pattern, and embellishments are currently set up there.`);
+        }
+      } else if (source === 'Text / Logo Only Design') {
+        const textPhrase = (el('customTextPhrase') ? el('customTextPhrase').value.trim() : '') ||
+          (el('sassySaying') && el('sassySaying').value !== 'None' ? el('sassySaying').value : '');
+        if (!textPhrase) {
+          warn('No text typed yet — go to <strong>Part 4 (Text &amp; Typography)</strong> above and type your phrase, or pick a Sassy Saying, before generating.');
+        } else {
+          ready(`Will use your <strong>Part 4</strong> text: <strong>"${textPhrase}"</strong> — along with whatever Font Style, Pattern, Color, Finish, Effects, and Decorative Elements are currently checked up there right now. Change anything in Part 4 and it changes here too.`);
+        }
+      } else {
+        const graphicDesc = el('dtfGraphicDesc') ? el('dtfGraphicDesc').value.trim() : '';
+        if (!graphicDesc) {
+          warn('Type a Graphic Description below (e.g. "a fierce lion roaring") before generating.');
+        } else {
+          ready(`Will illustrate: <strong>"${graphicDesc}"</strong> — using whatever Art Style, Color Palette, and Render Style are currently set.`);
+        }
+      }
+    }
+
+    function updateBrandBoardWarning() {
+      const box = el('brandBoardWarningBox');
+      if (!box) return;
+      const mockupProductVal = el('mockupProduct') ? el('mockupProduct').value : 'None';
+      const mockupSourceVal = el('mockupSource') ? el('mockupSource').value : 'Character Design';
+      const patchTextVal = el('patchText') ? el('patchText').value.trim() : '';
+      const dtfSourceVal = el('dtfSource') ? el('dtfSource').value : 'Character Design';
+      const dtfGraphicDescVal = el('dtfGraphicDesc') ? el('dtfGraphicDesc').value.trim() : '';
+      const dtfCustomDetailsVal = el('dtfCustomDetails') ? el('dtfCustomDetails').value.trim() : '';
+
+      const hasLeftoverState = mockupProductVal !== 'None' || mockupSourceVal !== 'Character Design' ||
+        !!patchTextVal || dtfSourceVal !== 'Character Design' || !!dtfGraphicDescVal || !!dtfCustomDetailsVal;
+
+      box.style.display = hasLeftoverState ? 'block' : 'none';
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+      updateBrandBoardWarning();
+      ['mockupProduct', 'mockupSource', 'patchText', 'dtfSource', 'dtfGraphicDesc', 'dtfCustomDetails'].forEach(id => {
+        const elx = el(id);
+        if (elx) { elx.addEventListener('input', updateBrandBoardWarning); elx.addEventListener('change', updateBrandBoardWarning); }
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateDTFSourceReminder();
+      ['customTextPhrase', 'sassySaying', 'patchText', 'dtfGraphicDesc'].forEach(id => {
+        const elx = el(id);
+        if (elx) elx.addEventListener('input', updateDTFSourceReminder);
+        if (elx) elx.addEventListener('change', updateDTFSourceReminder);
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Keep the main Art Style dropdown and the T-Shirt section's mirrored copy in sync,
+      // in both directions, so there's still only one real "source of truth" value —
+      // just editable from two convenient spots instead of duplicating the field.
+      const mainArtStyle = el('artStyle');
+      const dtfArtStyle = el('dtfArtStyle');
+      if (mainArtStyle && dtfArtStyle) {
+        dtfArtStyle.value = mainArtStyle.value;
+        mainArtStyle.addEventListener('change', () => { dtfArtStyle.value = mainArtStyle.value; });
+        dtfArtStyle.addEventListener('change', () => { mainArtStyle.value = dtfArtStyle.value; });
+      }
+
       const toggle = el('selectionsToggle');
       const body = el('selectionsBody');
       if (toggle && body) {
@@ -3824,7 +4128,7 @@
         if (stPremium3D) standaloneTextDesc += `This must read as premium 3D bold typography — a polished, high-end logo-quality treatment with real dimensional depth, not a flat 2D graphic. Every material, pattern, effect, finish, and color below must work together as one cohesive, professionally rendered 3D object, not a disjointed list of separate attributes. `;
         if (stFontStyleVals.length) standaloneTextDesc += `Font / lettering style (material): ${stFontStyleVals.join(' blended with ')}. `;
         if (stPatternVals.length) standaloneTextDesc += `Surface pattern filling the letters: ${stPatternVals.join(' combined with ')}. `;
-        if (stLayout && stLayout !== 'None') standaloneTextDesc += `Text layout: ${stLayout}. `;
+        if (stLayout && stLayout !== 'None') standaloneTextDesc += `Text layout: ${getTextLayoutPhrase(stLayout)}. `;
         if (stLetterSpacing && stLetterSpacing !== 'None') standaloneTextDesc += `Letter spacing: ${stLetterSpacing}. `;
         if (stOutline && stOutline !== 'None') standaloneTextDesc += `Outline style: ${stOutline}. `;
         if (stEffectVals.length) standaloneTextDesc += `Text effects (layered): ${stEffectVals.join(', ')}. `;
@@ -3837,6 +4141,47 @@
         if (stRatio && stRatio !== 'None') standaloneTextDesc += ` Aspect ratio: ${stRatio}.`;
 
         return [standaloneTextDesc, 'No misspelled text, no grainy or blurry texture, no overly golden or yellow-tinted backgrounds, no distracting background objects, no character or person depicted.'].join('\n\n');
+      }
+
+      // ── STANDALONE ANIMAL SQUAD MODE: skip all character/art-style logic entirely ──
+      const animalDisplayMode = el('animalDisplayMode') ? el('animalDisplayMode').value : 'withCharacter';
+      if (animalDisplayMode === 'standalone' && mockupProductEarly === 'None' && patchDisplayMode !== 'Standalone Patch Design (no character)' && textDisplayMode !== 'standalone') {
+        const saAnimalVals = getMultiValues('animals', 'customAnimals');
+        if (!saAnimalVals.length) {
+          const msg = 'Please select at least one animal/pet before generating a standalone animal squad design.';
+          alert(msg);
+          el('promptOutput').textContent = `⚠️ ${msg}`;
+          return null;
+        }
+        const saAnimalStylingVals = getMultiValues('animalStyling', 'customAnimalStyling');
+        const saArtStyle = getAnimalArtStyleOverride() || getVal('artStyle') || 'Stylized Realism';
+        const saStyleDesc = getStyleReinforcementForNonHuman(saArtStyle);
+        const saBg = getVal('background');
+        const saLighting = getVal('lighting');
+        const saCamera = getVal('cameraAngle');
+        const saRatio = getVal('aspectRatio');
+        const saPaletteColors = getMultiValues('colorPalette', 'customColorPalette');
+
+        let animalPhrase;
+        if (saAnimalVals.length === 1) {
+          animalPhrase = getAnimalPhraseWithSize(saAnimalVals[0]);
+        } else {
+          animalPhrase = `a squad of animals together in one scene, each individually visible and clearly recognizable, not merged or overlapping: ${saAnimalVals.slice(0, -1).map(a => getAnimalPhraseWithSize(a)).join(', ')}, and ${getAnimalPhraseWithSize(saAnimalVals[saAnimalVals.length - 1])}`;
+        }
+
+        let standaloneAnimalDesc = `Create a bold, eye-catching illustrated character portrait featuring ${animalPhrase} — no human character or person anywhere in the design, the animal(s) are the main subject. `;
+        if (saStyleDesc) standaloneAnimalDesc += `${saStyleDesc} `;
+        if (saAnimalStylingVals.length) standaloneAnimalDesc += `Each animal is styled with ${saAnimalStylingVals.join(', ').toLowerCase()} as a coordinated, matching set — the accessories should look intentional and well-fitted, not awkwardly placed. `;
+        const saAnimalExpressionVal = getVal('animalExpression');
+        if (saAnimalExpressionVal && saAnimalExpressionVal !== 'None') standaloneAnimalDesc += `The animal(s) should have a ${saAnimalExpressionVal.toLowerCase()} expression — this should be the dominant, clearly readable expression on their face. `;
+        if (saBg && saBg !== 'None') standaloneAnimalDesc += `Background: ${saBg.toLowerCase()}. `;
+        if (saLighting && saLighting !== 'None') standaloneAnimalDesc += `Lighting: ${saLighting.toLowerCase()}. `;
+        if (saCamera && saCamera !== 'None') standaloneAnimalDesc += `Camera angle: ${saCamera.toLowerCase()}. `;
+        if (saPaletteColors.length) standaloneAnimalDesc += `Color palette: ${saPaletteColors.join(', ')}. `;
+        standaloneAnimalDesc += `High quality digital illustration, immaculate composition, vibrant and polished finish, professional rendering, ultra-sharp detail, 8K quality.`;
+        if (saRatio && saRatio !== 'None') standaloneAnimalDesc += ` Aspect ratio: ${saRatio}.`;
+
+        return [standaloneAnimalDesc, 'No misspelled text, no grainy or blurry texture, no overly golden or yellow-tinted backgrounds, no distracting background objects, no human character or person depicted, no merged or duplicated animal limbs.'].join('\n\n');
       }
 
       if (patchDisplayMode === 'Standalone Patch Design (no character)' && mockupProductEarly === 'None') {
@@ -3949,7 +4294,7 @@
         if (textOnlyPremium3D) textOnlyDesc += `This must read as premium 3D bold typography — a polished, high-end logo-quality treatment with real dimensional depth, not a flat 2D graphic. Every material, pattern, effect, finish, and color below must work together as one cohesive, professionally rendered 3D object. `;
         if (textOnlyFontStyleVals.length) textOnlyDesc += `Font / lettering style (material): ${textOnlyFontStyleVals.join(' blended with ')}. `;
         if (textOnlyPatternVals.length) textOnlyDesc += `Surface pattern filling the letters: ${textOnlyPatternVals.join(' combined with ')}. `;
-        if (textOnlyLayout && textOnlyLayout !== 'None') textOnlyDesc += `Text layout: ${textOnlyLayout}. `;
+        if (textOnlyLayout && textOnlyLayout !== 'None') textOnlyDesc += `Text layout: ${getTextLayoutPhrase(textOnlyLayout)}. `;
         if (textOnlyLetterSpacing && textOnlyLetterSpacing !== 'None') textOnlyDesc += `Letter spacing: ${textOnlyLetterSpacing}. `;
         if (textOnlyOutline && textOnlyOutline !== 'None') textOnlyDesc += `Outline style: ${textOnlyOutline}. `;
         if (textOnlyEffectVals.length) textOnlyDesc += `Text effects (layered): ${textOnlyEffectVals.join(', ')}. `;
@@ -4094,7 +4439,8 @@
       const camera = getVal('cameraAngle');
       const lighting = getVal('lighting');
       const bg = getVal('background');
-      const animal = getVal('animal');
+      const animalVals = getMultiValues('animals', 'customAnimals');
+      const animalStylingVals = getMultiValues('animalStyling', 'customAnimalStyling');
       const fantasy = getVal('fantasy');
       const effect = getVal('sceneEffect');
 
@@ -4128,7 +4474,15 @@
       if (lighting && lighting !== 'None') sceneTailBits.push(`with ${lighting.toLowerCase()}`);
       if (effect && effect !== 'None') sceneTailBits.push(effect.toLowerCase());
       if (fantasy && fantasy !== 'None' && fantasy !== 'No Fantasy Element') sceneTailBits.push(fantasy.toLowerCase());
-      if (animal && animal !== 'None' && animal !== 'No Animal') sceneTailBits.push(`a ${animal.toLowerCase()} nearby`);
+      if (animalVals.length) {
+        let animalPhrase = animalVals.length === 1
+          ? getAnimalPhraseWithSize(animalVals[0])
+          : `${animalVals.slice(0, -1).map(a => getAnimalPhraseWithSize(a)).join(', ')} and ${getAnimalPhraseWithSize(animalVals[animalVals.length - 1])} together as a squad`;
+        if (animalStylingVals.length) animalPhrase += `, each one wearing ${animalStylingVals.join(', ').toLowerCase()} as a coordinated matching set`;
+        const animalExpressionVal = getVal('animalExpression');
+        if (animalExpressionVal && animalExpressionVal !== 'None') animalPhrase += `, ${animalStylingVals.length ? 'and' : ''} with a ${animalExpressionVal.toLowerCase()} expression`;
+        sceneTailBits.push(`with ${animalPhrase} nearby`);
+      }
 
       const restBits = [...propBits, ...sceneTailBits];
       if (locationBits.length || restBits.length) {
@@ -4138,6 +4492,13 @@
         if (restBits.length) sceneLine += `${locationBits.length ? ',' : ''} ${restBits.join(', ')}`;
         sceneLine += '.';
         parts.push(sceneLine);
+      }
+
+      const animalArtStyleOverride = animalVals.length ? getAnimalArtStyleOverride() : '';
+      if (animalArtStyleOverride) {
+        const animalStyleDesc = getStyleReinforcementForNonHuman(animalArtStyleOverride);
+        const animalStyleText = (animalStyleDesc || animalArtStyleOverride).replace(/\.\s*$/, '');
+        parts.push(`IMPORTANT — mixed art style: the character above is rendered in ${artStyle}, but the animal(s) must be rendered in a distinctly different style — ${animalStyleText}. The animals should visibly look like they belong to a different art style than the human character, not matching it.`);
       }
 
       const paletteColors = getMultiValues('colorPalette', 'customColorPalette');
@@ -4246,7 +4607,6 @@
       const textPhrase = customPhrase || (sayingVal && sayingVal !== 'None' ? sayingVal : '');
 
       const typography = [
-        ['textLayout','text layout'],
         ['letterSpacing','letter spacing'],
         ['textPlacement','text placement'],
         ['textOutline','text outline style'],
@@ -4255,6 +4615,9 @@
         const v = getVal(id);
         return (v && v !== 'None') ? `${label}: ${v}` : null;
       }).filter(Boolean);
+
+      const textLayoutVal = getVal('textLayout');
+      if (textLayoutVal && textLayoutVal !== 'None') typography.unshift(`text layout: ${getTextLayoutPhrase(textLayoutVal)}`);
 
       const textFontStyleVals = getMultiValues('textFontStyle', 'customTextFontStyle');
       if (textFontStyleVals.length) typography.push(`text font style (material): ${textFontStyleVals.join(' blended with ')}`);
@@ -4345,6 +4708,206 @@
     }
 
     // ── ACTIONS ───────────────────────────────────────────────────────────────
+
+    function resetMockupPatchTshirt() {
+      // ── Product Mockup ──
+      const setSelect = (id, val) => { const elx = el(id); if (elx) elx.value = val; };
+      setSelect('mockupProduct', 'None');
+      setSelect('mockupSource', 'Character Design');
+      const customMockupProduct = el('customMockupProduct');
+      if (customMockupProduct) customMockupProduct.value = '';
+
+      // ── Chenille Patch Builder ──
+      const patchText = el('patchText');
+      if (patchText) patchText.value = '';
+      setSelect('patchDisplayMode', "On Character's Clothing");
+      ['patchShape', 'patchTextLayout', 'patchOutline', 'patchEdging', 'patchSize', 'patchPlacement', 'patchPosition'].forEach(id => {
+        const elx = el(id);
+        if (elx && elx.options && elx.options.length) elx.selectedIndex = 0;
+      });
+      ['patchColors', 'patchPattern', 'patchEmbellishments'].forEach(name => {
+        document.querySelectorAll(`input[name="${name}"]`).forEach(cb => { cb.checked = false; });
+      });
+      ['customPatchColors', 'customPatchPattern', 'customPatchEmbellishments'].forEach(id => {
+        const elx = el(id);
+        if (elx) elx.value = '';
+      });
+      updateMultiDisplay('patchColors', 'customPatchColors', 'patchColorsSelected');
+      updateMultiDisplay('patchPattern', 'customPatchPattern', 'patchPatternSelected');
+      updateMultiDisplay('patchEmbellishments', 'customPatchEmbellishments', 'patchEmbellishmentsSelected');
+
+      // ── T-Shirt Print Design ──
+      setSelect('dtfSource', 'Character Design');
+      ['dtfPrintMethod', 'dtfPrintFinish', 'dtfPlacement', 'dtfGarmentColor'].forEach(id => {
+        const elx = el(id);
+        if (elx && elx.options && elx.options.length) elx.selectedIndex = 0;
+      });
+      ['dtfGraphicDesc', 'dtfCustomDetails'].forEach(id => {
+        const elx = el(id);
+        if (elx) elx.value = '';
+      });
+      document.querySelectorAll('input[name="dtfQuality"]').forEach(cb => { cb.checked = false; });
+      updateMultiDisplay('dtfQuality', null, 'dtfQualitySelected');
+      if (typeof updateDTFSourceReminder === 'function') updateDTFSourceReminder();
+
+      updateCustomVisibility();
+      updateChoiceSummary();
+      updateBrandBoardWarning();
+      showToast('Mockup, Patch, and T-Shirt settings cleared! (Art Style was left untouched since it\'s shared with Part 1.)');
+    }
+
+    function generateDTFPrompt() {
+      const source = el('dtfSource') ? el('dtfSource').value : 'Character Design';
+      const placement = el('dtfPlacement') ? el('dtfPlacement').value : 'Full Front';
+      const garmentColor = el('dtfGarmentColor') ? el('dtfGarmentColor').value : 'Light / White Garment';
+      const printMethod = el('dtfPrintMethod') ? el('dtfPrintMethod').value : 'DTF (Direct-to-Film)';
+      const printFinish = el('dtfPrintFinish') ? el('dtfPrintFinish').value : 'None';
+
+      const printFinishPhrases = {
+        'Glossy Finish': 'The printed design itself should have a glossy, reflective sheen on its surface — not the fabric, the ink/print surface reads shiny and polished.',
+        'Matte Finish': 'The printed design itself should have a flat matte finish with zero shine or reflection on its surface — a soft, non-glossy look to the ink/print.',
+        'Distressed Texture': 'The printed design itself should look vintage-worn and distressed — subtle cracking, fading, and uneven texture across the print surface, like an old, well-worn screen print that has been washed many times. This is a texture applied to the print/ink itself, not the fabric.'
+      };
+
+      const printMethodPhrases = {
+        'DTF (Direct-to-Film)': 'Print method: DTF (Direct-to-Film) transfer. Full-color, photographic detail and smooth gradients are all supported — no real color or blending limitations.',
+        'Screen Print': "Print method: Screen Print. This must be designed as a limited spot-color print — use no more than 4 to 6 distinct, flat, solid colors with hard clean edges between color areas. NO photographic detail, NO soft gradients, NO smooth color blending or airbrushed shading anywhere in the design — every color area must be a single flat solid color, exactly as it would need to be for a physical screen printing press.",
+        'Heat Transfer Vinyl (HTV)': 'Print method: Heat Transfer Vinyl (HTV). This must be designed as a simple, bold, single-layer (or very limited few-layer) vinyl-cut graphic — clean vector-style shapes with smooth continuous outlines suitable for die-cutting. NO fine detail, NO gradients, NO photographic shading, NO thin or small text that could not physically be cut and weeded from a sheet of vinyl. Solid, bold, simplified shapes only.',
+        'Sublimation': 'Print method: Sublimation. Full-color, photographic detail and gradients are supported, and the design can extend edge-to-edge / all-over if needed. IMPORTANT: sublimation only works on white or very light-colored polyester or poly-blend fabric — the ink dye becomes part of the fabric itself rather than sitting on top of it, so it will not show correctly on dark, cotton, or non-polyester fabric.',
+        'Puff Print': 'Print method: Puff Print. The bold outlines and main letterforms/shapes of the design should read as raised, dimensional, puffed texture rising above the fabric surface — like a 3D foam relief. Keep the puffed areas to bold, simple, clearly-defined shapes (outlines, thick letters, key icons); fine detail and background elements should stay flat.'
+      };
+
+      const placementPhrases = {
+        'Full Front': 'sized for a large full-front chest placement (roughly 11-12 inches wide)',
+        'Left Chest': 'sized small for a left-chest placement (roughly 3-4 inches wide) — simplify fine detail so it stays legible at this smaller size',
+        'Back Print': 'sized for a large full-back placement (roughly 12-14 inches wide)',
+        'Sleeve': 'sized small and narrow for a sleeve placement (roughly 3-4 inches wide) — simplify for this narrow format',
+        'Pocket Print': 'sized very small for a pocket-area placement (roughly 2-3 inches) — simplify heavily so it stays legible at this tiny size'
+      };
+      const garmentPhrases = {
+        'Light / White Garment': 'this will be printed on a light or white garment — standard color rendering applies, colors will show accurately as designed',
+        'Dark / Black Garment': 'this will be printed on a dark or black garment — ensure all colors render vibrant, saturated, and fully opaque; avoid pale, light, or low-contrast colors that would wash out or disappear against a dark background; assume a white underbase sits beneath the print for opacity',
+        'Colored Garment': "this will be printed on a colored (non-white, non-black) garment — ensure the design's colors stay vibrant and high-contrast enough to remain visually distinct from the garment color"
+      };
+
+      let designDesc = '';
+      let errorMsg = '';
+
+      if (source === 'Character Design') {
+        const genderSet = getCharVal('gender', 1);
+        const ageSet = getCharVal('ageGroup', 1);
+        if (!genderSet || !ageSet) {
+          errorMsg = 'Please build a character in Part 1 (at least Gender and Age Group) before generating a Character Design DTF print.';
+        } else {
+          const artStyle = getVal('artStyle') || 'Stylized Realism';
+          const styleDesc = getStyleReinforcement(artStyle);
+          const { subject, traits } = buildOpeningDescriptor(1);
+          designDesc = `${styleDesc ? styleDesc + ' ' : ''}Create ${aOrAn(artStyle)} ${artStyle.toLowerCase()} illustration of ${subject}${traits.length ? ', with ' + traits.join(', ') : ''}`;
+          const facial = buildCharacterFacialDetails(1);
+          if (facial.descriptors.length) designDesc += `. Facial details: ${facial.descriptors.join(', ')}`;
+          if (facial.tail) designDesc += `. ${facial.tail}`;
+          if (facial.emphasizedSkinDetails && facial.emphasizedSkinDetails.length) designDesc += `. Distinguishing facial features (must be clearly rendered): ${facial.emphasizedSkinDetails.join('; ')}`;
+          if (facial.flawlessSkinNote) designDesc += `. ${facial.flawlessSkinNote}`;
+          if (facial.stankLine) designDesc += `. ${facial.stankLine}`;
+          const styling = buildCharacterStyling(1);
+          if (styling.length) designDesc += `. Styling: wearing ${styling.join(', ')}`;
+          designDesc += '. Full character illustration only — isolated on a transparent background, no scene, no background, no shadow beneath.';
+        }
+      } else if (source === 'Patch Design') {
+        const patchText = el('patchText') ? el('patchText').value.trim() : '';
+        if (!patchText) {
+          errorMsg = 'Please enter Patch Text in the Chenille Patch Builder before generating a Patch Design DTF print.';
+        } else {
+          const patchShape = getVal('patchShape');
+          const patchOutline = getVal('patchOutline');
+          const patchEdging = getVal('patchEdging');
+          const patchColorVals = getMultiValues('patchColors', 'customPatchColors');
+          const patchPatternVals = getMultiValues('patchPattern', 'customPatchPattern');
+          const patchEmbellishmentVals = getMultiValues('patchEmbellishments', 'customPatchEmbellishments');
+          designDesc = `Textured chenille varsity patch letters with fuzzy, embroidered aesthetic spelling out the text "${patchText}" — distinctly textured, fuzzy appearance and visible thread-like fibers`;
+          if (patchShape && patchShape !== 'None') designDesc += `. Patch shape: ${patchShape}`;
+          if (patchOutline && patchOutline !== 'None') designDesc += `. Outline: ${patchOutline}`;
+          if (patchEdging && patchEdging !== 'None') designDesc += `. Edging: ${patchEdging}`;
+          if (patchColorVals.length) designDesc += `. Colors: ${patchColorVals.join(', ')}`;
+          if (patchPatternVals.length) designDesc += `. Print/pattern woven into the chenille lettering: ${patchPatternVals.join(' combined with ')} — must still read as fuzzy chenille yarn texture, not a flat printed graphic`;
+          if (patchEmbellishmentVals.length) designDesc += `. Embellishments: ${patchEmbellishmentVals.join(', ')}`;
+          designDesc += '. The patch design only — isolated on a transparent background, no scene, no background, no shadow beneath.';
+        }
+      } else if (source === 'Text / Logo Only Design') {
+        const textPhrase = (el('customTextPhrase') ? el('customTextPhrase').value.trim() : '') ||
+          (el('sassySaying') && el('sassySaying').value !== 'None' ? el('sassySaying').value : '');
+        if (!textPhrase) {
+          errorMsg = 'Please enter your text in the Text & Typography section before generating a Text / Logo Only DTF print.';
+        } else {
+          const fontStyleVals = getMultiValues('textFontStyle', 'customTextFontStyle');
+          const patternVals = getMultiValues('textPattern', 'customTextPattern');
+          const layout = getVal('textLayout');
+          const letterSpacing = getVal('letterSpacing');
+          const outline = getVal('textOutline');
+          const effectVals = getMultiValues('textEffect', 'customTextEffect');
+          const colorVals = getMultiValues('textColor', 'customTextColor');
+          const finishVals = getMultiValues('textFinish', 'customTextFinish');
+          const decorativeVals = getMultiValues('textDecorative', 'customTextDecorative');
+          const premium3D = el('premium3DToggle') && el('premium3DToggle').checked;
+          designDesc = `Bold, eye-catching text/logo design featuring the words "${textPhrase}"`;
+          if (premium3D) designDesc += '. This must read as premium 3D bold typography — a polished, high-end logo-quality treatment with real dimensional depth, not a flat 2D graphic; every material, pattern, effect, finish, and color must work together as one cohesive, professionally rendered 3D object';
+          if (fontStyleVals.length) designDesc += `. Font / lettering style (material): ${fontStyleVals.join(' blended with ')}`;
+          if (patternVals.length) designDesc += `. Surface pattern filling the letters: ${patternVals.join(' combined with ')}`;
+          if (layout && layout !== 'None') designDesc += `. Text layout: ${getTextLayoutPhrase(layout)}`;
+          if (letterSpacing && letterSpacing !== 'None') designDesc += `. Letter spacing: ${letterSpacing}`;
+          if (outline && outline !== 'None') designDesc += `. Outline style: ${outline}`;
+          if (effectVals.length) designDesc += `. Text effects (layered): ${effectVals.join(', ')}`;
+          if (colorVals.length) designDesc += `. Text color: ${colorVals.join(', ')}`;
+          if (finishVals.length) designDesc += `. Text finish and texture: ${finishVals.join(', ')}`;
+          if (decorativeVals.length) designDesc += `. Decorative elements: ${decorativeVals.join(', ')}`;
+          designDesc += '. The text/logo design only — isolated on a transparent background, no scene, no background, no shadow beneath.';
+        }
+      } else {
+        const graphicDesc = el('dtfGraphicDesc') ? el('dtfGraphicDesc').value.trim() : '';
+        if (!graphicDesc) {
+          errorMsg = 'Please type a Graphic Description (e.g. "a fierce lion roaring") before generating a Graphic / Illustration Only print.';
+        } else {
+          const artStyle = getVal('artStyle');
+          const paletteColors = getMultiValues('colorPalette', 'customColorPalette');
+          const renderStyleVals = getMultiValues('renderStyle', 'customRenderStyle');
+          designDesc = `A standalone illustrated graphic depicting ${graphicDesc}`;
+          if (artStyle && artStyle !== 'None') {
+            const styleDesc = getStyleReinforcementForNonHuman(artStyle);
+            const styleText = (styleDesc || 'Art style: ' + artStyle).replace(/\.\s*$/, '');
+            designDesc += `. ${styleText}`;
+            const styleNotesRaw = getStyleRenderingNotes(artStyle);
+            const exclusions = styleNotesRaw ? styleNotesRaw.split(',').map(s => s.trim()).filter(s => /^not\b/i.test(s)) : [];
+            if (exclusions.length) designDesc += ` (${exclusions.join(', ')})`;
+          }
+          if (paletteColors.length) designDesc += `. Color palette: ${paletteColors.join(', ')}`;
+          if (renderStyleVals.length) designDesc += `. Render style: ${renderStyleVals.join(', ')}`;
+          designDesc += '. The illustrated graphic only — isolated on a transparent background, no scene, no background, no shadow beneath.';
+        }
+      }
+
+      if (printMethod === 'Sublimation' && garmentColor === 'Dark / Black Garment') {
+        errorMsg = "Sublimation cannot print on dark or black fabric — the process only works on white or very light-colored polyester. Please choose a different Print Method (like DTF or Screen Print) for a dark garment, or switch Garment Color to Light / White for this Sublimation print.";
+      }
+
+      if (errorMsg) {
+        alert(errorMsg);
+        el('promptOutput').textContent = `⚠️ ${errorMsg}`;
+        return;
+      }
+
+      let finalPrompt = `Create a print-ready t-shirt design graphic. ${designDesc} `;
+      finalPrompt += `CRITICAL PRINT REQUIREMENTS: this is a flat 2D graphic asset for printing — NOT a photograph and NOT a product mockup photo. Fully isolated on a transparent background (PNG with alpha transparency), no background scene, no surface beneath it, no shadows implying a 3D environment. Sharp, clean, high-resolution edges suitable for printing. ${printMethodPhrases[printMethod]} ${garmentPhrases[garmentColor]}. Design is ${placementPhrases[placement]} on a t-shirt. Vibrant, accurate, saturated color reproduction. 300 DPI print quality, no pixelation, no blur. `;
+      if (printFinish && printFinish !== 'None') finalPrompt += `${printFinishPhrases[printFinish]} `;
+      const qualityVals = getMultiValues('dtfQuality', null);
+      if (qualityVals.length) finalPrompt += `${qualityVals.join(', ')}. `;
+      const dtfCustomDetails = el('dtfCustomDetails') ? el('dtfCustomDetails').value.trim() : '';
+      if (dtfCustomDetails) finalPrompt += `${dtfCustomDetails}. `;
+      finalPrompt += 'No misspelled text, no grainy or blurry texture, no distracting background elements, no drop shadow on a surface, no visible product or garment in frame — the design graphic only.';
+
+      el('promptOutput').textContent = finalPrompt;
+      el('variationsOutput').innerHTML = '';
+      showToast('T-Shirt print prompt generated!');
+    }
 
     function generatePrompt() {
       updateChoiceSummary();
@@ -4454,7 +5017,7 @@
 
     function randomizeAll() {
       const globalSelects = ['artStyle','creatorType','artFinish','pose','cameraAngle','lighting','background',
-        'animal','fantasy','sceneEffect','aspectRatio','frame','decade'];
+        'fantasy','sceneEffect','aspectRatio','frame','decade'];
 
       globalSelects.forEach(id => {
         const select = el(id);
@@ -4462,6 +5025,18 @@
         const opts = [...select.options].filter(o => !o.disabled && o.value && !o.value.toLowerCase().includes('custom'));
         if (opts.length) select.value = opts[Math.floor(Math.random() * opts.length)].value;
       });
+
+      // Animals are optional — only randomize them roughly a third of the time so
+      // every random character doesn't end up with a pet by default.
+      if (Math.random() < 0.33) {
+        randomCheckSome('animals', undefined, Math.random() < 0.5 ? 1 : 2);
+        randomCheckSome('animalStyling', undefined, 1);
+      } else {
+        document.querySelectorAll('input[name="animals"]').forEach(cb => { cb.checked = false; });
+        document.querySelectorAll('input[name="animalStyling"]').forEach(cb => { cb.checked = false; });
+      }
+      updateMultiDisplay('animals', 'customAnimals', 'animalsSelected');
+      updateMultiDisplay('animalStyling', 'customAnimalStyling', 'animalStylingSelected');
 
       // Keep Occasion coherent with Background: a sports venue background with no
       // occasion/team context leads the image model to invent fictional team branding.
@@ -4528,7 +5103,7 @@
       el('promptOutput').textContent = 'Your generated prompt will appear here after you click Generate.';
       el('variationsOutput').innerHTML = '';
       el('savedPrompts').innerHTML = '<p class="no-saved">No saved prompts yet.</p>';
-      localStorage.removeItem('stgCharacterHistory');
+      safeRemoveStorage('stgCharacterHistory');
       renderHistory();
       updateMultiDisplay('prop', 'customProps', 'propsSelected');
       globalMultiFields.forEach(([checkboxName, customId, displayId]) => updateMultiDisplay(checkboxName, customId, displayId));
@@ -4727,7 +5302,10 @@
       ['textFinish', 'customTextFinish', 'textFinishSelected', textFinishList, 'Text Finish'],
       ['textEffect', 'customTextEffect', 'textEffectSelected', textEffectList, 'Text Effect'],
       ['textPattern', 'customTextPattern', 'textPatternSelected', textPatternList, 'Text Pattern'],
-      ['textDecorative', 'customTextDecorative', 'textDecorativeSelected', textDecorativeList, 'Text Decorative', textDecorativeCategories]
+      ['textDecorative', 'customTextDecorative', 'textDecorativeSelected', textDecorativeList, 'Text Decorative', textDecorativeCategories],
+      ['dtfQuality', null, 'dtfQualitySelected', dtfQualityList, 'Quality Enhancers'],
+      ['animals', 'customAnimals', 'animalsSelected', null, 'Animals / Pets', animalsCategories],
+      ['animalStyling', 'customAnimalStyling', 'animalStylingSelected', null, 'Animal Styling', animalStylingCategories]
     ];
 
     function initGlobalCheckboxGroups() {
@@ -4795,7 +5373,7 @@
     function loadBrandBoard() {
       let saved;
       try {
-        const raw = localStorage.getItem(BRAND_BOARD_KEY);
+        const raw = safeGetStorage(BRAND_BOARD_KEY);
         saved = raw ? JSON.parse(raw) : null;
       } catch (e) { saved = null; }
 
@@ -4846,7 +5424,7 @@
         savedAt,
       };
       try {
-        localStorage.setItem(BRAND_BOARD_KEY, JSON.stringify(data));
+        safeSetStorage(BRAND_BOARD_KEY, JSON.stringify(data));
         const status = el('brandBoardStatus');
         if (status) status.textContent = `Saved on ${savedAt}. This will be here next time you open the tool.`;
         applyBrandBoard(true);
@@ -4891,10 +5469,25 @@
           return null;
         }
         const mascotParts = buildOpeningDescriptor(1);
-        const mascotDesc = mascotParts.traits.length ? `${mascotParts.subject}, with ${mascotParts.traits.join(', ')}` : mascotParts.subject;
+        let mascotDesc = mascotParts.traits.length ? `${mascotParts.subject}, with ${mascotParts.traits.join(', ')}` : mascotParts.subject;
+        const mascotAnimalVals = getMultiValues('animals', 'customAnimals');
+        const mascotAnimalStylingVals = getMultiValues('animalStyling', 'customAnimalStyling');
+        if (mascotAnimalVals.length) {
+          mascotDesc += `, accompanied by ${mascotAnimalVals.length === 1 ? getAnimalPhraseWithSize(mascotAnimalVals[0]) : mascotAnimalVals.slice(0, -1).map(a => getAnimalPhraseWithSize(a)).join(', ') + ` and ${getAnimalPhraseWithSize(mascotAnimalVals[mascotAnimalVals.length - 1])}`}`;
+          if (mascotAnimalStylingVals.length) mascotDesc += `, each animal styled with ${mascotAnimalStylingVals.join(', ').toLowerCase()} as a coordinated matching set`;
+          const mascotAnimalExpressionVal = getVal('animalExpression');
+          if (mascotAnimalExpressionVal && mascotAnimalExpressionVal !== 'None') mascotDesc += `, each animal with a ${mascotAnimalExpressionVal.toLowerCase()} expression`;
+        }
         const pronoun = genderSet.toLowerCase() === 'male' ? 'his' : 'her';
         const pronounCap = genderSet.toLowerCase() === 'male' ? 'His' : 'Her';
         parts.push(`Brand Mascot Character section: a dedicated panel in the top-right corner of the board showing the brand's signature mascot character — ${mascotDesc}. IMPORTANT: the mascot must occupy ${pronoun} own clean, isolated panel with ample space around ${pronoun} — do NOT overlap or crowd ${pronoun} with text, swatches, or other graphic elements. ${pronounCap} face must be fully visible, symmetrical, correctly proportioned, and highly detailed. No distorted or warped facial features. No merged or blurred elements near ${pronoun} face. Render ${pronoun} as a complete, polished character illustration that matches the brand's color palette and overall aesthetic.`);
+
+        const mascotAnimalArtStyleOverride = mascotAnimalVals.length ? getAnimalArtStyleOverride() : '';
+        if (mascotAnimalArtStyleOverride) {
+          const mascotAnimalStyleDesc = getStyleReinforcementForNonHuman(mascotAnimalArtStyleOverride);
+          const mascotAnimalStyleText = (mascotAnimalStyleDesc || mascotAnimalArtStyleOverride).replace(/\.\s*$/, '');
+          parts.push(`IMPORTANT — mixed art style: the mascot character above is rendered in ${artStyleSet}, but the accompanying animal(s) must be rendered in a distinctly different style — ${mascotAnimalStyleText}. The animals should visibly look like they belong to a different art style than the mascot, not matching it.`);
+        }
       }
 
       if (colors.length) {
@@ -4997,8 +5590,8 @@
     if (patchTextInput) patchTextInput.addEventListener('input', updateChoiceSummary);
 
     // ── PROMPT HISTORY ─────────────────────────────────────────────────────
-    function getHistory(){try{return JSON.parse(localStorage.getItem('stgCharacterHistory')||'[]')}catch(e){return[]}}
-    function saveHistory(items){localStorage.setItem('stgCharacterHistory',JSON.stringify(items))}
+    function getHistory(){try{return JSON.parse(safeGetStorage('stgCharacterHistory')||'[]')}catch(e){return[]}}
+    function saveHistory(items){safeSetStorage('stgCharacterHistory',JSON.stringify(items))}
 
     function addToHistory(prompt){
       if(!prompt || prompt.includes('will appear here')) return;
@@ -5042,17 +5635,17 @@
       const overlay=document.getElementById('tutorialOverlay');
       const closeBtn=document.getElementById('tutorialCloseBtn');
       if(!overlay||!closeBtn) return;
-      if(!localStorage.getItem('stgCharacterTutorialSeen')){
+      if(!safeGetStorage('stgCharacterTutorialSeen')){
         overlay.style.display='flex';
       }
       closeBtn.addEventListener('click',()=>{
         overlay.style.display='none';
-        localStorage.setItem('stgCharacterTutorialSeen','true');
+        safeSetStorage('stgCharacterTutorialSeen','true');
       });
       overlay.addEventListener('click',(e)=>{
         if(e.target===overlay){
           overlay.style.display='none';
-          localStorage.setItem('stgCharacterTutorialSeen','true');
+          safeSetStorage('stgCharacterTutorialSeen','true');
         }
       });
     }
